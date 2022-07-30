@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk OwlMailVersion.CompileSdk
+
+    defaultConfig {
+        minSdk OwlMailVersion.MinSdk
+        targetSdk OwlMailVersion.TargetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility OwlMailVersion.JDKVersion
+        targetCompatibility OwlMailVersion.JDKVersion
+    }
+    kotlinOptions {
+        jvmTarget = OwlMailVersion.JvmTarget
+    }
+}
+
+dependencies {
+
+    //Core
+    implementation OwlMailDependency.CoreKTX
+    implementation OwlMailDependency.AppCompat
+
+
+    //View
+    implementation OwlMailDependency.Material
+    implementation OwlMailDependency.ConstraintLayout
+
+
+    //Test
+    testImplementation OwlMailDependency.Junit
+    androidTestImplementation OwlMailDependency.JunitAndroid
+    androidTestImplementation OwlMailDependency.EspressoCore
+}
