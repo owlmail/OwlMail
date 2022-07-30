@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "github.sachin2dehury.owlmail"
+        applicationId "github.owlmail.app"
         minSdk 23
         targetSdk 32
         versionCode 1
