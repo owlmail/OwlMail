@@ -1,4 +1,4 @@
-package github.sachin2dehury.app
+package github.owlmail.app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
