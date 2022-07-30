@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Owl Mail"
 include ':app'
+include ':core'
+include ':auth'
+include ':mail'
