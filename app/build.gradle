@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk OwlMailVersion.CompileSdk
 
     defaultConfig {
-        applicationId "github.owlmail.app"
-        minSdk 23
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        applicationId OwlMailVersion.ApplicationId
+        minSdk OwlMailVersion.MinSdk
+        targetSdk OwlMailVersion.TargetSdk
+        versionCode OwlMailVersion.AppVersionCode
+        versionName OwlMailVersion.AppVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,11 +23,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility OwlMailVersion.JDKVersion
+        targetCompatibility OwlMailVersion.JDKVersion
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = OwlMailVersion.JvmTarget
     }
 }
 
