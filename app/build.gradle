@@ -2,19 +2,19 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 
-    id('kotlin-kapt')
-    id('dagger.hilt.android.plugin')
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
-    compileSdk OwlMailVersion.CompileSdk
+    compileSdk AppConfig.CompileSdk
 
     defaultConfig {
-        applicationId OwlMailVersion.ApplicationId
-        minSdk OwlMailVersion.MinSdk
-        targetSdk OwlMailVersion.TargetSdk
-        versionCode OwlMailVersion.AppVersionCode
-        versionName OwlMailVersion.AppVersionName
+        applicationId AppConfig.ApplicationId
+        minSdk AppConfig.MinSdk
+        targetSdk AppConfig.TargetSdk
+        versionCode AppConfig.AppVersionCode
+        versionName AppConfig.AppVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -26,33 +26,33 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility OwlMailVersion.JDKVersion
-        targetCompatibility OwlMailVersion.JDKVersion
+        sourceCompatibility AppConfig.JDKVersion
+        targetCompatibility AppConfig.JDKVersion
     }
     kotlinOptions {
-        jvmTarget = OwlMailVersion.JvmTarget
+        jvmTarget = AppConfig.JvmTarget
     }
 }
 
 dependencies {
 
     //Core
-    implementation OwlMailDependency.CoreKTX
-    implementation OwlMailDependency.AppCompat
+    implementation Dependencies.CoreKTX
+    implementation Dependencies.AppCompat
 
 
     //View
-    implementation OwlMailDependency.Material
-    implementation OwlMailDependency.ConstraintLayout
+    implementation Dependencies.Material
+    implementation Dependencies.ConstraintLayout
 
 
     //Test
-    testImplementation OwlMailDependency.Junit
-    androidTestImplementation OwlMailDependency.JunitAndroid
-    androidTestImplementation OwlMailDependency.EspressoCore
+    testImplementation Dependencies.Junit
+    androidTestImplementation Dependencies.JunitAndroid
+    androidTestImplementation Dependencies.EspressoCore
 
 
     //Dagger - Hilt
-    implementation OwlMailDependency.DaggerHilt
-    kapt OwlMailDependency.DaggerHiltCompiler
+    implementation Dependencies.DaggerHilt
+    kapt Dependencies.DaggerHiltCompiler
 }
