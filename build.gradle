@@ -2,7 +2,7 @@
 buildscript {
     dependencies {
 
-        classpath OwlMailDependency.DaggerHiltClassPath
+        classpath Dependencies.DaggerHiltClassPath
     }
 }
 plugins {
