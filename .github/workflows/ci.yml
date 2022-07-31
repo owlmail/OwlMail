@@ -24,11 +24,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Pre build project clean up
+      - name: Build & clean project
         run: ./gradlew clean
 
-      - name: Stopping gradle
-        run: ./gradlew --stop
+#      - name: Stopping gradle
+#        run: ./gradlew --stop
 
       - name: Lint Check
         run: ./gradlew lintDebug
