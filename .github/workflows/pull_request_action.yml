@@ -1,0 +1,19 @@
+name: Pull Request Check
+
+on:
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: [ ubuntu-latest ]
+
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+
+      - name: Lint Check
+        run: ./gradlew lintDebug
+
+      - name: Generate Debug Bundle
+        run: ./gradlew assembleDebug
