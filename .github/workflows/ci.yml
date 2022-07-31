@@ -24,8 +24,8 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build & clean project
-        run: ./gradlew clean
+      - name: Clean project
+        run: ./gradlew build
 
 #      - name: Stopping gradle
 #        run: ./gradlew --stop
