@@ -1,8 +1,9 @@
-name: Push Checks
+name: OwlMail Github Actions
 
 on:
   push:
-
+  pull_request:
+    branches: [ "main" ]
 jobs:
   build:
 
