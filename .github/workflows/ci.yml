@@ -25,7 +25,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Clean project
-        run: ./gradlew build
+        run: ./gradlew clean
 
 #      - name: Stopping gradle
 #        run: ./gradlew --stop
