@@ -13,4 +13,6 @@ object DependencyVersion {
 
 
     const val DaggerHilt = "2.43"
+
+    const val Lint = "30.2.2"
 }

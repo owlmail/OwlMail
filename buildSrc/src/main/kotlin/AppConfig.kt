@@ -6,7 +6,7 @@ object AppConfig {
     const val TargetSdk = 32
 
     val JDKVersion = JavaVersion.VERSION_1_8
-    val JvmTarget = JDKVersion.toString()
+    val JvmTargetVersion = JDKVersion.toString()
 
     const val ApplicationId = "github.owlmail.app"
     const val AppVersionCode = 1

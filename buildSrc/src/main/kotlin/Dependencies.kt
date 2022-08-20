@@ -17,4 +17,6 @@ object Dependencies {
     const val DaggerHiltCompiler =
         "com.google.dagger:hilt-android-compiler:${DependencyVersion.DaggerHilt}"
     const val DaggerHiltClassPath = "com.google.dagger:hilt-android-gradle-plugin:${DependencyVersion.DaggerHilt}"
+
+    const val Lint = "com.android.tools.lint:lint-api:${DependencyVersion.Lint}"
 }

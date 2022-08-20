@@ -1,0 +1,19 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+java {
+    sourceCompatibility = AppConfig.INSTANCE.JDKVersion
+    targetCompatibility = AppConfig.INSTANCE.JDKVersion
+}
+
+dependencies {
+    compileOnly Dependencies.Lint
+}
+
+jar {
+    manifest {
+        attributes('Lint-Registry-v2': 'github.owlmail.lint.rules.OwlMailLintIssueRegistry')
+    }
+}
