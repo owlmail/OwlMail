@@ -28,9 +28,5 @@ object Dependencies {
     const val JunitAndroid = "androidx.test.ext:junit:${DependencyVersion.JunitAndroid}"
     const val EspressoCore = "androidx.test.espresso:espresso-core:${DependencyVersion.Espresso}"
 
-    // Coroutines
-    const val CoroutineCore =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${DependencyVersion.Coroutines}"
-    const val CoroutineAndroid =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersion.Coroutines}"
+    const val Lint = "com.android.tools.lint:lint-api:${DependencyVersion.Lint}"
 }

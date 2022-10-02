@@ -19,5 +19,6 @@ object DependencyVersion {
     const val JunitAndroid = "1.1.3"
     const val Espresso = "3.4.0"
 
-    const val Coroutines = "1.6.4"
+    // Lint
+    const val Lint = "30.2.2"
 }

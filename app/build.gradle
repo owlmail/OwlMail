@@ -37,8 +37,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility AppConfig.JDKVersion
-        targetCompatibility AppConfig.JDKVersion
+        sourceCompatibility AppConfig.INSTANCE.JDKVersion
+        targetCompatibility AppConfig.INSTANCE.JDKVersion
         kotlinOptions.languageVersion = AppConfig.KotlinLanguageVersion
     }
     kotlinOptions {
@@ -58,9 +58,6 @@ dependencies {
     implementation Dependencies.Material
     implementation Dependencies.ConstraintLayout
 
-    implementation project(":auth")
-
-
     //Test
     testImplementation Dependencies.Junit
     androidTestImplementation Dependencies.JunitAndroid
@@ -74,4 +71,7 @@ dependencies {
     //Dagger - Hilt
     implementation Dependencies.DaggerHilt
     kapt Dependencies.DaggerHiltCompiler
+
+    //Lint
+    lintChecks project(':lint-rules')
 }
