@@ -43,10 +43,6 @@ dependencies {
     implementation Dependencies.Material
     implementation Dependencies.ConstraintLayout
 
-    //Coroutine
-    implementation Dependencies.CoroutineCore
-    implementation Dependencies.CoroutineAndroid
-
 
     //Test
     testImplementation Dependencies.Junit
