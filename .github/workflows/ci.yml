@@ -27,7 +27,7 @@ jobs:
       - name: Fetch Secrets data
         env:
           DATA: ${{ secrets.GOOGLE_SERVICES }}
-        run: echo $DATA | base64 > $PWD/app/google-services.json
+        run: echo $DATA > $PWD/app/google-services.json | echo $DATA
 
       - name: Clean project
         run: ./gradlew clean
