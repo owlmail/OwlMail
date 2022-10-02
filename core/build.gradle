@@ -22,8 +22,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility AppConfig.JDKVersion
-        targetCompatibility AppConfig.JDKVersion
+        sourceCompatibility AppConfig.INSTANCE.JDKVersion
+        targetCompatibility AppConfig.INSTANCE.JDKVersion
         kotlinOptions.languageVersion = AppConfig.KotlinLanguageVersion
     }
     kotlinOptions {

@@ -16,8 +16,7 @@ object Dependencies {
 
 
     // Firebase
-    const val FirebaseBom =
-        "com.google.firebase:firebase-bom:${DependencyVersion.FirebaseBom}"
+    const val FirebaseBom = "com.google.firebase:firebase-bom:${DependencyVersion.FirebaseBom}"
     const val FirebasePerformance = "com.google.firebase:firebase-perf-ktx"
     const val FirebaseRemoteConfig = "com.google.firebase:firebase-config-ktx"
     const val FirebaseAnalytics = "com.google.firebase:firebase-analytics-ktx"
@@ -27,6 +26,8 @@ object Dependencies {
     const val Junit = "junit:junit:${DependencyVersion.Junit}"
     const val JunitAndroid = "androidx.test.ext:junit:${DependencyVersion.JunitAndroid}"
     const val EspressoCore = "androidx.test.espresso:espresso-core:${DependencyVersion.Espresso}"
+
+    const val Lint = "com.android.tools.lint:lint-api:${DependencyVersion.Lint}"
 
     // Coroutines
     const val CoroutineCore =
