@@ -28,6 +28,7 @@ android {
     kotlinOptions {
         jvmTarget = AppConfig.JvmTarget
     }
+    namespace 'github.owlmail.core'
 }
 
 dependencies {
