@@ -35,8 +35,8 @@ jobs:
       - name: Clean project
         run: ./gradlew clean
 
-      #      - name: Stopping gradle
-      #        run: ./gradlew --stop
+      - name: Stopping gradle
+        run: ./gradlew --stop
 
       - name: Lint Check
         run: ./gradlew lintDebug
