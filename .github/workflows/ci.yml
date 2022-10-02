@@ -2,9 +2,9 @@ name: OwlMail Github Actions
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "*" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "*" ]
 jobs:
   build:
 
@@ -24,19 +24,16 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Create Secret files
-        run: cat /home/runner/work/OwlMail/OwlMail/app/google-services.json | base64
-
-      - name: Update Secrets data
+      - name: Fetch Secrets data
         env:
           DATA: ${{ secrets.GOOGLE_SERVICES }}
-        run: echo $DATA > /home/runner/work/OwlMail/OwlMail/app/google-services.json
+        run: echo $DATA > $PWD/app/google-services.json
 
       - name: Clean project
         run: ./gradlew clean
 
-#      - name: Stopping gradle
-#        run: ./gradlew --stop
+      #      - name: Stopping gradle
+      #        run: ./gradlew --stop
 
       - name: Lint Check
         run: ./gradlew lintDebug
