@@ -1,12 +1,11 @@
-import org.gradle.api.JavaVersion
-
 object AppConfig {
     const val CompileSdk = 32
     const val MinSdk = 23
     const val TargetSdk = 32
 
-    val JDKVersion = JavaVersion.VERSION_1_8
-    val JvmTargetVersion = JDKVersion.toString()
+    const val JDKVersion = "1.8"
+    const val JvmTargetVersion = JDKVersion
+    const val KotlinLanguageVersion = JDKVersion
 
     const val ApplicationId = "github.owlmail.app"
     const val AppVersionCode = 1
