@@ -2,7 +2,11 @@
 buildscript {
     dependencies {
 
-        classpath Dependencies.DaggerHiltClassPath
+        classpath ClassPaths.DaggerHiltClassPath
+        classpath ClassPaths.GoogleServicesClassPath
+        classpath ClassPaths.FirebasePerformanceClassPath
+        classpath ClassPaths.FirebaseCrashlytics
+
     }
 }
 plugins {
