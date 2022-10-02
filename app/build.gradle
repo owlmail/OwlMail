@@ -1,9 +1,15 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
 
+    id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+
+    id 'com.google.dagger.hilt.android'
+
+    id 'com.google.gms.google-services'
+
+    id 'com.google.firebase.firebase-perf'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -23,6 +29,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            FirebasePerformance {
+                instrumentationEnabled false
+            }
         }
     }
     compileOptions {
@@ -51,6 +62,10 @@ dependencies {
     androidTestImplementation Dependencies.JunitAndroid
     androidTestImplementation Dependencies.EspressoCore
 
+    // Firebase
+    implementation platform(Dependencies.FirebaseBom)
+    implementation Dependencies.FirebaseRemoteConfig
+    implementation Dependencies.FirebasePerformance
 
     //Dagger - Hilt
     implementation Dependencies.DaggerHilt
