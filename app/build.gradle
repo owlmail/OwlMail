@@ -58,7 +58,6 @@ dependencies {
     implementation Dependencies.Material
     implementation Dependencies.ConstraintLayout
 
-
     //Test
     testImplementation Dependencies.Junit
     androidTestImplementation Dependencies.JunitAndroid
