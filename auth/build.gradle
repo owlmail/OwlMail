@@ -57,3 +57,7 @@ dependencies {
     implementation Dependencies.DaggerHilt
     kapt Dependencies.DaggerHiltCompiler
 }
+
+kapt {
+    correctErrorTypes true
+}

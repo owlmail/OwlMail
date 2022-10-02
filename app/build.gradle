@@ -58,8 +58,6 @@ dependencies {
     implementation Dependencies.Material
     implementation Dependencies.ConstraintLayout
 
-    implementation project(":auth")
-
 
     //Test
     testImplementation Dependencies.Junit
@@ -74,4 +72,8 @@ dependencies {
     //Dagger - Hilt
     implementation Dependencies.DaggerHilt
     kapt Dependencies.DaggerHiltCompiler
+}
+
+kapt {
+    correctErrorTypes true
 }

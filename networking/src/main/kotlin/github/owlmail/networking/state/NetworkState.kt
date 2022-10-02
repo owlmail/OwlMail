@@ -1,4 +1,4 @@
-package github.owlmail.networking
+package github.owlmail.networking.state
 
 sealed interface NetworkState {
     data object Available : NetworkState

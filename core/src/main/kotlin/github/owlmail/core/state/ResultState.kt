@@ -1,4 +1,4 @@
-package github.owlmail.core
+package github.owlmail.core.state
 
 sealed interface ResultState<out T> {
     data class Success<out T>(val data: T? = null) : ResultState<T>

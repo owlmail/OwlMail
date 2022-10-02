@@ -2,6 +2,9 @@ plugins {
     id 'com.android.library'
 
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -47,9 +50,16 @@ dependencies {
     implementation Dependencies.CoroutineCore
     implementation Dependencies.CoroutineAndroid
 
+    //Dagger - Hilt
+    implementation Dependencies.DaggerHilt
+    kapt Dependencies.DaggerHiltCompiler
 
     //Test
     testImplementation Dependencies.Junit
     androidTestImplementation Dependencies.JunitAndroid
     androidTestImplementation Dependencies.EspressoCore
+}
+
+kapt {
+    correctErrorTypes true
 }

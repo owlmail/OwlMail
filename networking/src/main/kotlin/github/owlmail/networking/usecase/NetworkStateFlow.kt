@@ -1,5 +1,6 @@
-package github.owlmail.networking
+package github.owlmail.networking.usecase
 
+import github.owlmail.networking.state.NetworkState
 import kotlinx.coroutines.flow.Flow
 
 interface NetworkStateFlow {
