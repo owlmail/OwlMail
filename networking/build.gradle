@@ -24,9 +24,10 @@ android {
     compileOptions {
         sourceCompatibility AppConfig.JDKVersion
         targetCompatibility AppConfig.JDKVersion
+        kotlinOptions.languageVersion = AppConfig.KotlinLanguageVersion
     }
     kotlinOptions {
-        jvmTarget = AppConfig.JvmTarget
+        jvmTarget = AppConfig.JvmTargetVersion
     }
     namespace 'github.owlmail.networking'
 }
@@ -41,6 +42,10 @@ dependencies {
     //View
     implementation Dependencies.Material
     implementation Dependencies.ConstraintLayout
+
+    //Coroutine
+    implementation Dependencies.CoroutineCore
+    implementation Dependencies.CoroutineAndroid
 
 
     //Test

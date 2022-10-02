@@ -24,9 +24,10 @@ android {
     compileOptions {
         sourceCompatibility AppConfig.JDKVersion
         targetCompatibility AppConfig.JDKVersion
+        kotlinOptions.languageVersion = AppConfig.KotlinLanguageVersion
     }
     kotlinOptions {
-        jvmTarget = AppConfig.JvmTarget
+        jvmTarget = AppConfig.JvmTargetVersion
     }
     namespace 'github.owlmail.design'
 }
