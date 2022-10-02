@@ -26,4 +26,6 @@ object Dependencies {
     const val Junit = "junit:junit:${DependencyVersion.Junit}"
     const val JunitAndroid = "androidx.test.ext:junit:${DependencyVersion.JunitAndroid}"
     const val EspressoCore = "androidx.test.espresso:espresso-core:${DependencyVersion.Espresso}"
+
+    const val Lint = "com.android.tools.lint:lint-api:${DependencyVersion.Lint}"
 }
