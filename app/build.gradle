@@ -45,6 +45,9 @@ android {
         jvmTarget = AppConfig.JvmTargetVersion
     }
     namespace 'github.owlmail.app'
+    viewBinding {
+        enabled true
+    }
 }
 
 dependencies {

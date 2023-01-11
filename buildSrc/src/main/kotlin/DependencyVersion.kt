@@ -9,7 +9,7 @@ object DependencyVersion {
     const val ConstraintLayout = "2.1.4"
 
     // Hilt
-    const val DaggerHilt = "2.43"
+    const val DaggerHilt = "2.44"
 
     // Firebase
     const val FirebaseBom = "30.3.1"
