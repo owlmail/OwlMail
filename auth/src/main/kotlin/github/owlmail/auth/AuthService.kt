@@ -1,5 +1,13 @@
 package github.owlmail.auth
 
-class AuthService {
+import retrofit2.http.Body
+import retrofit2.http.POST
+
+interface AuthService {
+
     //retrofit get/post calls
+    @POST("service/soap/AuthRequest")
+
+    suspend fun makeAuthRequest(@Body authRequest: RequestAuth): ResponseAuth
+
 }

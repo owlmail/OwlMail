@@ -29,4 +29,11 @@ object Dependencies {
     const val EspressoCore = "androidx.test.espresso:espresso-core:${DependencyVersion.Espresso}"
 
     const val Lint = "com.android.tools.lint:lint-api:${DependencyVersion.Lint}"
+
+    //moshi
+    //moshi
+
+    const val Moshi = "com.squareup.moshi:moshi-kotlin:${DependencyVersion.Moshi}"
+    const val MoshiKapt = "com.squareup.moshi:moshi-kotlin-codegen:${DependencyVersion.Moshi}"
+    const val MoshiRetrofitConverter = "com.squareup.retrofit2:converter-moshi:${DependencyVersion.MoshiRetrofitConverter}"
 }

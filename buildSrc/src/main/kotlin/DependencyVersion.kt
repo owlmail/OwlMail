@@ -21,4 +21,8 @@ object DependencyVersion {
 
     // Lint
     const val Lint = "30.2.2"
+
+    //moshi
+    const val Moshi = "1.14.0"
+    const val MoshiRetrofitConverter = "2.9.0"
 }
