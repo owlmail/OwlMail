@@ -9,7 +9,7 @@ object DependencyVersion {
     const val ConstraintLayout = "2.1.4"
 
     // Hilt
-    const val DaggerHilt = "2.43"
+    const val DaggerHilt = "2.44"
 
     // Firebase
     const val FirebaseBom = "30.3.1"
@@ -21,4 +21,8 @@ object DependencyVersion {
 
     // Lint
     const val Lint = "30.2.2"
+
+    //moshi
+    const val Moshi = "1.14.0"
+    const val MoshiRetrofitConverter = "2.9.0"
 }

@@ -33,6 +33,9 @@ android {
         jvmTarget = AppConfig.JvmTargetVersion
     }
     namespace 'github.owlmail.auth'
+    viewBinding {
+        enabled true
+    }
 }
 
 dependencies {
@@ -56,4 +59,13 @@ dependencies {
     //Dagger - Hilt
     implementation Dependencies.DaggerHilt
     kapt Dependencies.DaggerHiltCompiler
+
+
+    //moshi
+    implementation Dependencies.Moshi
+    kapt Dependencies.MoshiKapt
+    implementation Dependencies.MoshiRetrofitConverter
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
 }
