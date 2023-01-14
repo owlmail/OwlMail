@@ -41,4 +41,5 @@ object Dependencies {
     //navigation
     const val Navigation = "androidx.navigation:navigation-fragment-ktx:${DependencyVersion.Navigation}"
     const val NavigationUI = "androidx.navigation:navigation-ui-ktx:${DependencyVersion.Navigation}"
+    const val FeaturesNavigation = "androidx.navigation:navigation-dynamic-features-fragment:${DependencyVersion.Navigation}"
 }

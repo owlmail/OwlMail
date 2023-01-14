@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.auth.databinding.FragmentAuthBinding
+import kotlinx.coroutines.flow.catch
 
 @AndroidEntryPoint
 class AuthFragment : Fragment() {
@@ -49,8 +52,9 @@ class AuthFragment : Fragment() {
 
     private fun observeLoginState() {
         lifecycleScope.launchWhenStarted {
-            viewModel.loginState.collect {
+            viewModel.loginState.catch {  }.collect {
                 Log.e("Auth Fragment","$it")
+                _binding?.root?.findNavController()?.navigate(R.id.action_authFragment_to_mailFragment)
             }
         }
     }

@@ -65,6 +65,8 @@ dependencies {
     //navigation
     implementation Dependencies.Navigation
     implementation Dependencies.NavigationUI
+    implementation Dependencies.FeaturesNavigation
+
 
     //moshi
     implementation Dependencies.Moshi

@@ -81,6 +81,7 @@ dependencies {
     //navigation
     implementation Dependencies.Navigation
     implementation Dependencies.NavigationUI
+    implementation Dependencies.FeaturesNavigation
 
     implementation(project(Modules.Auth))
     implementation(project(Modules.Mail))

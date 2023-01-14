@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import github.owlmail.mail.databinding.FragmentMailBinding
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -37,7 +38,7 @@ class MailFragment: Fragment() {
     //when vm paginated refresh call this
     fun updateDataInRV(){
         lifecycleScope.launch(){
-            viewModel.getPaginatedData().collect{
+            viewModel.getPaginatedData().catch {  }.collect{
                 mailAdapter.submitData(it)
             }
         }

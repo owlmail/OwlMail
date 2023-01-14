@@ -11,25 +11,29 @@ class MailPagingSource(private val repository: MailRepository) :
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, InboxSearchResponse.Body.SearchResponse.Conversation> {
-        val offset = params.key ?: 0
-        val loadSize = params.loadSize
-        val inboxSearchRequest = InboxSearchRequest(
-            body = InboxSearchRequest.Body(
-                searchRequest = InboxSearchRequest.Body.SearchRequest(
-                    jsns = "urn:zimbraMail",
-                    limit = loadSize,
-                    offset = offset,
-                    query = "in:inbox"
+        try {
+            val offset = params.key ?: 0
+            val loadSize = params.loadSize
+            val inboxSearchRequest = InboxSearchRequest(
+                body = InboxSearchRequest.Body(
+                    searchRequest = InboxSearchRequest.Body.SearchRequest(
+                        jsns = "urn:zimbraMail",
+                        limit = loadSize,
+                        offset = offset,
+                        query = "in:inbox"
+                    )
                 )
             )
-        )
-        val response = repository.getMailList(inboxSearchRequest)
-        return LoadResult.Page(
-            data = response.body?.searchResponse?.conversation?.filterNotNull() ?: emptyList(),
-            prevKey = null,
-            nextKey = if (response.body?.searchResponse?.more == true) {
-                offset + 1
-            } else null
-        )
+            val response = repository.getMailList(inboxSearchRequest)
+            return LoadResult.Page(
+                data = response.body?.searchResponse?.conversation?.filterNotNull() ?: emptyList(),
+                prevKey = null,
+                nextKey = if (response.body?.searchResponse?.more == true) {
+                    offset + 1
+                } else null
+            )
+        } catch (e:Exception){
+            return LoadResult.Error(e)
+        }
     }
 }
