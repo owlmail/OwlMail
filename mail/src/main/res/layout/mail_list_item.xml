@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="3dp"
+    android:padding="3dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sender_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:text="Sender Name"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mail_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/sender_name"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:textSize="11sp"
+        android:text="Mail Subject"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mail_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/mail_subject"
+        android:textSize="11sp"
+        android:text="Mail Body"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

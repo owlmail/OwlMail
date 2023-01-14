@@ -31,9 +31,14 @@ object Dependencies {
     const val Lint = "com.android.tools.lint:lint-api:${DependencyVersion.Lint}"
 
     //moshi
-    //moshi
-
     const val Moshi = "com.squareup.moshi:moshi-kotlin:${DependencyVersion.Moshi}"
     const val MoshiKapt = "com.squareup.moshi:moshi-kotlin-codegen:${DependencyVersion.Moshi}"
     const val MoshiRetrofitConverter = "com.squareup.retrofit2:converter-moshi:${DependencyVersion.MoshiRetrofitConverter}"
+
+    //paging
+    const val Paging = "androidx.paging:paging-runtime:${DependencyVersion.Paging}"
+
+    //navigation
+    const val Navigation = "androidx.navigation:navigation-fragment-ktx:${DependencyVersion.Navigation}"
+    const val NavigationUI = "androidx.navigation:navigation-ui-ktx:${DependencyVersion.Navigation}"
 }
