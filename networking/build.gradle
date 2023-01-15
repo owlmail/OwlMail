@@ -66,6 +66,6 @@ dependencies {
     implementation Dependencies.Navigation
     implementation Dependencies.NavigationUI
 
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.6.0'
+    debugImplementation 'com.facebook.stetho:stetho-okhttp3:1.6.0'
 
 }

@@ -84,7 +84,7 @@ dependencies {
     implementation Dependencies.FeaturesNavigation
 
 
-    implementation 'com.facebook.stetho:stetho:1.6.0'
+    debugImplementation 'com.facebook.stetho:stetho:1.6.0'
 
     implementation(project(Modules.Auth))
     implementation(project(Modules.Mail))

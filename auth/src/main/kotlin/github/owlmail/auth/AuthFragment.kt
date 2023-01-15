@@ -12,7 +12,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.auth.databinding.FragmentAuthBinding
+import github.owlmail.networking.AuthIntercepter
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AuthFragment : Fragment() {
@@ -20,6 +23,8 @@ class AuthFragment : Fragment() {
     //xml of this will have 2 edit texts, button
     //login on button click
     //observe the login state
+    @Inject
+    lateinit var authIntercepter: AuthIntercepter
     private val viewModel: AuthViewModel by viewModels()
     private var _binding: FragmentAuthBinding? = null
     override fun onCreateView(
@@ -53,8 +58,14 @@ class AuthFragment : Fragment() {
     private fun observeLoginState() {
         lifecycleScope.launchWhenStarted {
             viewModel.loginState.catch {  }.collect {
+                it?.let {
+                    val csrfToken = it.body?.authResponse?.csrfToken?.content?: ""
+                    val cookieToken = it.body?.authResponse?.authToken?.firstOrNull()?.content?: ""
+                    authIntercepter.csrfToken = csrfToken
+                    authIntercepter.cookie = cookieToken
+                    _binding?.root?.findNavController()?.navigate(R.id.action_authFragment_to_mailFragment)
+                }
                 Log.e("Auth Fragment","$it")
-                _binding?.root?.findNavController()?.navigate(R.id.action_authFragment_to_mailFragment)
             }
         }
     }
