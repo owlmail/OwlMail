@@ -19,7 +19,9 @@ object NetworkingModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(authIntercepter: AuthIntercepter)= OkHttpClient.Builder().addInterceptor(authIntercepter).build()
+    fun providesOkHttpClient(authIntercepter: AuthIntercepter)= OkHttpClient.Builder()
+        .addInterceptor(authIntercepter)
+        .build()
 
     @Provides
     @Singleton

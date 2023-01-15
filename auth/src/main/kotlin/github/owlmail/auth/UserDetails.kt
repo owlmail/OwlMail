@@ -11,7 +11,8 @@ data class UserDetails(val userId: String, val userPassword: String) {
                     password = RequestAuth.Body.AuthRequest.Password(
                         userPassword
                     ),
-                    jsns = "urn:zimbraAccount"
+                    jsns = "urn:zimbraAccount",
+                    csrfTokenSecured = 1
                 )
             )
         )

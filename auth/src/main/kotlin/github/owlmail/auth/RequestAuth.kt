@@ -1,6 +1,7 @@
 package github.owlmail.auth
 
 
+import android.accounts.Account
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -21,7 +22,9 @@ data class RequestAuth(
             @Json(name = "_jsns")
             val jsns: String? = null,
             @Json(name = "password")
-            val password: Password? = null
+            val password: Password? = null,
+            @Json(name = "csrfTokenSecured")
+            val csrfTokenSecured: Int? = null
         ) {
             @JsonClass(generateAdapter = true)
             data class Account(
