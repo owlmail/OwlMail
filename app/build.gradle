@@ -78,8 +78,14 @@ dependencies {
     //Lint
     lintChecks project(':lint-rules')
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
-    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+    //navigation
+    implementation Dependencies.Navigation
+    implementation Dependencies.NavigationUI
+    implementation Dependencies.FeaturesNavigation
+
+
+    debugImplementation 'com.facebook.stetho:stetho:1.6.0'
 
     implementation(project(Modules.Auth))
+    implementation(project(Modules.Mail))
 }

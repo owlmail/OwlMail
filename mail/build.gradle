@@ -33,9 +33,14 @@ android {
         jvmTarget = AppConfig.JvmTargetVersion
     }
     namespace 'github.owlmail.mail'
+    viewBinding {
+        enabled true
+    }
 }
 
 dependencies {
+    //Paging
+    implementation Dependencies.Paging
 
     //Core
     implementation Dependencies.CoreKTX
@@ -56,4 +61,18 @@ dependencies {
     //Dagger - Hilt
     implementation Dependencies.DaggerHilt
     kapt Dependencies.DaggerHiltCompiler
+
+    //navigation
+    implementation Dependencies.Navigation
+    implementation Dependencies.NavigationUI
+    implementation Dependencies.FeaturesNavigation
+
+
+    //moshi
+    implementation Dependencies.Moshi
+    kapt Dependencies.MoshiKapt
+    implementation Dependencies.MoshiRetrofitConverter
+
+    implementation(project(Modules.Networking))
+
 }

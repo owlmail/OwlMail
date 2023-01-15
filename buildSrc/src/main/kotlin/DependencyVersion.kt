@@ -25,4 +25,10 @@ object DependencyVersion {
     //moshi
     const val Moshi = "1.14.0"
     const val MoshiRetrofitConverter = "2.9.0"
+
+    //paging
+    const val Paging = "3.1.1"
+
+    //Navigation
+    const val Navigation = "2.5.3"
 }

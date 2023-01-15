@@ -22,6 +22,8 @@ data class ResponseAuth(
         data class AuthResponse(
             @Json(name = "authToken")
             val authToken: List<AuthToken?>? = null,
+            @Json(name = "csrfToken")
+            val csrfToken: CsrfToken? = null,
             @Json(name = "_jsns")
             val jsns: String? = null,
             @Json(name = "lifetime")
@@ -34,7 +36,11 @@ data class ResponseAuth(
                 @Json(name = "_content")
                 val content: String? = null
             )
-
+            @JsonClass(generateAdapter = true)
+            data class CsrfToken(
+                @Json(name = "_content")
+                val content: String? = null
+            )
             @JsonClass(generateAdapter = true)
             data class Skin(
                 @Json(name = "_content")

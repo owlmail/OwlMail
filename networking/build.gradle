@@ -2,6 +2,9 @@ plugins {
     id 'com.android.library'
 
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -48,4 +51,21 @@ dependencies {
     testImplementation Dependencies.Junit
     androidTestImplementation Dependencies.JunitAndroid
     androidTestImplementation Dependencies.EspressoCore
+
+    //Dagger - Hilt
+    implementation Dependencies.DaggerHilt
+    kapt Dependencies.DaggerHiltCompiler
+
+
+    //moshi
+    implementation Dependencies.Moshi
+    kapt Dependencies.MoshiKapt
+    implementation Dependencies.MoshiRetrofitConverter
+
+    //navigation
+    implementation Dependencies.Navigation
+    implementation Dependencies.NavigationUI
+
+    debugImplementation 'com.facebook.stetho:stetho-okhttp3:1.6.0'
+
 }
