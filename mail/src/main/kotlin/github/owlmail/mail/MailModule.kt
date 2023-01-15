@@ -14,6 +14,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object MailModule {
+
     //move moshi and retrofit to networking
     @Provides
     @Singleton
