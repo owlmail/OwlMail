@@ -23,7 +23,7 @@ data class MailDetailResponse(
             @Json(name = "_jsns")
             val jsns: String? = null,
             @Json(name = "m")
-            val m: List<M?>? = null,
+            val message: List<M?>? = null,
             @Json(name = "more")
             val more: Boolean? = null,
             @Json(name = "offset")
@@ -38,15 +38,15 @@ data class MailDetailResponse(
                 @Json(name = "cm")
                 val cm: Boolean? = null,
                 @Json(name = "d")
-                val d: Long? = null,
+                val date: Long? = null,
                 @Json(name = "e")
-                val e: List<E?>? = null,
+                val emailAdd: List<E?>? = null,
                 @Json(name = "fr")
-                val fr: String? = null,
+                val body: String? = null,
                 @Json(name = "id")
                 val id: String? = null,
                 @Json(name = "l")
-                val l: String? = null,
+                val folder: String? = null,
                 @Json(name = "mid")
                 val mid: String? = null,
                 @Json(name = "mp")
@@ -54,13 +54,13 @@ data class MailDetailResponse(
                 @Json(name = "rev")
                 val rev: Int? = null,
                 @Json(name = "s")
-                val s: Int? = null,
+                val messageSize: Int? = null,
                 @Json(name = "sd")
                 val sd: Long? = null,
                 @Json(name = "sf")
                 val sf: String? = null,
                 @Json(name = "su")
-                val su: String? = null
+                val subject: String? = null
             ) {
                 @JsonClass(generateAdapter = true)
                 data class E(
@@ -79,7 +79,7 @@ data class MailDetailResponse(
                     @Json(name = "content")
                     val content: String? = null,
                     @Json(name = "ct")
-                    val ct: String? = null,
+                    val contentType: String? = null,
                     @Json(name = "part")
                     val part: String? = null,
                     @Json(name = "s")
