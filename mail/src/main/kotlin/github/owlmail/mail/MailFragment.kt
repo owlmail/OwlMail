@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import github.owlmail.mail.databinding.FragmentMailBinding
@@ -32,6 +34,9 @@ class MailFragment: Fragment() {
         setupRecyclerView()
     }
     fun setupRecyclerView(){
+        mailAdapter.onClick = {
+            findNavController().navigate(MailFragmentDirections.actionMailFragmentToMailDetailFragment(it))
+        }
         _binding?.recyclerView?.adapter = mailAdapter
         updateDataInRV()
     }
