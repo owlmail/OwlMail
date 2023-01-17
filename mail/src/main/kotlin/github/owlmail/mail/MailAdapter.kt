@@ -13,6 +13,7 @@ class MailAdapter() :
         diffCallback = MailListDiffer()
     ) {
     //item in rv consists of sender name first line of subject and first line of body
+    var onClick: ((String?) -> Unit)? = null //store a func in var returns void
     class MailListDiffer :
         DiffUtil.ItemCallback<InboxSearchResponse.Body.SearchResponse.Conversation>() {
         override fun areItemsTheSame(
@@ -39,6 +40,9 @@ class MailAdapter() :
         binding.senderName.text = item?.emailAddress?.firstOrNull()?.fullName
         binding.mailSubject.text = item?.subject
         binding.mailBody.text = item?.body
+        binding.root.setOnClickListener{
+            onClick?.invoke(item?.id)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
