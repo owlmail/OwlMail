@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.auth.databinding.FragmentAuthBinding
 import github.owlmail.networking.AuthIntercepter
+import github.owlmail.networking.ResponseState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import javax.inject.Inject
@@ -57,13 +58,26 @@ class AuthFragment : Fragment() {
 
     private fun observeLoginState() {
         lifecycleScope.launchWhenStarted {
-            viewModel.loginState.catch {  }.collect {
+            viewModel.loginState.collect {
+                when(it){
+                    is ResponseState.Success -> {
+
+                        val csrfToken = it.data?.body?.authResponse?.csrfToken?.content?: ""
+                        val cookieToken = it.data?.body?.authResponse?.authToken?.firstOrNull()?.content?: ""
+                        authIntercepter.csrfToken = csrfToken
+                        authIntercepter.cookie = cookieToken
+                        _binding?.root?.findNavController()?.navigate(R.id.action_authFragment_to_mailFragment)
+                        //save user details
+
+                    }
+                    is ResponseState.Error -> {
+
+                    }
+                    is ResponseState.Empty -> {
+
+                    }
+                }
                 it?.let {
-                    val csrfToken = it.body?.authResponse?.csrfToken?.content?: ""
-                    val cookieToken = it.body?.authResponse?.authToken?.firstOrNull()?.content?: ""
-                    authIntercepter.csrfToken = csrfToken
-                    authIntercepter.cookie = cookieToken
-                    _binding?.root?.findNavController()?.navigate(R.id.action_authFragment_to_mailFragment)
                 }
                 Log.e("Auth Fragment","$it")
             }

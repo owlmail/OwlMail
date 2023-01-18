@@ -73,6 +73,9 @@ dependencies {
     implementation Dependencies.NavigationUI
     implementation Dependencies.FeaturesNavigation
 
+    //data store
+//    implementation "androidx.datastore:datastore-preferences:1.1.0-alpha01"
+
 
 
     implementation(project(Modules.Networking))
