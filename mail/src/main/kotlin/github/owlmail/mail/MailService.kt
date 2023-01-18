@@ -2,6 +2,7 @@ package github.owlmail.mail
 
 import github.owlmail.mail.detail.MailDetailRequest
 import github.owlmail.mail.detail.MailDetailResponse
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
@@ -14,5 +15,5 @@ interface MailService {
     ): InboxSearchResponse
 
     @POST("service/soap/SearchConvRequest")
-    suspend fun getMailDetails(@Body mailDetailRequest: MailDetailRequest): MailDetailResponse
+    suspend fun getMailDetails(@Body mailDetailRequest: MailDetailRequest): Response<MailDetailResponse>
 }

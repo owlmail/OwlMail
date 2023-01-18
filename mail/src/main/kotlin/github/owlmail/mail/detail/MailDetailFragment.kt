@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.databinding.MailDetailsBinding
+import github.owlmail.networking.ResponseState
 
 @AndroidEntryPoint
 class MailDetailFragment : Fragment() {
@@ -38,22 +39,32 @@ class MailDetailFragment : Fragment() {
         //observe state
         lifecycleScope.launchWhenStarted {
             viewModel.mailDetail.collect { it ->
-                binding?.mailDetailSubject?.text =
-                    it?.body?.searchConvResponse?.message?.firstOrNull()?.subject
-                binding?.senderId?.text =
-                    it?.body?.searchConvResponse?.message?.firstOrNull()?.emailAdd?.firstOrNull()?.a
-                binding?.receiverId?.text =
-                    it?.body?.searchConvResponse?.message?.firstOrNull()?.emailAdd?.lastOrNull()?.a
 
-                val html =
-                    it?.body?.searchConvResponse?.message?.firstOrNull()?.mp?.joinToString { mp ->
+                when(it){
+                    is ResponseState.Success ->{
+                        binding?.mailDetailSubject?.text =
+                            it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject
+                        binding?.senderId?.text =
+                            it.data?.body?.searchConvResponse?.message?.firstOrNull()?.emailAdd?.firstOrNull()?.a
+                        binding?.receiverId?.text =
+                            it.data?.body?.searchConvResponse?.message?.firstOrNull()?.emailAdd?.lastOrNull()?.a
+
+                        val html =
+                            it.data?.body?.searchConvResponse?.message?.firstOrNull()?.mp?.joinToString { mp ->
                         mp?.content ?:""
                     }
 //                { mp ->
 //                        mp?.contentType == "text/html"
 //                    }?.content
                 binding?.mailBody?.text =
-                    HtmlCompat.fromHtml(html?:"",HtmlCompat.FROM_HTML_MODE_COMPACT)
+                    HtmlCompat.fromHtml(html?:"",HtmlCompat.FROM_HTML_MODE_COMPACT)}
+                    is ResponseState.Empty -> {
+
+                    }
+                    is ResponseState.Error -> {
+
+                    }
+                }
             }
         }
     }
