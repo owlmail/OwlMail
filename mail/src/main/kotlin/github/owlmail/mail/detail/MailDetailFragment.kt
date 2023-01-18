@@ -37,7 +37,7 @@ class MailDetailFragment : Fragment() {
         viewModel.getMailDetail(convDetails = ConvDetails(args.cid ?: ""))
         //observe state
         lifecycleScope.launchWhenStarted {
-            viewModel.mailDetail.collect {
+            viewModel.mailDetail.collect { it ->
                 binding?.mailDetailSubject?.text =
                     it?.body?.searchConvResponse?.message?.firstOrNull()?.subject
                 binding?.senderId?.text =
@@ -46,11 +46,14 @@ class MailDetailFragment : Fragment() {
                     it?.body?.searchConvResponse?.message?.firstOrNull()?.emailAdd?.lastOrNull()?.a
 
                 val html =
-                    it?.body?.searchConvResponse?.message?.firstOrNull()?.mp?.firstOrNull()?.content
+                    it?.body?.searchConvResponse?.message?.firstOrNull()?.mp?.joinToString { mp ->
+                        mp?.content ?:""
+                    }
 //                { mp ->
 //                        mp?.contentType == "text/html"
 //                    }?.content
-                binding?.mailBody?.text = HtmlCompat.fromHtml(html?:"",HtmlCompat.FROM_HTML_MODE_COMPACT)
+                binding?.mailBody?.text =
+                    HtmlCompat.fromHtml(html?:"",HtmlCompat.FROM_HTML_MODE_COMPACT)
             }
         }
     }
