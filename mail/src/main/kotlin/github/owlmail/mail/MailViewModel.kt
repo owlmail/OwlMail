@@ -13,10 +13,10 @@ class MailViewModel @Inject constructor(
     private val repository: MailRepository
 ) : ViewModel() {
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)
-    fun getPaginatedData(): Flow<PagingData<InboxSearchResponse.Body.SearchResponse.Conversation>> {
+    fun getPaginatedData(mailFolder: String = "inbox"): Flow<PagingData<InboxSearchResponse.Body.SearchResponse.Conversation>> {
         //paging source or paging lib implementation
             return Pager(pagingConfig, 0) {
-                MailPagingSource(repository)
+                MailPagingSource(repository,mailFolder)
             }.flow
     }
 }

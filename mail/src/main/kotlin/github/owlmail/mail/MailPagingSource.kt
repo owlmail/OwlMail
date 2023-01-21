@@ -3,7 +3,7 @@ package github.owlmail.mail
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 
-class MailPagingSource(private val repository: MailRepository) :
+class MailPagingSource(private val repository: MailRepository, private val mailFolder: String) :
     PagingSource<Int, InboxSearchResponse.Body.SearchResponse.Conversation>() {
     //call getMailList from repo
     override fun getRefreshKey(state: PagingState<Int, InboxSearchResponse.Body.SearchResponse.Conversation>): Int? {
@@ -20,7 +20,7 @@ class MailPagingSource(private val repository: MailRepository) :
                         jsns = "urn:zimbraMail",
                         limit = loadSize,
                         offset = offset,
-                        query = "in:inbox"
+                        query = "in:$mailFolder"
                     )
                 )
             )
@@ -32,7 +32,7 @@ class MailPagingSource(private val repository: MailRepository) :
                     offset + 1
                 } else null
             )
-        } catch (e:Exception){
+        } catch (e: Exception) {
             return LoadResult.Error(e)
         }
     }

@@ -4,6 +4,7 @@
     android:id="@+id/mail_nav_graph"
     app:startDestination="@id/mailFragment">
 
+<!--    replace with host fragment-->
     <fragment
         android:id="@+id/mailFragment"
         android:name="github.owlmail.mail.MailFragment"
