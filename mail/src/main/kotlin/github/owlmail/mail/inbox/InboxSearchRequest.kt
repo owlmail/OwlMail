@@ -1,4 +1,4 @@
-package github.owlmail.mail
+package github.owlmail.mail.inbox
 
 
 import com.squareup.moshi.Json

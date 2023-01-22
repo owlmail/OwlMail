@@ -1,6 +1,7 @@
 package github.owlmail.mail
 
 import github.owlmail.mail.detail.MailDetailRequest
+import github.owlmail.mail.inbox.InboxSearchRequest
 
 class MailRepository(
     private val service: MailService

@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.databinding.FragmentMailBinding
+import github.owlmail.mail.inbox.MailAdapter
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

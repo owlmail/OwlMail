@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mail_nav_graph"
-    app:startDestination="@id/mailFragment">
+    app:startDestination="@id/mailBoxHostFragment">
 
 <!--    replace with host fragment-->
     <fragment
@@ -22,5 +22,13 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/mailBoxHostFragment"
+        android:name="github.owlmail.mail.MailBoxHostFragment"
+        android:label="MailBoxHostFragment" >
+        <action
+            android:id="@+id/action_mailBoxHostFragment_to_mailFragment"
+            app:destination="@id/mailFragment" />
     </fragment>
 </navigation>

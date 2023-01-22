@@ -1,4 +1,4 @@
-package github.owlmail.mail
+package github.owlmail.mail.inbox
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import github.owlmail.mail.R
 import github.owlmail.mail.databinding.MailListItemBinding
 
 class MailAdapter() :
