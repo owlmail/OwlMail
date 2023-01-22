@@ -1,4 +1,4 @@
-package github.owlmail.mail
+package github.owlmail.mail.inbox
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,23 +10,23 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import github.owlmail.mail.MailBoxHostFragmentDirections
 import github.owlmail.mail.databinding.FragmentMailBinding
-import github.owlmail.mail.inbox.MailAdapter
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MailFragment : Fragment() {
     private val mailAdapter = MailAdapter()
     private var mailFolder = "inbox"
-    private var _binding: FragmentMailBinding? = null
+    private var binding: FragmentMailBinding? = null
     private val viewModel: MailViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMailBinding.inflate(inflater)
-        return _binding?.root
+        binding = FragmentMailBinding.inflate(inflater)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,12 +44,12 @@ class MailFragment : Fragment() {
     fun setupRecyclerView() {
         mailAdapter.onClick = {
             findNavController().navigate(
-                MailFragmentDirections.actionMailFragmentToMailDetailFragment(
+                MailBoxHostFragmentDirections.actionMailBoxHostFragmentToMailDetailFragment(
                     it
                 )
             )
         }
-        _binding?.recyclerView?.adapter = mailAdapter
+        binding?.recyclerView?.adapter = mailAdapter
         updateDataInRV()
     }
 
@@ -63,8 +63,8 @@ class MailFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        binding = null
         super.onDestroyView()
-        _binding = null
     }
 
     companion object {

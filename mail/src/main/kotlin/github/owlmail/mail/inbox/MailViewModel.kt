@@ -1,4 +1,4 @@
-package github.owlmail.mail
+package github.owlmail.mail.inbox
 
 import androidx.lifecycle.ViewModel
 import androidx.paging.Pager

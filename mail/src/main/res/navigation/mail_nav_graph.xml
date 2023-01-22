@@ -5,14 +5,7 @@
     app:startDestination="@id/mailBoxHostFragment">
 
 <!--    replace with host fragment-->
-    <fragment
-        android:id="@+id/mailFragment"
-        android:name="github.owlmail.mail.MailFragment"
-        android:label="MailFragment" >
-        <action
-            android:id="@+id/action_mailFragment_to_mailDetailFragment"
-            app:destination="@id/mailDetailFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/mailDetailFragment"
         android:name="github.owlmail.mail.detail.MailDetailFragment"
@@ -28,7 +21,7 @@
         android:name="github.owlmail.mail.MailBoxHostFragment"
         android:label="MailBoxHostFragment" >
         <action
-            android:id="@+id/action_mailBoxHostFragment_to_mailFragment"
-            app:destination="@id/mailFragment" />
+            android:id="@+id/action_mailBoxHostFragment_to_mailDetailFragment"
+            app:destination="@id/mailDetailFragment" />
     </fragment>
 </navigation>

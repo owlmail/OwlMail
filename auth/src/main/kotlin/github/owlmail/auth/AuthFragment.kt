@@ -82,7 +82,7 @@ class AuthFragment : Fragment() {
 
                         viewModel.saveUserDetails()
                         binding?.root?.findNavController()
-                            ?.navigate(R.id.action_authFragment_to_mailFragment)
+                            ?.navigate(AuthFragmentDirections.actionAuthFragmentToMailBoxTabFragment())
                         //save user details
 
                     }
@@ -98,7 +98,7 @@ class AuthFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         binding = null
+        super.onDestroyView()
     }
 }
