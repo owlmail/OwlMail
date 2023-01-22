@@ -9,7 +9,7 @@
         android:name="github.owlmail.auth.AuthFragment"
         android:label="AuthFragment">
         <action
-            android:id="@+id/action_authFragment_to_mailFragment"
+            android:id="@+id/action_authFragment_to_mailBoxTabFragment"
             app:destination="@id/mail_nav_graph" />
     </fragment>
 
