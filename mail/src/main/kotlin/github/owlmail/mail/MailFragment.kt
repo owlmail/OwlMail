@@ -4,22 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import github.owlmail.mail.databinding.FragmentMailBinding
-import kotlinx.coroutines.flow.catch
+import github.owlmail.mail.inbox.MailAdapter
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MailFragment: Fragment() {
+class MailFragment : Fragment() {
     private val mailAdapter = MailAdapter()
-    private var _binding : FragmentMailBinding? = null
-    private val viewModel : MailViewModel by viewModels()
+    private var mailFolder = "inbox"
+    private var _binding: FragmentMailBinding? = null
+    private val viewModel: MailViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,19 +31,32 @@ class MailFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpMailFolder()
         setupRecyclerView()
     }
-    fun setupRecyclerView(){
+
+    private fun setUpMailFolder() {
+        arguments?.getString(TAB_KEY)?.let {
+            mailFolder = it
+        }
+    }
+
+    fun setupRecyclerView() {
         mailAdapter.onClick = {
-            findNavController().navigate(MailFragmentDirections.actionMailFragmentToMailDetailFragment(it))
+            findNavController().navigate(
+                MailFragmentDirections.actionMailFragmentToMailDetailFragment(
+                    it
+                )
+            )
         }
         _binding?.recyclerView?.adapter = mailAdapter
         updateDataInRV()
     }
+
     //when vm paginated refresh call this
-    fun updateDataInRV(){
-        lifecycleScope.launch(){
-            viewModel.getPaginatedData().catch {  }.collect{
+    fun updateDataInRV() {
+        lifecycleScope.launch() {
+            viewModel.getPaginatedData(mailFolder).collect {
                 mailAdapter.submitData(it)
             }
         }
@@ -52,5 +65,14 @@ class MailFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val TAB_KEY = "tab_key"
+        fun getNewInstance(mailFolder: String): MailFragment {
+            return MailFragment().also {
+                it.arguments = bundleOf(TAB_KEY to mailFolder)
+            }
+        }
     }
 }
