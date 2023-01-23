@@ -1,11 +1,9 @@
 package github.owlmail.mail.detail
 
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -40,8 +38,9 @@ class MailDetailFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             viewModel.mailDetail.collect { it ->
 
-                when(it){
-                    is ResponseState.Success ->{
+                when (it) {
+                    //check and move into rv
+                    is ResponseState.Success -> {
                         binding?.mailDetailSubject?.text =
                             it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject
                         binding?.senderId?.text =
@@ -51,13 +50,10 @@ class MailDetailFragment : Fragment() {
 
                         val html =
                             it.data?.body?.searchConvResponse?.message?.firstOrNull()?.mp?.joinToString { mp ->
-                        mp?.content ?:""
+                                mp?.content ?: ""
+                            }
+                        binding?.mailBody?.setHtml(html ?: "")
                     }
-//                { mp ->
-//                        mp?.contentType == "text/html"
-//                    }?.content
-                binding?.mailBody?.text =
-                    HtmlCompat.fromHtml(html?:"",HtmlCompat.FROM_HTML_MODE_COMPACT)}
                     is ResponseState.Empty -> {
 
                     }

@@ -77,7 +77,7 @@ dependencies {
     implementation Dependencies.MoshiRetrofitConverter
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation("io.coil-kt:coil-base:2.2.2")
 
     implementation(project(Modules.Networking))
 
