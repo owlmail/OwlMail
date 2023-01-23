@@ -16,7 +16,6 @@ class MailBoxHostFragment:Fragment() {
     //tablayout and viewpager plugin
     //check navigation
     private var binding: FragmentMailBoxBinding? = null
-    private val tabAdapter = MailBoxTabAdapter(this)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,16 +27,18 @@ class MailBoxHostFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpViewPager()
-        setUpTabLayout()
+        val tabAdapter = MailBoxTabAdapter(this)
+
+        setUpViewPager(tabAdapter)
+        setUpTabLayout(tabAdapter)
     }
 
-    private fun setUpViewPager() = binding?.viewPager?.run {
+    private fun setUpViewPager(tabAdapter: MailBoxTabAdapter) = binding?.viewPager?.run {
         adapter = tabAdapter
         orientation = ViewPager2.ORIENTATION_HORIZONTAL
     }
 
-    private fun setUpTabLayout() =binding?.run {
+    private fun setUpTabLayout(tabAdapter: MailBoxTabAdapter) =binding?.run {
         val tabLayout = tabLayout
         val viewPager = viewPager
         TabLayoutMediator(tabLayout,viewPager){tab, position ->

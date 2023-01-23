@@ -64,7 +64,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="35dp" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <github.owlmail.mail.HtmlTextView
         android:id="@+id/mail_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

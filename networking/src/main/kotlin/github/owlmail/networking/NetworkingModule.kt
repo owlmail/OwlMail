@@ -1,10 +1,15 @@
 package github.owlmail.networking
 
+import android.content.Context
+import coil.ImageLoader
+import coil.disk.DiskCache
+import coil.memory.MemoryCache
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -20,7 +25,7 @@ object NetworkingModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(authIntercepter: AuthIntercepter)= OkHttpClient.Builder()
+    fun providesOkHttpClient(authIntercepter: AuthIntercepter) = OkHttpClient.Builder()
         .addInterceptor(authIntercepter)
         .addNetworkInterceptor(StethoInterceptor())
         .build()
@@ -36,5 +41,14 @@ object NetworkingModule {
         .baseUrl("https://mail.nitrkl.ac.in/")
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .client(okHttpClient)
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideCoilImageLoader(
+        @ApplicationContext context: Context,
+        okHttpClient: OkHttpClient
+    ) = ImageLoader.Builder(context).okHttpClient(okHttpClient)
+        .diskCache(DiskCache.Builder().build()).memoryCache(MemoryCache.Builder(context).build())
         .build()
 }
