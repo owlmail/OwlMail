@@ -9,8 +9,11 @@ data class ConvDetails(val cid: String) {
                     jsns = "urn:zimbraMail",
                     offset = 0,
                     limit = 10,
-//                    recip = "2",
-                    fetch = "1"
+                    recip = "2", //0=sender,1=receiver,2=both
+                    fetch = "all",
+                    html = 1,
+                    needExp = 1,
+                    max = 250000
                 )
             )
         )

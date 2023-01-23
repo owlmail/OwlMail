@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_from_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="50dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mail_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From:"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mail_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To:"
+        app:layout_constraintEnd_toEndOf="@+id/mail_from"
+        app:layout_constraintTop_toBottomOf="@+id/mail_from" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sender_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="sender@mail.com"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/mail_from"
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/receiver_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="reciever@mail.com"
+            app:layout_constraintStart_toStartOf="@+id/sender_id"
+            app:layout_constraintTop_toBottomOf="@+id/sender_id" />
+
+        <github.owlmail.mail.HtmlTextView
+            android:id="@+id/mail_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Mail Body"
+            app:layout_constraintTop_toBottomOf="@id/guideline_from_to"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
