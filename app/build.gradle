@@ -35,6 +35,11 @@ android {
                 instrumentationEnabled false
             }
         }
+        benchmark {
+            signingConfig signingConfigs.debug
+            matchingFallbacks = ['release']
+            debuggable false
+        }
     }
     compileOptions {
         sourceCompatibility AppConfig.INSTANCE.JDKVersion
