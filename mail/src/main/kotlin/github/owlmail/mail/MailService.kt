@@ -1,7 +1,7 @@
 package github.owlmail.mail
 
-import github.owlmail.mail.detail.MailDetailRequest
-import github.owlmail.mail.detail.MailDetailResponse
+import github.owlmail.mail.detail.model.MailDetailRequest
+import github.owlmail.mail.detail.model.MailDetailResponse
 import github.owlmail.mail.inbox.InboxSearchRequest
 import github.owlmail.mail.inbox.InboxSearchResponse
 import retrofit2.Response

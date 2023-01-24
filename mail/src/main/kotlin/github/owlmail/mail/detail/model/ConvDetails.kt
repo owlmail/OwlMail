@@ -1,4 +1,6 @@
-package github.owlmail.mail.detail
+package github.owlmail.mail.detail.model
+
+import github.owlmail.mail.detail.model.MailDetailRequest
 
 data class ConvDetails(val cid: String) {
     fun mapToDetailRequest(): MailDetailRequest {

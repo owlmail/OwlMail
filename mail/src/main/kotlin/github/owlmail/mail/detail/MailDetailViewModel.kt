@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import github.owlmail.mail.MailRepository
+import github.owlmail.mail.detail.model.ConvDetails
+import github.owlmail.mail.detail.model.MailDetailResponse
 import github.owlmail.networking.ResponseState
 import github.owlmail.networking.mapToResponseState
 import kotlinx.coroutines.Dispatchers
