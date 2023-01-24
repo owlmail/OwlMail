@@ -23,7 +23,7 @@ data class MailDetailResponse(
             @Json(name = "_jsns")
             val jsns: String? = null,
             @Json(name = "m")
-            val message: List<M?>? = null,
+            val message: List<Message?>? = null,
             @Json(name = "more")
             val more: Boolean? = null,
             @Json(name = "offset")
@@ -32,7 +32,7 @@ data class MailDetailResponse(
             val sortBy: String? = null
         ) {
             @JsonClass(generateAdapter = true)
-            data class M(
+            data class Message(
                 @Json(name = "cid")
                 val cid: String? = null,
                 @Json(name = "cm")
@@ -50,7 +50,7 @@ data class MailDetailResponse(
                 @Json(name = "mid")
                 val mid: String? = null,
                 @Json(name = "mp")
-                val mp: List<Mp?>? = null,
+                val multiPart: List<MultiPart?>? = null,
                 @Json(name = "rev")
                 val rev: Int? = null,
                 @Json(name = "s")
@@ -73,13 +73,15 @@ data class MailDetailResponse(
                 )
 
                 @JsonClass(generateAdapter = true)
-                data class Mp(
+                data class MultiPart(
                     @Json(name = "body")
                     val body: Boolean? = null,
                     @Json(name = "content")
                     val content: String? = null,
                     @Json(name = "ct")
                     val contentType: String? = null,
+                    @Json(name = "mp")
+                    val multiPart: List<MultiPart?>? = null,
                     @Json(name = "part")
                     val part: String? = null,
                     @Json(name = "s")

@@ -12,17 +12,17 @@ import github.owlmail.mail.detail.model.MailDetailResponse
 
 class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val diffUtilCallback =
-        object : DiffUtil.ItemCallback<MailDetailResponse.Body.SearchConvResponse.M>() {
+        object : DiffUtil.ItemCallback<MailDetailResponse.Body.SearchConvResponse.Message>() {
             override fun areItemsTheSame(
-                oldItem: MailDetailResponse.Body.SearchConvResponse.M,
-                newItem: MailDetailResponse.Body.SearchConvResponse.M
+                oldItem: MailDetailResponse.Body.SearchConvResponse.Message,
+                newItem: MailDetailResponse.Body.SearchConvResponse.Message
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: MailDetailResponse.Body.SearchConvResponse.M,
-                newItem: MailDetailResponse.Body.SearchConvResponse.M
+                oldItem: MailDetailResponse.Body.SearchConvResponse.Message,
+                newItem: MailDetailResponse.Body.SearchConvResponse.Message
             ): Boolean {
                 return oldItem == newItem
             }
@@ -46,13 +46,24 @@ class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             item?.emailAdd?.lastOrNull()?.a
 
         val html =
-            item?.mp?.joinToString { mp ->
-                mp?.content ?: ""
+            item?.multiPart?.joinToString { mp ->
+                mp?.getHtmlData() ?: ""
             }
         binding.mailBody.setHtml(html ?: "")
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    private fun MailDetailResponse.Body.SearchConvResponse.Message.MultiPart.getHtmlData(): String {
+        return when(contentType){
+            "text/plain" -> content?:""
+            "text/html" -> content?:""
+            "multipart/alternative" -> this.multiPart?.joinToString {
+                it?.getHtmlData()?:""
+            } ?: ""
+            else -> ""
+        }
     }
 }

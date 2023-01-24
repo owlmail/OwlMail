@@ -4,6 +4,7 @@ import android.content.Context
 import coil.ImageLoader
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
+import coil.request.CachePolicy
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -49,6 +50,7 @@ object NetworkingModule {
         @ApplicationContext context: Context,
         okHttpClient: OkHttpClient
     ) = ImageLoader.Builder(context).okHttpClient(okHttpClient)
-        .diskCache(DiskCache.Builder().build()).memoryCache(MemoryCache.Builder(context).build())
+        .diskCachePolicy(CachePolicy.ENABLED)
+        .memoryCachePolicy(CachePolicy.ENABLED)
         .build()
 }
