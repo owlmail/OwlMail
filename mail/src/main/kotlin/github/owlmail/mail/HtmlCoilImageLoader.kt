@@ -7,12 +7,9 @@ import android.text.Html
 import android.widget.TextView
 import coil.ImageLoader
 import coil.request.ImageRequest
-import javax.inject.Inject
 
-class HtmlCoilImageLoader(private val textView: TextView) : Html.ImageGetter {
+class HtmlCoilImageLoader(private val textView: TextView, private val imageLoader: ImageLoader) : Html.ImageGetter {
 
-    @Inject
-    lateinit var imageLoader: ImageLoader
 
     override fun getDrawable(source: String?): Drawable {
         val drawablePlaceholder = DrawablePlaceHolder()
