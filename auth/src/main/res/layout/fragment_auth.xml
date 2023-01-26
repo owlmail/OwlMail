@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="gone"
+    tools:visibility="visible"
     android:padding="30dp">
 
     <androidx.constraintlayout.widget.Guideline
@@ -12,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="300dp" />
+        app:layout_constraintGuide_percent=".30" />
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/userid_text"
         android:layout_width="wrap_content"
@@ -23,13 +24,43 @@
         app:layout_constraintTop_toBottomOf="@id/guideline"
         android:layout_margin="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/userid_edit"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/user_id_text_input_layout"
+        android:hint="Enter user id here"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter user id here"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@id/userid_text"
-        />
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/userid_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter password here"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/password_text"
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/password_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/password_text"
@@ -38,16 +69,9 @@
         android:text="Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userid_edit"
+        app:layout_constraintTop_toBottomOf="@id/user_id_text_input_layout"
         android:layout_margin="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/password_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Enter user id here"
-        app:layout_constraintTop_toBottomOf="@id/password_text" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login_button"
@@ -57,6 +81,6 @@
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_edit" />
+        app:layout_constraintTop_toBottomOf="@+id/password_text_input_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

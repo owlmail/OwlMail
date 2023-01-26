@@ -12,4 +12,6 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/mail_list_item" />
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

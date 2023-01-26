@@ -46,7 +46,11 @@ class MailDetailFragment : Fragment() {
 
                         binding?.recyclerView1?.adapter = mailDetailAdapter
                         binding?.mailDetailSubject?.text =
-                            it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject
+                            if(it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject.isNullOrEmpty()){
+                                "No Subject"
+                            } else {
+                                it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject
+                            }
                         mailDetailAdapter.differ.submitList(it.data?.body?.searchConvResponse?.message)
                     }
                     is ResponseState.Empty -> {

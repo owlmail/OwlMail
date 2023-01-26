@@ -49,7 +49,12 @@ class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             item?.multiPart?.joinToString { mp ->
                 mp?.getHtmlData() ?: ""
             }
-        binding.mailBody.setHtml(html ?: "")
+        val messageBody = if(html.isNullOrEmpty()){
+            "No Message Body"
+        } else {
+            html
+        }
+        binding.mailBody.setHtml(messageBody)
     }
 
     override fun getItemCount(): Int {
@@ -57,12 +62,13 @@ class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     private fun MailDetailResponse.Body.SearchConvResponse.Message.MultiPart.getHtmlData(): String {
-        return when(contentType){
-            "text/plain" -> content?:""
-            "text/html" -> content?:""
-            "multipart/alternative" -> this.multiPart?.joinToString {
+        return when{
+            contentType?.contains("text",true) == true -> content?:""
+            contentType?.contains("multipart",true) == true -> multiPart?.joinToString {
                 it?.getHtmlData()?:""
             } ?: ""
+            contentDescription?.equals("attachment",true) == true -> "" //to download the file
+            //https://mail.nitrkl.ac.in/service/home/~/?auth=co&loc=en_GB&id=19923&part=2
             else -> ""
         }
     }

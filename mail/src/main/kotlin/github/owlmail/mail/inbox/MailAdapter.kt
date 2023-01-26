@@ -39,8 +39,16 @@ class MailAdapter() :
         val binding = MailListItemBinding.bind(holder.itemView)
         val item = getItem(position)
         binding.senderName.text = item?.emailAddress?.firstOrNull()?.fullName
-        binding.mailSubject.text = item?.subject
-        binding.mailBody.text = item?.body
+        binding.mailSubject.text = if(item?.subject.isNullOrEmpty()){
+            "No Subject"
+        } else {
+            item?.subject
+        }
+        binding.mailBody.text = if (item?.body.isNullOrEmpty()) {
+        "No Message Body"
+        } else {
+            item?.body
+        }
         binding.root.setOnClickListener{
             onClick?.invoke(item?.id)
         }

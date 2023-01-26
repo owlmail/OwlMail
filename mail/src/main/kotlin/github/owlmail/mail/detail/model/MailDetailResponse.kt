@@ -80,6 +80,10 @@ data class MailDetailResponse(
                     val content: String? = null,
                     @Json(name = "ct")
                     val contentType: String? = null,
+                    @Json(name = "cd")
+                    val contentDescription: String? = null,
+                    @Json(name = "filename")
+                    val fileName: String? = null,
                     @Json(name = "mp")
                     val multiPart: List<MultiPart?>? = null,
                     @Json(name = "part")
