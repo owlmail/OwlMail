@@ -40,7 +40,7 @@ data class MailDetailResponse(
                 @Json(name = "d")
                 val date: Long? = null,
                 @Json(name = "e")
-                val emailAdd: List<E?>? = null,
+                val emailAdd: List<EmailAddress?>? = null,
                 @Json(name = "fr")
                 val body: String? = null,
                 @Json(name = "id")
@@ -63,13 +63,15 @@ data class MailDetailResponse(
                 val subject: String? = null
             ) {
                 @JsonClass(generateAdapter = true)
-                data class E(
+                data class EmailAddress(
                     @Json(name = "a")
-                    val a: String? = null,
+                    val mailAddress: String? = null,
                     @Json(name = "d")
-                    val d: String? = null,
+                    val firstName: String? = null,
+                    @Json(name = "p")
+                    val fullName: String? = null,
                     @Json(name = "t")
-                    val t: String? = null
+                    val isSenderOrReceiver: String? = null
                 )
 
                 @JsonClass(generateAdapter = true)

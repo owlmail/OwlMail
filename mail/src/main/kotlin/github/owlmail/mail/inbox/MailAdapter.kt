@@ -38,7 +38,9 @@ class MailAdapter() :
     ) {
         val binding = MailListItemBinding.bind(holder.itemView)
         val item = getItem(position)
-        binding.senderName.text = item?.emailAddress?.firstOrNull()?.fullName
+        binding.senderName.text = item?.emailAddress?.firstOrNull{
+            it?.isSenderOrReceiver?.contains("f",true) == true
+        }?.fullName
         binding.mailSubject.text = if(item?.subject.isNullOrEmpty()){
             "No Subject"
         } else {
