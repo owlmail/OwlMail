@@ -41,9 +41,15 @@ class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val binding = ConvMailBodyBinding.bind(holder.itemView)
         val item = differ.currentList.getOrNull(position)
         binding.senderId.text =
-            item?.emailAdd?.firstOrNull()?.a
+            item?.emailAdd?.filter{
+                it?.isSenderOrReceiver?.contains("f",true) == true
+            }?.joinToString("\n") { it?.mailAddress?:"" }
         binding.receiverId.text =
-            item?.emailAdd?.lastOrNull()?.a
+            item?.emailAdd?.filter{
+                it?.isSenderOrReceiver?.contains("t",true) == true
+            }?.joinToString("\n"){
+                it?.mailAddress?:""
+            }
 
         val html =
             item?.multiPart?.joinToString { mp ->
