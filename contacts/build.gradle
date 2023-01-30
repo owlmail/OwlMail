@@ -73,6 +73,8 @@ dependencies {
     implementation Dependencies.NavigationUI
     implementation Dependencies.FeaturesNavigation
 
+    //paging
+    implementation Dependencies.Paging
 
     implementation(project(Modules.Networking))
 }
