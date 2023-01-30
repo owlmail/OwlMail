@@ -7,9 +7,10 @@ import github.owlmail.contacts.model.ContactResponse
 
 class ContactPagingSource(
     private val repository: ContactRepository,
+    private val searchContact: String
 ) :
     PagingSource<Int, ContactResponse.Body.SearchGalResponse.Cn>() {
-    //call getMailList from repo
+
     override fun getRefreshKey(state: PagingState<Int, ContactResponse.Body.SearchGalResponse.Cn>): Int? {
         return null
     }
@@ -21,10 +22,10 @@ class ContactPagingSource(
             val contactRequest = ContactRequest(
                 body = ContactRequest.Body(
                     searchGalRequest = ContactRequest.Body.SearchGalRequest(
-                        jsns = "urn:zimbraMail",
+                        jsns = "urn:zimbraAccount",
                         limit = loadSize,
                         offset = offset,
-                        name = ""
+                        name = "$searchContact"
                     )
                 )
             )

@@ -9,13 +9,16 @@
         android:id="@+id/edit_text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search contact"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:hint="Type contact name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/edit_text1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/contact_list_item"/>
 

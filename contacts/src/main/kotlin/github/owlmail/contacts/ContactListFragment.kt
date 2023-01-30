@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -27,12 +29,15 @@ class ContactListFragment: Fragment(){
 
     private fun setUpRecyclerView() {
         binding?.recyclerView?.adapter = contactAdapter
-        updateDataInRV()
+        binding?.editText1?.doAfterTextChanged {
+            updateDataInRV(it?.trim()?.toString()?:"")
+        }
+
     }
 
-    fun updateDataInRV() {
+    fun updateDataInRV(searchContact: String) {
         lifecycleScope.launch() {
-            viewModel.getPaginatedData().collect {
+            viewModel.getPaginatedData(searchContact).collect {
                 contactAdapter.submitData(it)
             }
         }

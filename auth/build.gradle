@@ -80,4 +80,5 @@ dependencies {
 
     implementation(project(Modules.Networking))
     implementation(project(Modules.Mail))
+    implementation(project(Modules.Contacts))
 }

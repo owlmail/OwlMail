@@ -14,9 +14,9 @@ class ContactViewModel @Inject constructor(
 private val repository: ContactRepository
 ) : ViewModel() {
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)
-    fun getPaginatedData(): Flow<PagingData<ContactResponse.Body.SearchGalResponse.Cn>> {
+    fun getPaginatedData(searchContact: String): Flow<PagingData<ContactResponse.Body.SearchGalResponse.Cn>> {
         return Pager(pagingConfig, 0) {
-            ContactPagingSource(repository)
+            ContactPagingSource(repository,searchContact)
         }.flow
     }
 }
