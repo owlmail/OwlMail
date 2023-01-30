@@ -6,6 +6,7 @@ import github.owlmail.mail.MailRepository
 
 class MailPagingSource(private val repository: MailRepository, private val mailFolder: String) :
     PagingSource<Int, InboxSearchResponse.Body.SearchResponse.Conversation>() {
+
     //call getMailList from repo
     override fun getRefreshKey(state: PagingState<Int, InboxSearchResponse.Body.SearchResponse.Conversation>): Int? {
         return null

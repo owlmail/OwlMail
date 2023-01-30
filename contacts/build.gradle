@@ -34,7 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = AppConfig.JvmTargetVersion
     }
-    namespace 'github.owlmail.auth'
+    namespace 'github.owlmail.contacts'
     viewBinding {
         enabled true
     }
@@ -73,12 +73,8 @@ dependencies {
     implementation Dependencies.NavigationUI
     implementation Dependencies.FeaturesNavigation
 
-    //data store
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-
-
+    //paging
+    implementation Dependencies.Paging
 
     implementation(project(Modules.Networking))
-    implementation(project(Modules.Mail))
-    implementation(project(Modules.Contacts))
 }

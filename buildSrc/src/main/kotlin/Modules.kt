@@ -6,4 +6,5 @@ object Modules {
     const val Mail = ":mail"
     const val LintRules = ":lint-rules"
     const val Networking = ":networking"
+    const val Contacts = ":contacts"
 }
