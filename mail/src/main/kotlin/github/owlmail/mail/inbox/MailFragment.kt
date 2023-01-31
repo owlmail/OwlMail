@@ -79,6 +79,5 @@ class MailFragment : Fragment() {
 
     fun doAfterTextChanged(query: String) {
         viewModel.updateSearchQuery(query)
-        Log.e("Preeti", "Text Changed $query")
     }
 }
