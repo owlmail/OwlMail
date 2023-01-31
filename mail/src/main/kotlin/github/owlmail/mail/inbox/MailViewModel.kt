@@ -1,10 +1,10 @@
 package github.owlmail.mail.inbox
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.liveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import github.owlmail.mail.MailRepository
 import github.owlmail.mail.inbox.InboxSearchResponse
@@ -18,13 +18,13 @@ class MailViewModel @Inject constructor(
 ) : ViewModel() {
     private val searchQuery = MutableStateFlow("")
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)
-    fun getPaginatedData(mailFolder: String = "inbox"): Flow<PagingData<InboxSearchResponse.Body.SearchResponse.Conversation>> {
+    fun getPaginatedData(mailFolder: String = "inbox"): LiveData<PagingData<InboxSearchResponse.Body.SearchResponse.Conversation>> {
         //paging source or paging lib implementation
-            return searchQuery.flatMapLatest {
+            return searchQuery.asLiveData().switchMap {
 
                 Pager(pagingConfig, 0) {
                     MailPagingSource(repository, mailFolder, it)
-                }.flow
+                }.liveData
             }
     }
 

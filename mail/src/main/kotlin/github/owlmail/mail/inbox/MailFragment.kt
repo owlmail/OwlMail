@@ -56,8 +56,8 @@ class MailFragment : Fragment() {
 
     //when vm paginated refresh call this
     fun updateDataInRV() {
-        lifecycleScope.launch() {
-            viewModel.getPaginatedData(mailFolder).collect {
+        viewModel.getPaginatedData(mailFolder).observe(viewLifecycleOwner) {
+            lifecycleScope.launch() {
                 mailAdapter.submitData(it)
             }
         }
@@ -76,8 +76,9 @@ class MailFragment : Fragment() {
             }
         }
     }
-    fun doAfterTextChanged(query: String){
+
+    fun doAfterTextChanged(query: String) {
         viewModel.updateSearchQuery(query)
-        Log.e("Preeti","Text Changed $query")
+        Log.e("Preeti", "Text Changed $query")
     }
 }
