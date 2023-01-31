@@ -63,4 +63,5 @@ class MailAdapter() :
     }
 
     inner class MailListViewHolder(view: View) : RecyclerView.ViewHolder(view)
+
 }

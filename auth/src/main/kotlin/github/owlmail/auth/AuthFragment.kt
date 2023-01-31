@@ -82,7 +82,7 @@ class AuthFragment : Fragment() {
 
                         viewModel.saveUserDetails()
                         binding?.root?.findNavController()
-                            ?.navigate(AuthFragmentDirections.actionAuthFragmentToContactListFragment())
+                            ?.navigate(AuthFragmentDirections.actionAuthFragmentToMailBoxTabFragment())
                         //save user details
 
                     }

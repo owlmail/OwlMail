@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import github.owlmail.mail.MailRepository
 
-class MailPagingSource(private val repository: MailRepository, private val mailFolder: String) :
+class MailPagingSource(private val repository: MailRepository, private val mailFolder: String, private val query: String) :
     PagingSource<Int, InboxSearchResponse.Body.SearchResponse.Conversation>() {
 
     //call getMailList from repo
@@ -22,7 +22,7 @@ class MailPagingSource(private val repository: MailRepository, private val mailF
                         jsns = "urn:zimbraMail",
                         limit = loadSize,
                         offset = offset,
-                        query = "in:$mailFolder"
+                        query = "$query in:$mailFolder".trim()
                     )
                 )
             )
