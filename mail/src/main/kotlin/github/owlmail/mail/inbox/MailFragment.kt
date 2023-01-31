@@ -1,6 +1,7 @@
 package github.owlmail.mail.inbox
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,5 +75,9 @@ class MailFragment : Fragment() {
                 it.arguments = bundleOf(TAB_KEY to mailFolder)
             }
         }
+    }
+    fun doAfterTextChanged(query: String){
+        viewModel.updateSearchQuery(query)
+        Log.e("Preeti","Text Changed $query")
     }
 }
