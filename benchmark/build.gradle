@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'github.preeti5sharon.benchmark'
+    namespace 'github.owlmail.benchmark'
     compileSdk 32
 
     compileOptions {
