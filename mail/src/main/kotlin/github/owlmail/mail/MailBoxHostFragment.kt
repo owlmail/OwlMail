@@ -7,6 +7,9 @@ import androidx.core.view.MenuProvider
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.databinding.FragmentMailBoxBinding
@@ -34,6 +37,9 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         requireActivity().addMenuProvider(this)
         setUpViewPager()
         setUpTabLayout()
+        WorkManager.getInstance(requireContext()).beginUniqueWork(
+            "Preeti",ExistingWorkPolicy.REPLACE, OneTimeWorkRequest.from(UnreadMailNotificationWorker::class.java)
+        ).enqueue()
     }
 
     private fun setUpViewPager() = binding?.viewPager?.run {
