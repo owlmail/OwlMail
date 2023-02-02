@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MailViewModel @Inject constructor(
-    private val repository: MailRepository
+    private val repository: MailRepository,
+    private val mailDAO: MailDAO
 ) : ViewModel() {
     private val searchQuery = MutableStateFlow("")
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)
@@ -23,7 +24,7 @@ class MailViewModel @Inject constructor(
             return searchQuery.asLiveData().switchMap {
 
                 Pager(pagingConfig, 0) {
-                    MailPagingSource(repository, mailFolder, it)
+                    MailPagingSource(repository, mailFolder, it,mailDAO)
                 }.liveData
             }
     }
