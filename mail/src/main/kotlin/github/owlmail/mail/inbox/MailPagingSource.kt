@@ -41,7 +41,6 @@ class MailPagingSource(private val repository: MailRepository, private val mailF
                 } else null
             )
         } catch (e: Exception) {
-            Log.e("Preeti","$e")
             return@withContext LoadResult.Error(e)
         }
     }
