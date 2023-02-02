@@ -1,8 +1,11 @@
 package github.owlmail.mail.inbox
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import github.owlmail.mail.detail.model.MailDetailResponse
 
 //c=conversation
 @JsonClass(generateAdapter = true)
@@ -32,7 +35,9 @@ data class InboxSearchResponse(
             @Json(name = "sortBy")
             val sortBy: String? = null
         ) {
+
             @JsonClass(generateAdapter = true)
+            @Entity(tableName = "conversation")
             data class Conversation(
                 @Json(name = "d")
                 val d: Long? = null,
@@ -43,9 +48,9 @@ data class InboxSearchResponse(
                 @Json(name = "fr")
                 val body: String? = null,
                 @Json(name = "id")
-                val id: String? = null,
+                @PrimaryKey val id: String = "",
                 @Json(name = "m")
-                val m: List<M?>? = null,
+                val message: List<Message?>? = null,
                 @Json(name = "n")
                 val n: Int? = null,
                 @Json(name = "sf")
@@ -68,7 +73,7 @@ data class InboxSearchResponse(
                 )
 
                 @JsonClass(generateAdapter = true)
-                data class M(
+                data class Message(
                     @Json(name = "f")
                     val f: String? = null,
                     @Json(name = "id")

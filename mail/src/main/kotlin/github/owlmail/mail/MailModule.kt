@@ -1,16 +1,16 @@
 package github.owlmail.mail
 
 import android.content.Context
+import androidx.room.Room
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import github.owlmail.mail.inbox.OwlMailConverter
+import github.owlmail.mail.inbox.OwlMailDatabase
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -28,5 +28,18 @@ object MailModule {
 
     @Provides
     @Singleton
-    fun provideNotificationManager(@ApplicationContext context: Context) = NotificationManager(context)
+    fun provideNotificationManager(@ApplicationContext context: Context) =
+        NotificationManager(context)
+
+    @Provides
+    @Singleton
+    fun provideOwlMailDatabase(@ApplicationContext context: Context, moshi: Moshi) =
+        Room.databaseBuilder(context, OwlMailDatabase::class.java, "owlmail_db")
+            .fallbackToDestructiveMigration()
+            .addTypeConverter(OwlMailConverter(moshi))
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideMailDAO(owlMailDatabase: OwlMailDatabase) = owlMailDatabase.getMailDAO()
 }
