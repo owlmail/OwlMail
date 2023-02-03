@@ -1,4 +1,4 @@
-package github.owlmail.mail.inbox.database
+package github.owlmail.app.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
@@ -7,6 +7,7 @@ import github.owlmail.contacts.ContactDAO
 import github.owlmail.contacts.model.ContactResponse
 import github.owlmail.mail.detail.DetailDAO
 import github.owlmail.mail.detail.model.MailDetailResponse
+import github.owlmail.mail.inbox.database.MailDAO
 import github.owlmail.mail.inbox.model.InboxSearchResponse
 
 @TypeConverters(OwlMailConverter::class)

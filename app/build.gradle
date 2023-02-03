@@ -88,6 +88,10 @@ dependencies {
     implementation Dependencies.NavigationUI
     implementation Dependencies.FeaturesNavigation
 
+    //moshi
+    implementation Dependencies.Moshi
+    kapt Dependencies.MoshiKapt
+
 
     debugImplementation 'com.facebook.stetho:stetho:1.6.0'
 
@@ -95,6 +99,11 @@ dependencies {
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
     implementation "androidx.work:work-runtime-ktx:2.7.1"
 
+    //room
+    implementation Dependencies.RoomKTX
+    kapt Dependencies.RoomCompiler
+
     implementation(project(Modules.Auth))
     implementation(project(Modules.Mail))
+    implementation(project(Modules.Contacts))
 }
