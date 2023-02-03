@@ -76,8 +76,9 @@ dependencies {
     kapt Dependencies.MoshiKapt
     implementation Dependencies.MoshiRetrofitConverter
 
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation("io.coil-kt:coil-base:2.2.2")
+    implementation Dependencies.ViewPager
+    implementation Dependencies.Coil
+
     implementation(project(Modules.Networking))
 
     implementation 'androidx.hilt:hilt-work:1.0.0'
@@ -85,7 +86,7 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:2.7.1"
 
     //room
-    implementation "androidx.room:room-runtime:2.5.0"
-    kapt "androidx.room:room-compiler:2.5.0"
+    implementation Dependencies.RoomKTX
+    kapt Dependencies.RoomCompiler
 
 }

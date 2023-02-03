@@ -7,8 +7,8 @@ import androidx.paging.PagingData
 import androidx.paging.liveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import github.owlmail.mail.MailRepository
-import github.owlmail.mail.inbox.InboxSearchResponse
-import github.owlmail.mail.inbox.MailPagingSource
+import github.owlmail.mail.inbox.database.MailDAO
+import github.owlmail.mail.inbox.model.InboxSearchResponse
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 

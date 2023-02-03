@@ -1,6 +1,8 @@
 package github.owlmail.mail.detail.model
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -32,6 +34,7 @@ data class MailDetailResponse(
             val sortBy: String? = null
         ) {
             @JsonClass(generateAdapter = true)
+            @Entity(tableName = "message")
             data class Message(
                 @Json(name = "cid")
                 val cid: String? = null,
@@ -44,7 +47,7 @@ data class MailDetailResponse(
                 @Json(name = "fr")
                 val body: String? = null,
                 @Json(name = "id")
-                val id: String? = null,
+                @PrimaryKey val id: String = "",
                 @Json(name = "l")
                 val folder: String? = null,
                 @Json(name = "mid")

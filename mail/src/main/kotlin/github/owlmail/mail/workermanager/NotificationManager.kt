@@ -1,4 +1,4 @@
-package github.owlmail.mail
+package github.owlmail.mail.workermanager
 
 import android.app.Notification
 import android.app.NotificationChannel

@@ -2,8 +2,8 @@ package github.owlmail.mail
 
 import github.owlmail.mail.detail.model.MailDetailRequest
 import github.owlmail.mail.detail.model.MailDetailResponse
-import github.owlmail.mail.inbox.InboxSearchRequest
-import github.owlmail.mail.inbox.InboxSearchResponse
+import github.owlmail.mail.inbox.model.InboxSearchRequest
+import github.owlmail.mail.inbox.model.InboxSearchResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST

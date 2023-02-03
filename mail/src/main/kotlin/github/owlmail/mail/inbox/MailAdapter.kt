@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import github.owlmail.mail.R
 import github.owlmail.mail.databinding.MailListItemBinding
+import github.owlmail.mail.inbox.model.InboxSearchResponse
 
 class MailAdapter() :
     PagingDataAdapter<InboxSearchResponse.Body.SearchResponse.Conversation, RecyclerView.ViewHolder>(

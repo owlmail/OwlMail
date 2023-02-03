@@ -1,10 +1,11 @@
 package github.owlmail.mail.inbox
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import github.owlmail.mail.MailRepository
-import github.owlmail.networking.ResponseState.Empty.data
+import github.owlmail.mail.inbox.database.MailDAO
+import github.owlmail.mail.inbox.model.InboxSearchRequest
+import github.owlmail.mail.inbox.model.InboxSearchResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -16,7 +17,7 @@ class MailPagingSource(private val repository: MailRepository, private val mailF
         return null
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, InboxSearchResponse.Body.SearchResponse.Conversation> = withContext(Dispatchers.IO) {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, InboxSearchResponse.Body.SearchResponse.Conversation> = withContext(Dispatchers.Main) {
         try {
             val offset = params.key ?: 0
             val loadSize = params.loadSize
