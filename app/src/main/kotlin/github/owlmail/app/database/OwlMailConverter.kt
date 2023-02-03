@@ -1,4 +1,4 @@
-package github.owlmail.mail.inbox.database
+package github.owlmail.app.database
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
