@@ -19,4 +19,5 @@ object ContactModule {
     @Provides
     @Singleton
     fun providesRepository(service: ContactService) = ContactRepository(service)
+
 }

@@ -4,6 +4,7 @@ import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
+import github.owlmail.contacts.model.ContactResponse
 import github.owlmail.mail.detail.model.MailDetailResponse
 import github.owlmail.mail.inbox.model.InboxSearchResponse
 
@@ -88,6 +89,18 @@ class OwlMailConverter(private val moshi: Moshi) {
         return moshi.adapter<List<MailDetailResponse.Body.SearchConvResponse.Message.MultiPart?>?>(
             multiPartListType
         )
+            .fromJson(json)
+    }
+
+    @TypeConverter
+    fun attrsToJSON(attrs: ContactResponse.Body.SearchGalResponse.Cn.Attrs): String? {
+        return moshi.adapter(ContactResponse.Body.SearchGalResponse.Cn.Attrs::class.java)
+            .toJson(attrs)
+    }
+
+    @TypeConverter
+    fun attrsFromJSON(json: String): ContactResponse.Body.SearchGalResponse.Cn.Attrs? {
+        return moshi.adapter(ContactResponse.Body.SearchGalResponse.Cn.Attrs::class.java)
             .fromJson(json)
     }
 }

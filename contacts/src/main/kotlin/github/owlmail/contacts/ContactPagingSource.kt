@@ -4,10 +4,12 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import github.owlmail.contacts.model.ContactRequest
 import github.owlmail.contacts.model.ContactResponse
+import github.owlmail.networking.ResponseState.Empty.data
 
 class ContactPagingSource(
     private val repository: ContactRepository,
-    private val searchContact: String
+    private val searchContact: String,
+    private val contactDAO: ContactDAO
 ) :
     PagingSource<Int, ContactResponse.Body.SearchGalResponse.Cn>() {
 
@@ -30,8 +32,10 @@ class ContactPagingSource(
                 )
             )
             val response = repository.getContactList(contactRequest)
+            val contactList = response.body?.searchGalResponse?.cn?.filterNotNull().orEmpty()
+            contactDAO.insertAllContacts(contactList)
             return PagingSource.LoadResult.Page(
-                data = response.body?.searchGalResponse?.cn?.filterNotNull().orEmpty(),
+                data = contactList,
                 prevKey = null,
                 nextKey = if (response.body?.searchGalResponse?.more == true) {
                     offset + 1
