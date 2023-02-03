@@ -8,8 +8,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import github.owlmail.mail.inbox.OwlMailConverter
-import github.owlmail.mail.inbox.OwlMailDatabase
+import github.owlmail.mail.inbox.database.OwlMailConverter
+import github.owlmail.mail.inbox.database.OwlMailDatabase
+import github.owlmail.mail.workermanager.NotificationManager
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -42,4 +43,8 @@ object MailModule {
     @Provides
     @Singleton
     fun provideMailDAO(owlMailDatabase: OwlMailDatabase) = owlMailDatabase.getMailDAO()
+
+    @Provides
+    @Singleton
+    fun provideDetailDAO(owlMailDatabase: OwlMailDatabase) = owlMailDatabase.getDetailDAO()
 }

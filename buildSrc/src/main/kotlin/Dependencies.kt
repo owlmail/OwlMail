@@ -42,4 +42,11 @@ object Dependencies {
     const val Navigation = "androidx.navigation:navigation-fragment-ktx:${DependencyVersion.Navigation}"
     const val NavigationUI = "androidx.navigation:navigation-ui-ktx:${DependencyVersion.Navigation}"
     const val FeaturesNavigation = "androidx.navigation:navigation-dynamic-features-fragment:${DependencyVersion.Navigation}"
+
+    const val ViewPager = "androidx.viewpager2:viewpager2:${DependencyVersion.ViewPager}"
+    const val Coil = "io.coil-kt:coil-base:${DependencyVersion.Coil}"
+
+    //room
+    const val RoomKTX = "androidx.room:room-ktx:${DependencyVersion.Room}"
+    const val RoomCompiler = "androidx.room:room-compiler:${DependencyVersion.Room}"
 }

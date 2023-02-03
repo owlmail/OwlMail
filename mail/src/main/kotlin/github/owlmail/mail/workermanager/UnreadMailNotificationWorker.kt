@@ -1,14 +1,15 @@
-package github.owlmail.mail
+package github.owlmail.mail.workermanager
 
 import android.content.Context
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import github.owlmail.mail.inbox.InboxSearchRequest
+import github.owlmail.mail.MailRepository
+import github.owlmail.mail.R
+import github.owlmail.mail.inbox.model.InboxSearchRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

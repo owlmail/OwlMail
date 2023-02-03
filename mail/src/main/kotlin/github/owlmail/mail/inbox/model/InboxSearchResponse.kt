@@ -1,11 +1,10 @@
-package github.owlmail.mail.inbox
+package github.owlmail.mail.inbox.model
 
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import github.owlmail.mail.detail.model.MailDetailResponse
 
 //c=conversation
 @JsonClass(generateAdapter = true)

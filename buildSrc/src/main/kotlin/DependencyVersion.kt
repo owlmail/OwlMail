@@ -31,4 +31,13 @@ object DependencyVersion {
 
     //Navigation
     const val Navigation = "2.5.3"
+
+    //viewpager
+    const val ViewPager = "1.0.0"
+
+    //coil
+    const val Coil = "2.2.2"
+
+    //room
+    const val Room = "2.5.0"
 }

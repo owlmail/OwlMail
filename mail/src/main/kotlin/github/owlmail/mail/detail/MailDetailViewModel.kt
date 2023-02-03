@@ -16,13 +16,21 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MailDetailViewModel @Inject constructor(
-    private val repository: MailRepository
+    private val repository: MailRepository,
+    private val detailDAO: DetailDAO
 ) : ViewModel() {
-    private val _mailDetail = MutableStateFlow< ResponseState<MailDetailResponse?>>(ResponseState.Empty)
+    private val _mailDetail =
+        MutableStateFlow<ResponseState<MailDetailResponse?>>(ResponseState.Empty)
     val mailDetail = _mailDetail.asStateFlow()
     fun getMailDetail(convDetails: ConvDetails) {
         viewModelScope.launch(Dispatchers.IO) {
-            _mailDetail.value = repository.getMailDetail(convDetails.mapToDetailRequest()).mapToResponseState()
+            val result =
+                repository.getMailDetail(convDetails.mapToDetailRequest()).mapToResponseState()
+            _mailDetail.value = result
+            if (result is ResponseState.Success) {
+                val list = result.data?.body?.searchConvResponse?.message?.filterNotNull().orEmpty()
+                detailDAO.insertAllMessage(list)
+            }
         }
     }
 }
