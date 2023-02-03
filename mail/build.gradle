@@ -80,6 +80,7 @@ dependencies {
     implementation Dependencies.Coil
 
     implementation(project(Modules.Networking))
+    implementation(project(Modules.Contacts))
 
     implementation 'androidx.hilt:hilt-work:1.0.0'
     kapt 'androidx.hilt:hilt-compiler:1.0.0'

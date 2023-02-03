@@ -76,5 +76,9 @@ dependencies {
     //paging
     implementation Dependencies.Paging
 
+    //room
+    implementation Dependencies.RoomKTX
+    kapt Dependencies.RoomCompiler
+
     implementation(project(Modules.Networking))
 }

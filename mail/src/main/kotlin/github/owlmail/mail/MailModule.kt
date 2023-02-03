@@ -47,4 +47,8 @@ object MailModule {
     @Provides
     @Singleton
     fun provideDetailDAO(owlMailDatabase: OwlMailDatabase) = owlMailDatabase.getDetailDAO()
+
+    @Provides
+    @Singleton
+    fun provideContactDAO(owlMailDatabase: OwlMailDatabase) = owlMailDatabase.getContactDAO()
 }

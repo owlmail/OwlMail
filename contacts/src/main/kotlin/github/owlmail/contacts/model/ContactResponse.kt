@@ -1,6 +1,8 @@
 package github.owlmail.contacts.model
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -34,6 +36,7 @@ data class ContactResponse(
             val sortBy: String? = null
         ) {
             @JsonClass(generateAdapter = true)
+            @Entity(tableName = "contact")
             data class Cn(
                 @Json(name = "_attrs")
                 val attrs: Attrs? = null,
@@ -42,7 +45,7 @@ data class ContactResponse(
                 @Json(name = "fileAsStr")
                 val fileAsStr: String? = null,
                 @Json(name = "id")
-                val id: String? = null,
+                @PrimaryKey val id: String = "",
                 @Json(name = "l")
                 val l: String? = null,
                 @Json(name = "ref")
