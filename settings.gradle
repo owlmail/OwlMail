@@ -12,6 +12,13 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
+buildCache {
+    local {
+        enabled = true
+    }
+}
+
 rootProject.name = "Owl Mail"
 include ':app'
 include ':core'
