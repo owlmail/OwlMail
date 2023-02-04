@@ -1,6 +1,5 @@
 package github.owlmail.auth
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -36,11 +35,13 @@ data class ResponseAuth(
                 @Json(name = "_content")
                 val content: String? = null
             )
+
             @JsonClass(generateAdapter = true)
             data class CsrfToken(
                 @Json(name = "_content")
                 val content: String? = null
             )
+
             @JsonClass(generateAdapter = true)
             data class Skin(
                 @Json(name = "_content")

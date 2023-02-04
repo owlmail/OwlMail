@@ -1,6 +1,5 @@
 package github.owlmail.mail.detail.model
 
-
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
@@ -47,7 +46,8 @@ data class MailDetailResponse(
                 @Json(name = "fr")
                 val body: String? = null,
                 @Json(name = "id")
-                @PrimaryKey val id: String = "",
+                @PrimaryKey
+                val id: String = "",
                 @Json(name = "l")
                 val folder: String? = null,
                 @Json(name = "mid")

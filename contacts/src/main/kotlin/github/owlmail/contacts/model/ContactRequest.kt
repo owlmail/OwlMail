@@ -1,6 +1,5 @@
 package github.owlmail.contacts.model
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

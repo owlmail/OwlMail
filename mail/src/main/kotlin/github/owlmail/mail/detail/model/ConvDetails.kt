@@ -1,7 +1,5 @@
 package github.owlmail.mail.detail.model
 
-import github.owlmail.mail.detail.model.MailDetailRequest
-
 data class ConvDetails(val cid: String) {
     fun mapToDetailRequest(): MailDetailRequest {
         return MailDetailRequest(
@@ -11,7 +9,7 @@ data class ConvDetails(val cid: String) {
                     jsns = "urn:zimbraMail",
                     offset = 0,
                     limit = 10,
-                    recip = "2", //0=sender,1=receiver,2=both
+                    recip = "2", // 0=sender,1=receiver,2=both
                     fetch = "all",
                     html = 1,
                     needExp = 1,

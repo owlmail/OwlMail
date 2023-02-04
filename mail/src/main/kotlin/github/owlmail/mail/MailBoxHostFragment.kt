@@ -1,7 +1,12 @@
 package github.owlmail.mail
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.core.view.forEach
@@ -19,9 +24,9 @@ import github.owlmail.mail.workermanager.UnreadMailNotificationWorker
 class MailBoxHostFragment : Fragment(), MenuProvider {
     private var tabAdapter: MailBoxTabAdapter? = null
 
-    //adapter for viewpager
-    //tablayout and viewpager plugin
-    //check navigation
+    // adapter for viewpager
+    // tablayout and viewpager plugin
+    // check navigation
     private var binding: FragmentMailBoxBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,8 +44,11 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         setUpViewPager()
         setUpTabLayout()
         WorkManager.getInstance(requireContext()).beginUniqueWork(
-            "Preeti",ExistingWorkPolicy.REPLACE, OneTimeWorkRequest.from(
-                UnreadMailNotificationWorker::class.java)
+            "Preeti",
+            ExistingWorkPolicy.REPLACE,
+            OneTimeWorkRequest.from(
+                UnreadMailNotificationWorker::class.java
+            )
         ).enqueue()
     }
 
@@ -81,7 +89,6 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
             }
         }
     }
-
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return true

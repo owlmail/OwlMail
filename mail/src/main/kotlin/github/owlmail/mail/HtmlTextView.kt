@@ -8,7 +8,7 @@ import com.google.android.material.textview.MaterialTextView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-//@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes
+// @NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes
 @AndroidEntryPoint
 class HtmlTextView @JvmOverloads constructor(
     context: Context,
@@ -18,7 +18,6 @@ class HtmlTextView @JvmOverloads constructor(
 ) : MaterialTextView(context, attributeSet, defStyleAttr, defStyleRes) {
     @Inject
     lateinit var imageLoader: ImageLoader
-
 
     fun setHtml(html: String) {
         text =

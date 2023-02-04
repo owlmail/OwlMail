@@ -2,7 +2,6 @@ package github.owlmail.networking
 
 import retrofit2.Response
 
-
 sealed class ResponseState<out T>(val data: T? = null, val message: String? = null) {
     class Success<out T>(data: T) : ResponseState<T>(data)
     class Error(message: String?) : ResponseState<Nothing>(null, message)

@@ -1,6 +1,5 @@
 package github.owlmail.mail.inbox.model
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

@@ -2,8 +2,6 @@ package github.owlmail.networking
 
 import android.content.Context
 import coil.ImageLoader
-import coil.disk.DiskCache
-import coil.memory.MemoryCache
 import coil.request.CachePolicy
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.squareup.moshi.Moshi
@@ -12,10 +10,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)

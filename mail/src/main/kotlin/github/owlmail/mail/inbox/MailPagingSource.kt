@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 class MailPagingSource(private val repository: MailRepository, private val mailFolder: String, private val query: String, private val mailDAO: MailDAO) :
     PagingSource<Int, InboxSearchResponse.Body.SearchResponse.Conversation>() {
 
-    //call getMailList from repo
+    // call getMailList from repo
     override fun getRefreshKey(state: PagingState<Int, InboxSearchResponse.Body.SearchResponse.Conversation>): Int? {
         return null
     }

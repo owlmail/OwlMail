@@ -1,7 +1,6 @@
 package github.owlmail.mail.inbox
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +53,7 @@ class MailFragment : Fragment() {
         updateDataInRV()
     }
 
-    //when vm paginated refresh call this
+    // when vm paginated refresh call this
     fun updateDataInRV() {
         viewModel.getPaginatedData(mailFolder).observe(viewLifecycleOwner) {
             lifecycleScope.launch() {

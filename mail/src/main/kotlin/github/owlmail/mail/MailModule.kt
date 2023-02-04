@@ -7,14 +7,14 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import github.owlmail.mail.workermanager.NotificationManager
-import retrofit2.Retrofit
 import javax.inject.Singleton
+import retrofit2.Retrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
 object MailModule {
 
-    //move moshi and retrofit to networking
+    // move moshi and retrofit to networking
     @Provides
     @Singleton
     fun providesService(retrofit: Retrofit) = retrofit.create(MailService::class.java)
@@ -27,6 +27,4 @@ object MailModule {
     @Singleton
     fun provideNotificationManager(@ApplicationContext context: Context) =
         NotificationManager(context)
-
-
 }

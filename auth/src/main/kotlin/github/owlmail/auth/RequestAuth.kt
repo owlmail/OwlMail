@@ -1,6 +1,5 @@
 package github.owlmail.auth
 
-
 import android.accounts.Account
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

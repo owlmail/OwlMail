@@ -36,17 +36,16 @@ class MailDetailFragment : Fragment() {
 
     fun getMailDetail() {
         viewModel.getMailDetail(convDetails = ConvDetails(args.cid ?: ""))
-        //observe state
+        // observe state
         lifecycleScope.launchWhenStarted {
             viewModel.mailDetail.collect { it ->
 
                 when (it) {
-                    //check and move into rv
+                    // check and move into rv
                     is ResponseState.Success -> {
-
                         binding?.recyclerView1?.adapter = mailDetailAdapter
                         binding?.mailDetailSubject?.text =
-                            if(it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject.isNullOrEmpty()){
+                            if (it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject.isNullOrEmpty()) {
                                 "No Subject"
                             } else {
                                 it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject
@@ -54,10 +53,8 @@ class MailDetailFragment : Fragment() {
                         mailDetailAdapter.differ.submitList(it.data?.body?.searchConvResponse?.message)
                     }
                     is ResponseState.Empty -> {
-
                     }
                     is ResponseState.Error -> {
-
                     }
                 }
             }
