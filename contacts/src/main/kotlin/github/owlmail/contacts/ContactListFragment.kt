@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -14,10 +13,10 @@ import github.owlmail.contacts.databinding.ContactListBinding
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ContactListFragment: Fragment(){
+class ContactListFragment : Fragment() {
     private var binding: ContactListBinding? = null
     private val contactAdapter = ContactAdapter()
-    private val viewModel:ContactViewModel by viewModels()
+    private val viewModel: ContactViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,7 +29,7 @@ class ContactListFragment: Fragment(){
     private fun setUpRecyclerView() {
         binding?.recyclerView?.adapter = contactAdapter
         binding?.editText1?.doAfterTextChanged {
-            updateDataInRV(it?.trim()?.toString()?:"")
+            updateDataInRV(it?.trim()?.toString() ?: "")
         }
 
     }

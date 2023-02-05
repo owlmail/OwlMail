@@ -39,8 +39,9 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         setUpViewPager()
         setUpTabLayout()
         WorkManager.getInstance(requireContext()).beginUniqueWork(
-            "Preeti",ExistingWorkPolicy.REPLACE, OneTimeWorkRequest.from(
-                UnreadMailNotificationWorker::class.java)
+            "Preeti", ExistingWorkPolicy.REPLACE, OneTimeWorkRequest.from(
+                UnreadMailNotificationWorker::class.java
+            )
         ).enqueue()
     }
 

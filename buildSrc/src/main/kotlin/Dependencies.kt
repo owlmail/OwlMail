@@ -33,15 +33,18 @@ object Dependencies {
     //moshi
     const val Moshi = "com.squareup.moshi:moshi-kotlin:${DependencyVersion.Moshi}"
     const val MoshiKapt = "com.squareup.moshi:moshi-kotlin-codegen:${DependencyVersion.Moshi}"
-    const val MoshiRetrofitConverter = "com.squareup.retrofit2:converter-moshi:${DependencyVersion.MoshiRetrofitConverter}"
+    const val MoshiRetrofitConverter =
+        "com.squareup.retrofit2:converter-moshi:${DependencyVersion.MoshiRetrofitConverter}"
 
     //paging
     const val Paging = "androidx.paging:paging-runtime:${DependencyVersion.Paging}"
 
     //navigation
-    const val Navigation = "androidx.navigation:navigation-fragment-ktx:${DependencyVersion.Navigation}"
+    const val Navigation =
+        "androidx.navigation:navigation-fragment-ktx:${DependencyVersion.Navigation}"
     const val NavigationUI = "androidx.navigation:navigation-ui-ktx:${DependencyVersion.Navigation}"
-    const val FeaturesNavigation = "androidx.navigation:navigation-dynamic-features-fragment:${DependencyVersion.Navigation}"
+    const val FeaturesNavigation =
+        "androidx.navigation:navigation-dynamic-features-fragment:${DependencyVersion.Navigation}"
 
     const val ViewPager = "androidx.viewpager2:viewpager2:${DependencyVersion.ViewPager}"
     const val Coil = "io.coil-kt:coil-base:${DependencyVersion.Coil}"

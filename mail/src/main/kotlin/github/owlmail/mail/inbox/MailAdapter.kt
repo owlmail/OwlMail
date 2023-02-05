@@ -16,6 +16,7 @@ class MailAdapter() :
     ) {
     //item in rv consists of sender name first line of subject and first line of body
     var onClick: ((String?) -> Unit)? = null //store a func in var returns void
+
     class MailListDiffer :
         DiffUtil.ItemCallback<InboxSearchResponse.Body.SearchResponse.Conversation>() {
         override fun areItemsTheSame(
@@ -39,20 +40,20 @@ class MailAdapter() :
     ) {
         val binding = MailListItemBinding.bind(holder.itemView)
         val item = getItem(position)
-        binding.senderName.text = item?.emailAddress?.firstOrNull{
-            it?.isSenderOrReceiver?.contains("f",true) == true
+        binding.senderName.text = item?.emailAddress?.firstOrNull {
+            it?.isSenderOrReceiver?.contains("f", true) == true
         }?.fullName
-        binding.mailSubject.text = if(item?.subject.isNullOrEmpty()){
+        binding.mailSubject.text = if (item?.subject.isNullOrEmpty()) {
             "No Subject"
         } else {
             item?.subject
         }
         binding.mailBody.text = if (item?.body.isNullOrEmpty()) {
-        "No Message Body"
+            "No Message Body"
         } else {
             item?.body
         }
-        binding.root.setOnClickListener{
+        binding.root.setOnClickListener {
             onClick?.invoke(item?.id)
         }
     }
