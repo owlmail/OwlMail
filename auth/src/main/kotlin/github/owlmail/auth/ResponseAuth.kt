@@ -36,11 +36,13 @@ data class ResponseAuth(
                 @Json(name = "_content")
                 val content: String? = null
             )
+
             @JsonClass(generateAdapter = true)
             data class CsrfToken(
                 @Json(name = "_content")
                 val content: String? = null
             )
+
             @JsonClass(generateAdapter = true)
             data class Skin(
                 @Json(name = "_content")

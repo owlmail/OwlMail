@@ -9,5 +9,6 @@ class MailRepository(
     suspend fun getMailList(inboxSearchRequest: InboxSearchRequest) =
         service.getMailList(inboxSearchRequest)
 
-    suspend fun getMailDetail(mailDetailRequest: MailDetailRequest) = service.getMailDetails(mailDetailRequest)
+    suspend fun getMailDetail(mailDetailRequest: MailDetailRequest) =
+        service.getMailDetails(mailDetailRequest)
 }

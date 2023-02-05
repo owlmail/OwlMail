@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import github.owlmail.contacts.model.ContactRequest
 import github.owlmail.contacts.model.ContactResponse
-import github.owlmail.networking.ResponseState.Empty.data
 
 class ContactPagingSource(
     private val repository: ContactRepository,

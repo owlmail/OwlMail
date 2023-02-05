@@ -1,7 +1,6 @@
 package github.owlmail.auth
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +12,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.auth.databinding.FragmentAuthBinding
-import github.owlmail.networking.AuthIntercepter
 import github.owlmail.networking.ResponseState
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class AuthFragment : Fragment() {
@@ -39,7 +35,7 @@ class AuthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.loginButton?.setOnClickListener{
+        binding?.loginButton?.setOnClickListener {
             triggerLoginOnButtonClick()
         }
         observeLoginState()
@@ -47,11 +43,11 @@ class AuthFragment : Fragment() {
     }
 
     private fun observeUserDetails() {
-        lifecycleScope.launchWhenStarted{
-            viewModel.readUserDetails().collect{
+        lifecycleScope.launchWhenStarted {
+            viewModel.readUserDetails().collect {
                 val userid = it[DataStoreManager.userId]
                 val password = it[DataStoreManager.password]
-                if (userid.isNullOrEmpty()||password.isNullOrEmpty()){
+                if (userid.isNullOrEmpty() || password.isNullOrEmpty()) {
                     binding?.root?.isVisible = true
 
                 } else {
@@ -65,7 +61,7 @@ class AuthFragment : Fragment() {
     private fun getUserDetailsFromInput(): UserDetails {
         val user = binding?.useridEdit?.text.toString()
         val pass = binding?.passwordEdit?.text.toString()
-        return UserDetails(user,pass)
+        return UserDetails(user, pass)
     }
 
     private fun triggerLoginOnButtonClick() {
@@ -76,7 +72,7 @@ class AuthFragment : Fragment() {
     private fun observeLoginState() {
         lifecycleScope.launchWhenStarted {
             viewModel.loginState.collect {
-                when(it) {
+                when (it) {
                     is ResponseState.Success -> {
 
                         val csrfToken = it.data?.body?.authResponse?.csrfToken?.content ?: ""
@@ -89,9 +85,10 @@ class AuthFragment : Fragment() {
                         val request = NavDeepLinkRequest.Builder
                             .fromUri(deeplink.toUri())
                             .build()
-                        val navOptions =  NavOptions.Builder().setPopUpTo(R.id.authFragment,true).build()
+                        val navOptions =
+                            NavOptions.Builder().setPopUpTo(R.id.authFragment, true).build()
                         findNavController()
-                            .navigate(request,navOptions)
+                            .navigate(request, navOptions)
                         //save user details
 
                     }
