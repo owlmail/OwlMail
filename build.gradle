@@ -21,27 +21,3 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-task formatCode(type: Exec) {
-    commandLine 'sh', '-c', './gradlew ktlintFormat'
-}
-
-task gitCheckOutMain(type: Exec) {
-    commandLine 'sh', '-c', 'git checkout main'
-}
-
-task gitPullUpstreamMain(type: Exec) {
-    commandLine 'sh', '-c', 'git pull --rebase upstream main'
-}
-
-task gitPushOriginMain(type: Exec) {
-    commandLine 'sh', '-c', 'git push origin main'
-}
-
-task gitStash(type: Exec) {
-    commandLine 'sh', '-c', 'git stash'
-}
-
-task gitStashPop(type: Exec) {
-    commandLine 'sh', '-c', 'git stash pop'
-}
