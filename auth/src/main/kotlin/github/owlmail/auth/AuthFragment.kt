@@ -5,11 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.auth.databinding.FragmentAuthBinding
 import github.owlmail.networking.AuthIntercepter
@@ -81,8 +85,13 @@ class AuthFragment : Fragment() {
                         viewModel.saveAuthTokens(csrfToken = csrfToken, cookieToken = cookieToken)
 
                         viewModel.saveUserDetails()
-                        binding?.root?.findNavController()
-                            ?.navigate(AuthFragmentDirections.actionAuthFragmentToMailBoxTabFragment())
+                        val deeplink = "android-app://github.owlmail.mail/mailBoxHostFragment"
+                        val request = NavDeepLinkRequest.Builder
+                            .fromUri(deeplink.toUri())
+                            .build()
+                        val navOptions =  NavOptions.Builder().setPopUpTo(R.id.authFragment,true).build()
+                        findNavController()
+                            .navigate(request,navOptions)
                         //save user details
 
                     }

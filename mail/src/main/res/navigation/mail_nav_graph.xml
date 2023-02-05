@@ -20,6 +20,8 @@
         android:id="@+id/mailBoxHostFragment"
         android:name="github.owlmail.mail.MailBoxHostFragment"
         android:label="MailBoxHostFragment" >
+        <deepLink
+            app:uri="android-app://github.owlmail.mail/mailBoxHostFragment" />
         <action
             android:id="@+id/action_mailBoxHostFragment_to_mailDetailFragment"
             app:destination="@id/mailDetailFragment" />
