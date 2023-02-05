@@ -8,7 +8,8 @@ import android.widget.TextView
 import coil.ImageLoader
 import coil.request.ImageRequest
 
-class HtmlCoilImageLoader(private val textView: TextView, private val imageLoader: ImageLoader) : Html.ImageGetter {
+class HtmlCoilImageLoader(private val textView: TextView, private val imageLoader: ImageLoader) :
+    Html.ImageGetter {
 
 
     override fun getDrawable(source: String?): Drawable {

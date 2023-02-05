@@ -41,21 +41,21 @@ class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val binding = ConvMailBodyBinding.bind(holder.itemView)
         val item = differ.currentList.getOrNull(position)
         binding.senderId.text =
-            item?.emailAdd?.filter{
-                it?.isSenderOrReceiver?.contains("f",true) == true
-            }?.joinToString("\n") { it?.mailAddress?:"" }
+            item?.emailAdd?.filter {
+                it?.isSenderOrReceiver?.contains("f", true) == true
+            }?.joinToString("\n") { it?.mailAddress ?: "" }
         binding.receiverId.text =
-            item?.emailAdd?.filter{
-                it?.isSenderOrReceiver?.contains("t",true) == true
-            }?.joinToString("\n"){
-                it?.mailAddress?:""
+            item?.emailAdd?.filter {
+                it?.isSenderOrReceiver?.contains("t", true) == true
+            }?.joinToString("\n") {
+                it?.mailAddress ?: ""
             }
 
         val html =
             item?.multiPart?.joinToString { mp ->
                 mp?.getHtmlData() ?: ""
             }
-        val messageBody = if(html.isNullOrEmpty()){
+        val messageBody = if (html.isNullOrEmpty()) {
             "No Message Body"
         } else {
             html
@@ -68,12 +68,12 @@ class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     private fun MailDetailResponse.Body.SearchConvResponse.Message.MultiPart.getHtmlData(): String {
-        return when{
-            contentType?.contains("text",true) == true -> content?:""
-            contentType?.contains("multipart",true) == true -> multiPart?.joinToString {
-                it?.getHtmlData()?:""
+        return when {
+            contentType?.contains("text", true) == true -> content ?: ""
+            contentType?.contains("multipart", true) == true -> multiPart?.joinToString {
+                it?.getHtmlData() ?: ""
             } ?: ""
-            contentDescription?.equals("attachment",true) == true -> "" //to download the file
+            contentDescription?.equals("attachment", true) == true -> "" //to download the file
             //https://mail.nitrkl.ac.in/service/home/~/?auth=co&loc=en_GB&id=19923&part=2
             else -> ""
         }

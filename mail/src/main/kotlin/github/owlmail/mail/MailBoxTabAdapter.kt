@@ -22,7 +22,7 @@ class MailBoxTabAdapter(hostFragment: MailBoxHostFragment) : FragmentStateAdapte
 
     fun doAfterTextChanged(query: String) {
         tabFragmentList.forEach {
-            if(it.isAdded) {
+            if (it.isAdded) {
                 it.doAfterTextChanged(query)
             }
         }
