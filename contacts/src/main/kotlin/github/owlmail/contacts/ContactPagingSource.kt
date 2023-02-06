@@ -4,6 +4,10 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import github.owlmail.contacts.model.ContactRequest
 import github.owlmail.contacts.model.ContactResponse
+import github.owlmail.networking.ResponseState
+import github.owlmail.networking.mapToResponseState
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class ContactPagingSource(
     private val repository: ContactRepository,
@@ -16,8 +20,9 @@ class ContactPagingSource(
         return null
     }
 
-    override suspend fun load(params: PagingSource.LoadParams<Int>): PagingSource.LoadResult<Int, ContactResponse.Body.SearchGalResponse.Cn> {
-        try {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ContactResponse.Body.SearchGalResponse.Cn> =
+        withContext(Dispatchers.IO) {
+
             val offset = params.key ?: 0
             val loadSize = params.loadSize
             val contactRequest = ContactRequest(
@@ -30,18 +35,23 @@ class ContactPagingSource(
                     )
                 )
             )
-            val response = repository.getContactList(contactRequest)
-            val contactList = response.body?.searchGalResponse?.cn?.filterNotNull().orEmpty()
-            contactDAO.insertAllContacts(contactList)
-            return PagingSource.LoadResult.Page(
-                data = contactList,
-                prevKey = null,
-                nextKey = if (response.body?.searchGalResponse?.more == true) {
-                    offset + 1
-                } else null
-            )
-        } catch (e: Exception) {
-            return PagingSource.LoadResult.Error(e)
+            when (val response = repository.getContactList(contactRequest).mapToResponseState()) {
+                is ResponseState.Success -> {
+                    val contactList =
+                        response.data?.body?.searchGalResponse?.cn?.filterNotNull().orEmpty()
+                    contactDAO.insertAllContacts(contactList)
+                    LoadResult.Page(
+                        data = contactList,
+                        prevKey = null,
+                        nextKey = if (response.data?.body?.searchGalResponse?.more == true) {
+                            offset + 1
+                        } else null
+                    )
+                }
+                else -> {
+                    LoadResult.Error(Throwable(response.message))
+                }
+            }
+
         }
-    }
 }
