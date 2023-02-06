@@ -30,11 +30,11 @@ class AttachmentDownloadWorker @AssistedInject constructor(
             return@withContext Result.success()
         } else {
             val response =
-                mailRepository.getMailAttachment("19923","2")
+                mailRepository.getMailAttachment("12510","3")
             with(file){
                 createNewFile()
-                val fileContent = response.string().toString()
-//                writeText(fileContent)
+                val fileContent = response.string()
+                writeText(fileContent)
             }
             val notification = NotificationCompat.Builder(context, "owlmail_notification_id")
                 .setContentTitle("File downloaded")
