@@ -13,6 +13,7 @@ import androidx.work.WorkManager
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.databinding.FragmentMailBoxBinding
+import github.owlmail.mail.workermanager.AttachmentDownloadWorker
 import github.owlmail.mail.workermanager.UnreadMailNotificationWorker
 
 @AndroidEntryPoint
@@ -41,6 +42,11 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         WorkManager.getInstance(requireContext()).beginUniqueWork(
             "Preeti", ExistingWorkPolicy.REPLACE, OneTimeWorkRequest.from(
                 UnreadMailNotificationWorker::class.java
+            )
+        ).enqueue()
+        WorkManager.getInstance(requireContext()).beginUniqueWork(
+            "Download", ExistingWorkPolicy.REPLACE, OneTimeWorkRequest.from(
+                AttachmentDownloadWorker::class.java
             )
         ).enqueue()
     }

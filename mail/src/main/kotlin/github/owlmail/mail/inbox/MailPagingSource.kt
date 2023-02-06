@@ -6,6 +6,8 @@ import github.owlmail.mail.MailRepository
 import github.owlmail.mail.inbox.database.MailDAO
 import github.owlmail.mail.inbox.model.InboxSearchRequest
 import github.owlmail.mail.inbox.model.InboxSearchResponse
+import github.owlmail.networking.ResponseState
+import github.owlmail.networking.mapToResponseState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -23,33 +25,37 @@ class MailPagingSource(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, InboxSearchResponse.Body.SearchResponse.Conversation> =
-        withContext(Dispatchers.Main) {
-            try {
-                val offset = params.key ?: 0
-                val loadSize = params.loadSize
-                val inboxSearchRequest = InboxSearchRequest(
-                    body = InboxSearchRequest.Body(
-                        searchRequest = InboxSearchRequest.Body.SearchRequest(
-                            jsns = "urn:zimbraMail",
-                            limit = loadSize,
-                            offset = offset,
-                            query = "$query in:$mailFolder".trim()
-                        )
+        withContext(Dispatchers.IO) {
+
+            val offset = params.key ?: 0
+            val loadSize = params.loadSize
+            val inboxSearchRequest = InboxSearchRequest(
+                body = InboxSearchRequest.Body(
+                    searchRequest = InboxSearchRequest.Body.SearchRequest(
+                        jsns = "urn:zimbraMail",
+                        limit = loadSize,
+                        offset = offset,
+                        query = "$query in:$mailFolder".trim()
                     )
                 )
-                val response = repository.getMailList(inboxSearchRequest)
-                val mailList =
-                    response.body?.searchResponse?.conversation?.filterNotNull().orEmpty()
-                mailDAO.insertAllMails(mailList)
-                return@withContext LoadResult.Page(
-                    data = mailList,
-                    prevKey = null,
-                    nextKey = if (response.body?.searchResponse?.more == true) {
-                        offset + 1
-                    } else null
-                )
-            } catch (e: Exception) {
-                return@withContext LoadResult.Error(e)
+            )
+            when (val response = repository.getMailList(inboxSearchRequest).mapToResponseState()) {
+                is ResponseState.Success -> {
+                    val mailList =
+                        response.data?.body?.searchResponse?.conversation?.filterNotNull().orEmpty()
+                    mailDAO.insertAllMails(mailList)
+                    LoadResult.Page(
+                        data = mailList,
+                        prevKey = null,
+                        nextKey = if (response.data?.body?.searchResponse?.more == true) {
+                            offset + 1
+                        } else null
+                    )
+                }
+                else -> {
+                    LoadResult.Error(Throwable(response.message))
+                }
             }
+
         }
 }
