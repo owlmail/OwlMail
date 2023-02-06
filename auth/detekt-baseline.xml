@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>NewLineAtEndOfFile:AuthFragment.kt$github.owlmail.auth.AuthFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AuthModule.kt$github.owlmail.auth.AuthModule.kt</ID>
+    <ID>NewLineAtEndOfFile:AuthRepository.kt$github.owlmail.auth.AuthRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:AuthService.kt$github.owlmail.auth.AuthService.kt</ID>
+    <ID>NewLineAtEndOfFile:AuthViewModel.kt$github.owlmail.auth.AuthViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:DataStoreManager.kt$github.owlmail.auth.DataStoreManager.kt</ID>
+    <ID>NewLineAtEndOfFile:RequestAuth.kt$github.owlmail.auth.RequestAuth.kt</ID>
+    <ID>NewLineAtEndOfFile:ResponseAuth.kt$github.owlmail.auth.ResponseAuth.kt</ID>
+  </CurrentIssues>
+</SmellBaseline>

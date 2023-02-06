@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>EmptyClassBlock:AttachmentDownloadWorker.kt$AttachmentDownloadWorker${ }</ID>
+    <ID>EmptyDefaultConstructor:MailAdapter.kt$MailAdapter$()</ID>
+    <ID>ExplicitItLambdaParameter:MailDetailFragment.kt$MailDetailFragment${ it -&gt; when (it) { //check and move into rv is ResponseState.Success -&gt; { binding?.recyclerView1?.adapter = mailDetailAdapter binding?.mailDetailSubject?.text = if (it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject.isNullOrEmpty()) { "No Subject" } else { it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject } mailDetailAdapter.differ.submitList(it.data?.body?.searchConvResponse?.message) } is ResponseState.Empty -&gt; { } is ResponseState.Error -&gt; { } } }</ID>
+    <ID>MagicNumber:MailViewModel.kt$MailViewModel$10</ID>
+    <ID>MagicNumber:NotificationManager.kt$NotificationManager$4000</ID>
+    <ID>MaxLineLength:MailPagingSource.kt$MailPagingSource$override suspend</ID>
+    <ID>MaxLineLength:MailService.kt$MailService$// @Header("Cookie") authToken: String = "ZM_AUTH_TOKEN=0_f8450d2ed32cce48c7bd0c0daa8db88f3749c281_69643d33363a33386132363661312d353834332d343233652d393461372d3236373436313565643766393b6578703d31333a313637333935313136353539323b747970653d363a7a696d6272613b7469643d393a3437343033393430333b76657273696f6e3d31333a382e362e305f47415f313135333b637372663d313a313b"</ID>
+    <ID>MaxLineLength:MailViewModel.kt$MailViewModel$fun</ID>
+    <ID>MemberNameEqualsClassName:NotificationManager.kt$NotificationManager$private val notificationManager = NotificationManagerCompat.from(context)</ID>
+    <ID>NewLineAtEndOfFile:AttachmentDownloadWorker.kt$github.owlmail.mail.workermanager.AttachmentDownloadWorker.kt</ID>
+    <ID>NewLineAtEndOfFile:ConvDetails.kt$github.owlmail.mail.detail.model.ConvDetails.kt</ID>
+    <ID>NewLineAtEndOfFile:DetailDAO.kt$github.owlmail.mail.detail.DetailDAO.kt</ID>
+    <ID>NewLineAtEndOfFile:HtmlTextView.kt$github.owlmail.mail.HtmlTextView.kt</ID>
+    <ID>NewLineAtEndOfFile:InboxSearchRequest.kt$github.owlmail.mail.inbox.model.InboxSearchRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:InboxSearchResponse.kt$github.owlmail.mail.inbox.model.InboxSearchResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:MailAdapter.kt$github.owlmail.mail.inbox.MailAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:MailBoxHostFragment.kt$github.owlmail.mail.MailBoxHostFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:MailBoxTabAdapter.kt$github.owlmail.mail.MailBoxTabAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:MailDAO.kt$github.owlmail.mail.inbox.database.MailDAO.kt</ID>
+    <ID>NewLineAtEndOfFile:MailDetailAdapter.kt$github.owlmail.mail.detail.MailDetailAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:MailDetailFragment.kt$github.owlmail.mail.detail.MailDetailFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:MailDetailRequest.kt$github.owlmail.mail.detail.model.MailDetailRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:MailDetailResponse.kt$github.owlmail.mail.detail.model.MailDetailResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:MailDetailViewModel.kt$github.owlmail.mail.detail.MailDetailViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:MailFragment.kt$github.owlmail.mail.inbox.MailFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:MailModule.kt$github.owlmail.mail.MailModule.kt</ID>
+    <ID>NewLineAtEndOfFile:MailPagingSource.kt$github.owlmail.mail.inbox.MailPagingSource.kt</ID>
+    <ID>NewLineAtEndOfFile:MailRepository.kt$github.owlmail.mail.MailRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:MailService.kt$github.owlmail.mail.MailService.kt</ID>
+    <ID>NewLineAtEndOfFile:MailViewModel.kt$github.owlmail.mail.inbox.MailViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:NotificationManager.kt$github.owlmail.mail.workermanager.NotificationManager.kt</ID>
+    <ID>NewLineAtEndOfFile:UnreadMailNotificationWorker.kt$github.owlmail.mail.workermanager.UnreadMailNotificationWorker.kt</ID>
+    <ID>TooGenericExceptionCaught:MailPagingSource.kt$MailPagingSource$e: Exception</ID>
+    <ID>WildcardImport:MailBoxHostFragment.kt$import android.view.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
