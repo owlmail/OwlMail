@@ -1,6 +1,7 @@
 package github.owlmail.mail.workermanager
 
 import android.content.Context
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
@@ -23,6 +24,7 @@ class UnreadMailNotificationWorker @AssistedInject constructor(
     private val notificationManager: NotificationManager
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
+        Log.e("Preeti","Notification running")
         val inboxSearchRequest = InboxSearchRequest(
             body = InboxSearchRequest.Body(
                 searchRequest = InboxSearchRequest.Body.SearchRequest(

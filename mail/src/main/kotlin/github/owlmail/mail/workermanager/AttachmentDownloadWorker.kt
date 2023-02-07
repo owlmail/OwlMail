@@ -25,12 +25,18 @@ class AttachmentDownloadWorker @AssistedInject constructor(
         //save response in file
         //notification of download
 
-        val file = File(context.externalCacheDir,"filename")
+        val messageId = inputData.getString("id")
+        val part = inputData.getString("part")
+        val fileName = "File $messageId $part ${inputData.getString("filename").orEmpty()}".trim()
+        if (messageId.isNullOrEmpty()||part.isNullOrEmpty()){
+            return@withContext Result.failure()
+        }
+        val file = File(context.externalCacheDir,fileName)
         if(file.exists()){
             return@withContext Result.success()
         } else {
             val response =
-                mailRepository.getMailAttachment("12510","3")
+                mailRepository.getMailAttachment(messageId,part)
             with(file){
                 createNewFile()
                 val fileContent = response.string()
