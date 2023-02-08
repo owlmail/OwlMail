@@ -13,8 +13,8 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import github.owlmail.auth.api.AuthState
 import github.owlmail.auth.databinding.FragmentAuthBinding
-import github.owlmail.networking.ResponseState
 
 @AndroidEntryPoint
 class AuthFragment : Fragment() {
@@ -39,24 +39,9 @@ class AuthFragment : Fragment() {
             triggerLoginOnButtonClick()
         }
         observeLoginState()
-        observeUserDetails()
     }
 
-    private fun observeUserDetails() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.readUserDetails().collect {
-                val userid = it[DataStoreManager.userId]
-                val password = it[DataStoreManager.password]
-                if (userid.isNullOrEmpty() || password.isNullOrEmpty()) {
-                    binding?.root?.isVisible = true
 
-                } else {
-                    val userDetails = UserDetails(userid, password)
-                    viewModel.userLogin(userDetails)
-                }
-            }
-        }
-    }
 
     private fun getUserDetailsFromInput(): UserDetails {
         val user = binding?.useridEdit?.text.toString()
@@ -73,14 +58,8 @@ class AuthFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             viewModel.loginState.collect {
                 when (it) {
-                    is ResponseState.Success -> {
+                    AuthState.AUTHENTICATED -> {
 
-                        val csrfToken = it.data?.body?.authResponse?.csrfToken?.content ?: ""
-                        val cookieToken =
-                            it.data?.body?.authResponse?.authToken?.firstOrNull()?.content ?: ""
-                        viewModel.saveAuthTokens(csrfToken = csrfToken, cookieToken = cookieToken)
-
-                        viewModel.saveUserDetails()
                         val deeplink = "android-app://github.owlmail.mail/mailBoxHostFragment"
                         val request = NavDeepLinkRequest.Builder
                             .fromUri(deeplink.toUri())
@@ -92,11 +71,8 @@ class AuthFragment : Fragment() {
                         //save user details
 
                     }
-                    is ResponseState.Error -> {
-
-                    }
-                    is ResponseState.Empty -> {
-
+                    else -> {
+                        binding?.root?.isVisible = true
                     }
                 }
             }

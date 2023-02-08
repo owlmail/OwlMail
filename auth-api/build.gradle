@@ -1,13 +1,6 @@
 plugins {
     id 'com.android.library'
-
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-
-    id 'androidx.navigation.safeargs.kotlin'
-
-    id 'com.google.dagger.hilt.android'
-    id "io.gitlab.arturbosch.detekt"
 }
 
 android {
@@ -35,10 +28,8 @@ android {
     kotlinOptions {
         jvmTarget = AppConfig.JvmTargetVersion
     }
-    namespace 'github.owlmail.auth'
-    viewBinding {
-        enabled true
-    }
+    namespace 'github.owlmail.auth.api'
+
 }
 
 dependencies {
@@ -47,37 +38,11 @@ dependencies {
     implementation Dependencies.CoreKTX
     implementation Dependencies.AppCompat
 
-
-    //View
-    implementation Dependencies.Material
-    implementation Dependencies.ConstraintLayout
-
-
     //Test
     testImplementation Dependencies.Junit
     androidTestImplementation Dependencies.JunitAndroid
     androidTestImplementation Dependencies.EspressoCore
 
-
-    //Dagger - Hilt
-    implementation Dependencies.DaggerHilt
-    kapt Dependencies.DaggerHiltCompiler
-
-
-    //moshi
-    implementation Dependencies.Moshi
-    kapt Dependencies.MoshiKapt
-    implementation Dependencies.MoshiRetrofitConverter
-
-    //navigation
-    implementation Dependencies.Navigation
-    implementation Dependencies.NavigationUI
-    implementation Dependencies.FeaturesNavigation
-
-    //data store
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-
-
-    implementation(project(Modules.Networking))
-    implementation(project(Modules.AuthApi))
+    //coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 }
