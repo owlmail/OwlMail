@@ -10,6 +10,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import github.owlmail.auth.api.AuthUseCase
+import github.owlmail.auth.api.LogoutUseCase
 import github.owlmail.networking.AuthIntercepter
 import retrofit2.Retrofit
 import javax.inject.Singleton
@@ -38,5 +39,15 @@ object AuthModule {
 
     @Provides
     @Singleton
-    fun provideAuthUseCase(authRepository: AuthRepository, dataStoreManager: DataStoreManager):AuthUseCase = AuthUseCaseImpl(authRepository,dataStoreManager)
+    fun provideAuthUseCase(
+        authRepository: AuthRepository,
+        dataStoreManager: DataStoreManager
+    ): AuthUseCase = AuthUseCaseImpl(authRepository, dataStoreManager)
+
+    @Provides
+    @Singleton
+    fun provideLogoutUseCase(
+        dataStoreManager: DataStoreManager,
+        authUseCase: AuthUseCase
+    ): LogoutUseCase = LogoutUseCaseImpl(dataStoreManager, authUseCase)
 }

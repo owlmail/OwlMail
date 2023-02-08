@@ -4,8 +4,8 @@ import github.owlmail.auth.api.AuthState
 import github.owlmail.auth.api.AuthUseCase
 import github.owlmail.networking.ResponseState
 import github.owlmail.networking.mapToResponseState
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 
 class AuthUseCaseImpl(
@@ -54,7 +54,7 @@ class AuthUseCaseImpl(
         }
     }
 
-    override fun get(): StateFlow<AuthState> {
+    override fun get(): Flow<AuthState> {
         return loginState
     }
 }
