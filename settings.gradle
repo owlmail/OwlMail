@@ -28,3 +28,4 @@ buildCache {
         enabled = true
     }
 }
+include ':auth-api'
