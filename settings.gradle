@@ -29,12 +29,6 @@ include ':networking'
 include ':lint-rules'
 include ':benchmark'
 include ':contacts'
-
-buildCache {
-    local {
-        enabled = true
-    }
-}
 include ':auth-api'
 include ':mail-api'
 include ':contacts-api'
