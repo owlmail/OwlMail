@@ -7,13 +7,13 @@ import androidx.core.view.MenuProvider
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.databinding.FragmentMailBoxBinding
+import github.owlmail.mail.workermanager.AttachmentDownloadWorker
 import github.owlmail.mail.workermanager.UnreadMailNotificationWorker
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class MailBoxHostFragment : Fragment(), MenuProvider {
@@ -38,11 +38,17 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         requireActivity().addMenuProvider(this)
         setUpViewPager()
         setUpTabLayout()
-        WorkManager.getInstance(requireContext()).beginUniqueWork(
-            "Preeti", ExistingWorkPolicy.REPLACE, OneTimeWorkRequest.from(
-                UnreadMailNotificationWorker::class.java
-            )
-        ).enqueue()
+        WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
+            "OwlMailNotification",
+            ExistingPeriodicWorkPolicy.KEEP,
+            PeriodicWorkRequestBuilder<UnreadMailNotificationWorker>(
+                15,
+                TimeUnit.MINUTES
+            ).setConstraints(
+                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+            ).build()
+        )
+
     }
 
     private fun setUpViewPager() = binding?.viewPager?.run {

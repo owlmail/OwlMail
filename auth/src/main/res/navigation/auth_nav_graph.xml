@@ -9,6 +9,8 @@
         android:name="github.owlmail.auth.AuthFragment"
         android:label="AuthFragment">
 
+        <deepLink app:uri="android-app://github.owlmail.mail/authFragment" />
+
     </fragment>
 
 </navigation>

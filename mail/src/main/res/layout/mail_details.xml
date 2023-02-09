@@ -72,4 +72,6 @@
         app:layout_constraintStart_toEndOf="@id/forward_button"
         app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

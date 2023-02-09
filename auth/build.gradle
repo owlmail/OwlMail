@@ -8,6 +8,8 @@ plugins {
 
     id 'com.google.dagger.hilt.android'
 
+    id "io.gitlab.arturbosch.detekt"
+
     id 'org.jlleitschuh.gradle.ktlint'
 }
 
@@ -80,4 +82,7 @@ dependencies {
 
 
     implementation(project(Modules.Networking))
+    implementation(project(Modules.AuthApi))
+    implementation(project(Modules.MailApi))
+    implementation(project(Modules.ContactsApi))
 }

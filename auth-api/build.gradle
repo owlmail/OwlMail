@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk AppConfig.CompileSdk
+
+    defaultConfig {
+        minSdk AppConfig.MinSdk
+        targetSdk AppConfig.TargetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility AppConfig.INSTANCE.JDKVersion
+        targetCompatibility AppConfig.INSTANCE.JDKVersion
+        kotlinOptions.languageVersion = AppConfig.KotlinLanguageVersion
+    }
+    kotlinOptions {
+        jvmTarget = AppConfig.JvmTargetVersion
+    }
+    namespace 'github.owlmail.auth.api'
+
+}
+
+dependencies {
+
+    //Core
+    implementation Dependencies.CoreKTX
+    implementation Dependencies.AppCompat
+
+    //Test
+    testImplementation Dependencies.Junit
+    androidTestImplementation Dependencies.JunitAndroid
+    androidTestImplementation Dependencies.EspressoCore
+
+    //coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+}

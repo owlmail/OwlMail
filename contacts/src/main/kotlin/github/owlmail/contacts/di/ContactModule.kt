@@ -4,8 +4,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import github.owlmail.contacts.ContactDAO
+import github.owlmail.contacts.ContactDatabaseDeleteUseCaseImpl
 import github.owlmail.contacts.ContactRepository
 import github.owlmail.contacts.ContactService
+import github.owlmail.contacts.api.ContactDatabaseDeleteUseCase
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -20,4 +23,7 @@ object ContactModule {
     @Singleton
     fun providesRepository(service: ContactService) = ContactRepository(service)
 
+    @Provides
+    @Singleton
+    fun providesContactDatabaseDeleteUseCase(contactDAO: ContactDAO):ContactDatabaseDeleteUseCase = ContactDatabaseDeleteUseCaseImpl(contactDAO)
 }

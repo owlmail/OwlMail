@@ -8,9 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.work.Data
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.databinding.MailDetailsBinding
 import github.owlmail.mail.detail.model.ConvDetails
+import github.owlmail.mail.workermanager.AttachmentDownloadWorker
 import github.owlmail.networking.ResponseState
 
 @AndroidEntryPoint
@@ -31,11 +36,30 @@ class MailDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getMailDetail()
+        setUpRV()
+        makeApiCall()
+        subscribeToObservers()
     }
 
-    fun getMailDetail() {
+    private fun makeApiCall() {
         viewModel.getMailDetail(convDetails = ConvDetails(args.cid ?: ""))
+    }
+
+    private fun setUpRV() {
+        mailDetailAdapter.onClick = { fileName, part, id ->
+            val data = Data.Builder().putString("id", id).putString("part", part)
+                .putString("filename", fileName).build()
+            WorkManager.getInstance(requireContext()).enqueueUniqueWork(
+                "OwlMailDownload",
+                ExistingWorkPolicy.KEEP,
+                OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build()
+            )
+
+        }
+        binding?.recyclerView1?.adapter = mailDetailAdapter
+    }
+
+    fun subscribeToObservers() {
         //observe state
         lifecycleScope.launchWhenStarted {
             viewModel.mailDetail.collect { it ->
@@ -44,7 +68,7 @@ class MailDetailFragment : Fragment() {
                     //check and move into rv
                     is ResponseState.Success -> {
 
-                        binding?.recyclerView1?.adapter = mailDetailAdapter
+
                         binding?.mailDetailSubject?.text =
                             if (it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject.isNullOrEmpty()) {
                                 "No Subject"

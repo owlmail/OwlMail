@@ -23,4 +23,9 @@ class DataStoreManager(private val dataStore: DataStore<Preferences>) {
     }
 
     fun readFromDataStore() = dataStore.data
+    suspend fun clearDataStore() {
+        dataStore.edit {
+            it.clear()
+        }
+    }
 }

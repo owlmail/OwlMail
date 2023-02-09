@@ -11,4 +11,7 @@ class MailRepository(
 
     suspend fun getMailDetail(mailDetailRequest: MailDetailRequest) =
         service.getMailDetails(mailDetailRequest)
+
+    suspend fun getMailAttachment(messageId: String?, part: String?) =
+        service.getMailAttachment(messageId, part)
 }

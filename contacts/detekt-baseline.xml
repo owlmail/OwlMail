@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>MagicNumber:ContactViewModel.kt$ContactViewModel$10</ID>
+    <ID>MaxLineLength:ContactPagingSource.kt$ContactPagingSource$override suspend</ID>
+    <ID>NewLineAtEndOfFile:ContactAdapter.kt$github.owlmail.contacts.ContactAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:ContactDAO.kt$github.owlmail.contacts.ContactDAO.kt</ID>
+    <ID>NewLineAtEndOfFile:ContactListFragment.kt$github.owlmail.contacts.ContactListFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ContactModule.kt$github.owlmail.contacts.di.ContactModule.kt</ID>
+    <ID>NewLineAtEndOfFile:ContactPagingSource.kt$github.owlmail.contacts.ContactPagingSource.kt</ID>
+    <ID>NewLineAtEndOfFile:ContactRequest.kt$github.owlmail.contacts.model.ContactRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:ContactResponse.kt$github.owlmail.contacts.model.ContactResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:ContactService.kt$github.owlmail.contacts.ContactService.kt</ID>
+    <ID>NewLineAtEndOfFile:ContactViewModel.kt$github.owlmail.contacts.ContactViewModel.kt</ID>
+    <ID>TooGenericExceptionCaught:ContactPagingSource.kt$ContactPagingSource$e: Exception</ID>
+  </CurrentIssues>
+</SmellBaseline>
