@@ -35,31 +35,38 @@ class AuthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //trigger fun on click login button
         binding?.loginButton?.setOnClickListener {
             triggerLoginOnButtonClick()
         }
+        //login success or failure state
         observeLoginState()
     }
 
 
-
+    //sets edit text values to user detail data class
     private fun getUserDetailsFromInput(): UserDetails {
         val user = binding?.useridEdit?.text.toString()
         val pass = binding?.passwordEdit?.text.toString()
         return UserDetails(user, pass)
     }
 
+    //get details and start authentication
     private fun triggerLoginOnButtonClick() {
         val userDetails = getUserDetailsFromInput()
         viewModel.userLogin(userDetails)
     }
 
+    //to observe Login State
     private fun observeLoginState() {
         lifecycleScope.launchWhenStarted {
+
+            //check login state, success or failure
             viewModel.loginState.collect {
                 when (it) {
                     AuthState.AUTHENTICATED -> {
 
+                        //navigates to mailbox on success
                         val deeplink = "android-app://github.owlmail.mail/mailBoxHostFragment"
                         val request = NavDeepLinkRequest.Builder
                             .fromUri(deeplink.toUri())
@@ -68,11 +75,14 @@ class AuthFragment : Fragment() {
                             NavOptions.Builder().setPopUpTo(R.id.authFragment, true).build()
                         findNavController()
                             .navigate(request, navOptions)
-                        //save user details
 
                     }
-                    else -> {
+                    AuthState.NON_AUTHENTICATED -> {
+                        //in case of login fail or logout makes auth screen visible
                         binding?.root?.isVisible = true
+                    }
+                    else -> {
+                        binding?.root?.isVisible = false
                     }
                 }
             }

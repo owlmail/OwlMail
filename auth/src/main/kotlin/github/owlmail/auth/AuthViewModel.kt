@@ -12,6 +12,7 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     private val authUseCase: AuthUseCase
 ) : ViewModel() {
+
     val loginState = authUseCase.get()
 
     //logic for login function

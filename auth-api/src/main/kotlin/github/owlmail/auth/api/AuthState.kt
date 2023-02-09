@@ -1,5 +1,7 @@
 package github.owlmail.auth.api
 
-enum class AuthState() {
-    AUTHENTICATED(), NON_AUTHENTICATED()
+sealed interface AuthState {
+    object AUTHENTICATED: AuthState
+    object NON_AUTHENTICATED: AuthState
+    object UNKNOWN: AuthState
 }

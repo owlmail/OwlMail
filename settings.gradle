@@ -29,3 +29,5 @@ buildCache {
     }
 }
 include ':auth-api'
+include ':mail-api'
+include ':contacts-api'

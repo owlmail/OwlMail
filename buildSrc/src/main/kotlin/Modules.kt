@@ -8,4 +8,6 @@ object Modules {
     const val Networking = ":networking"
     const val Contacts = ":contacts"
     const val AuthApi = ":auth-api"
+    const val MailApi = ":mail-api"
+    const val ContactsApi = ":contacts-api"
 }
