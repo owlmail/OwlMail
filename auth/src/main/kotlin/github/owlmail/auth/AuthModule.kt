@@ -11,6 +11,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import github.owlmail.auth.api.AuthUseCase
 import github.owlmail.auth.api.LogoutUseCase
+import github.owlmail.contacts.api.ContactDatabaseDeleteUseCase
+import github.owlmail.mail.api.MailDatabaseDeleteUseCase
 import github.owlmail.networking.AuthIntercepter
 import retrofit2.Retrofit
 import javax.inject.Singleton
@@ -48,6 +50,14 @@ object AuthModule {
     @Singleton
     fun provideLogoutUseCase(
         dataStoreManager: DataStoreManager,
-        authUseCase: AuthUseCase
-    ): LogoutUseCase = LogoutUseCaseImpl(dataStoreManager, authUseCase)
+        authUseCase: AuthUseCase,
+        mailDatabaseDeleteUseCase: MailDatabaseDeleteUseCase,
+        contactDatabaseDeleteUseCase: ContactDatabaseDeleteUseCase
+
+    ): LogoutUseCase = LogoutUseCaseImpl(
+        dataStoreManager,
+        authUseCase,
+        mailDatabaseDeleteUseCase,
+        contactDatabaseDeleteUseCase
+    )
 }

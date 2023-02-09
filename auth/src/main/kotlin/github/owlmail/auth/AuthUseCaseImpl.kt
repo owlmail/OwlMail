@@ -12,10 +12,15 @@ class AuthUseCaseImpl(
     private val repository: AuthRepository,
     private val dataStoreManager: DataStoreManager
 ) : AuthUseCase {
-    private val loginState = MutableStateFlow<AuthState>(AuthState.NON_AUTHENTICATED)
+
+    private val loginState = MutableStateFlow<AuthState>(AuthState.UNKNOWN)
+
+    //
     override suspend fun invoke(userId: String, userPassword: String) {
+
         val userDetails = UserDetails(userId, userPassword)
         val response = repository.userLogin(userDetails.mapToRequestAuth()).mapToResponseState()
+
         when (response) {
             is ResponseState.Success -> {
 
@@ -28,14 +33,15 @@ class AuthUseCaseImpl(
                 dataStoreManager.saveToDataStore(userDetails)
 
                 loginState.value = AuthState.AUTHENTICATED
-                //save user details
 
             }
             is ResponseState.Error -> {
+
                 loginState.value = AuthState.NON_AUTHENTICATED
 
             }
             is ResponseState.Empty -> {
+
                 loginState.value = AuthState.NON_AUTHENTICATED
 
             }

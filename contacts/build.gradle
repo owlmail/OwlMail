@@ -82,4 +82,6 @@ dependencies {
     kapt Dependencies.RoomCompiler
 
     implementation(project(Modules.Networking))
+    implementation(project(Modules.ContactsApi))
+
 }
