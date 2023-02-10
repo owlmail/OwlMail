@@ -7,6 +7,8 @@ object Modules {
     const val LintRules = ":lint-rules"
     const val Networking = ":networking"
     const val Contacts = ":contacts"
+    const val Settings = ":settings"
+
     const val AuthApi = ":auth-api"
     const val MailApi = ":mail-api"
     const val ContactsApi = ":contacts-api"

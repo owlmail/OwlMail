@@ -110,4 +110,5 @@ dependencies {
     implementation(project(Modules.Auth))
     implementation(project(Modules.Mail))
     implementation(project(Modules.Contacts))
+    implementation(project(Modules.Settings))
 }

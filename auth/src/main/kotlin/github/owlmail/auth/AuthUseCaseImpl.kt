@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.first
 
 class AuthUseCaseImpl(
     private val repository: AuthRepository,
-    private val dataStoreManager: DataStoreManager
+    private val dataStoreManager: github.owlmail.core.DataStoreManager
 ) : AuthUseCase {
 
     private val loginState = MutableStateFlow<AuthState>(AuthState.UNKNOWN)
@@ -30,7 +30,7 @@ class AuthUseCaseImpl(
 
                 repository.saveAuthTokens(csrfToken = csrfToken, cookieToken = cookieToken)
 
-                dataStoreManager.saveToDataStore(userDetails)
+                dataStoreManager.saveToDataStore(userId,userPassword)
 
                 loginState.value = AuthState.AUTHENTICATED
 
@@ -50,8 +50,8 @@ class AuthUseCaseImpl(
 
     override suspend fun invoke() {
         val preferences = dataStoreManager.readFromDataStore().first()
-        val userid = preferences[DataStoreManager.userId]
-        val password = preferences[DataStoreManager.password]
+        val userid = preferences[github.owlmail.core.DataStoreManager.USER_ID]
+        val password = preferences[github.owlmail.core.DataStoreManager.PASSWORD]
         if (userid.isNullOrEmpty() || password.isNullOrEmpty()) {
             loginState.value = AuthState.NON_AUTHENTICATED
 

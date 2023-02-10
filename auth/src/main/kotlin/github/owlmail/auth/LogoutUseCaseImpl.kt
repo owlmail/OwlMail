@@ -10,7 +10,7 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
 
 class LogoutUseCaseImpl(
-    private val dataStoreManager: DataStoreManager,
+    private val dataStoreManager: github.owlmail.core.DataStoreManager,
     private val authUseCase: AuthUseCase,
     private val mailDatabaseDeleteUseCase: MailDatabaseDeleteUseCase,
     private val contactDatabaseDeleteUseCase: ContactDatabaseDeleteUseCase
