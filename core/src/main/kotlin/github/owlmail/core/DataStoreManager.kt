@@ -1,4 +1,4 @@
-package github.owlmail.auth
+package github.owlmail.core
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -11,14 +11,14 @@ class DataStoreManager(private val dataStore: DataStore<Preferences>) {
 
     companion object {
 
-        val userId = stringPreferencesKey("User_id")
-        val password = stringPreferencesKey("Password")
+        val USER_ID = stringPreferencesKey("User_id")
+        val PASSWORD = stringPreferencesKey("Password")
     }
 
-    suspend fun saveToDataStore(userDetails: UserDetails) = withContext(Dispatchers.IO) {
+    suspend fun saveToDataStore(userId: String, userPassword: String) = withContext(Dispatchers.IO) {
         dataStore.edit {
-            it[userId] = userDetails.userId
-            it[password] = userDetails.userPassword
+            it[USER_ID] = userId
+            it[PASSWORD] = userPassword
         }
     }
 

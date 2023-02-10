@@ -15,7 +15,7 @@ import androidx.work.WorkManager
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.databinding.MailDetailsBinding
 import github.owlmail.mail.detail.model.ConvDetails
-import github.owlmail.mail.workermanager.AttachmentDownloadWorker
+import github.owlmail.mail.manager.AttachmentDownloadWorker
 import github.owlmail.networking.ResponseState
 
 @AndroidEntryPoint

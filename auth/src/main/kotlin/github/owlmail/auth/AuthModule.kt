@@ -37,19 +37,20 @@ object AuthModule {
 
     @Provides
     @Singleton
-    fun provideDataStoreManager(dataStore: DataStore<Preferences>) = DataStoreManager(dataStore)
+    fun provideDataStoreManager(dataStore: DataStore<Preferences>) =
+        github.owlmail.core.DataStoreManager(dataStore)
 
     @Provides
     @Singleton
     fun provideAuthUseCase(
         authRepository: AuthRepository,
-        dataStoreManager: DataStoreManager
+        dataStoreManager: github.owlmail.core.DataStoreManager
     ): AuthUseCase = AuthUseCaseImpl(authRepository, dataStoreManager)
 
     @Provides
     @Singleton
     fun provideLogoutUseCase(
-        dataStoreManager: DataStoreManager,
+        dataStoreManager: github.owlmail.core.DataStoreManager,
         authUseCase: AuthUseCase,
         mailDatabaseDeleteUseCase: MailDatabaseDeleteUseCase,
         contactDatabaseDeleteUseCase: ContactDatabaseDeleteUseCase

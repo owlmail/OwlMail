@@ -77,12 +77,13 @@ dependencies {
     implementation Dependencies.NavigationUI
     implementation Dependencies.FeaturesNavigation
 
+
     //data store
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-
 
     implementation(project(Modules.Networking))
     implementation(project(Modules.AuthApi))
     implementation(project(Modules.MailApi))
     implementation(project(Modules.ContactsApi))
+    implementation(project(Modules.Core))
 }
