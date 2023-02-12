@@ -12,4 +12,5 @@ object Modules {
     const val AuthApi = ":auth-api"
     const val MailApi = ":mail-api"
     const val ContactsApi = ":contacts-api"
+    const val SettingsApi = ":settings-api"
 }
