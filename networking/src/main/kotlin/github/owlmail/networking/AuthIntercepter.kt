@@ -8,6 +8,9 @@ class AuthIntercepter : Interceptor {
     var csrfToken = ""
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
+        if (cookie.isEmpty()||csrfToken.isEmpty()){
+            return chain.proceed(request)
+        }
         val newRequest = request.newBuilder().addHeader(
             "Cookie", "ZM_AUTH_TOKEN=$cookie"
         ).addHeader("X-Zimbra-Csrf-Token", csrfToken)

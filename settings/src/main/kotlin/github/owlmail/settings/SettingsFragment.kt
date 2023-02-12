@@ -4,10 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import github.owlmail.auth.api.AuthNavigationDeeplink
 import github.owlmail.settings.databinding.FragmentSettingsBinding
 
 @AndroidEntryPoint
@@ -34,6 +39,13 @@ class SettingsFragment: Fragment() {
     private fun setUpClickListener() {
         binding?.logout?.setOnClickListener{
             viewModel.logout()
+            val request = NavDeepLinkRequest.Builder
+                .fromUri(AuthNavigationDeeplink.AUTH_FRAGMENT.toUri())
+                .build()
+            val navOptions =
+                NavOptions.Builder().setPopUpTo(R.id.settingsFragment, true).build()
+            findNavController()
+                .navigate(request, navOptions)
         }
     }
 
