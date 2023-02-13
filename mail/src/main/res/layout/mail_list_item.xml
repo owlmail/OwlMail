@@ -3,18 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="3dp"
     android:padding="3dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/sender_name"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:text="Sender Name"
         android:textSize="13sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/iv_attachment"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mail_subject"
@@ -25,6 +28,26 @@
         android:textSize="11sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/sender_name" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:srcCompat="@drawable/ic_baseline_outlined_flag_24"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_attachment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/iv_flag"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:srcCompat="@drawable/ic_baseline_attachment_24"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mail_body"

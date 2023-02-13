@@ -43,7 +43,7 @@ data class InboxSearchResponse(
                 @Json(name = "e")
                 val emailAddress: List<EmailAddress?>? = null,
                 @Json(name = "f")
-                val f: String? = null,
+                val flags: String? = null,
                 @Json(name = "fr")
                 val body: String? = null,
                 @Json(name = "id")

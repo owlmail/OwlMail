@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -15,7 +16,7 @@ import androidx.work.WorkManager
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.databinding.MailDetailsBinding
 import github.owlmail.mail.detail.model.ConvDetails
-import github.owlmail.mail.workermanager.AttachmentDownloadWorker
+import github.owlmail.mail.manager.AttachmentDownloadWorker
 import github.owlmail.networking.ResponseState
 
 @AndroidEntryPoint
@@ -68,14 +69,20 @@ class MailDetailFragment : Fragment() {
                     //check and move into rv
                     is ResponseState.Success -> {
 
-
+                        val message = it.data?.body?.searchConvResponse?.message?.firstOrNull()
                         binding?.mailDetailSubject?.text =
-                            if (it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject.isNullOrEmpty()) {
+                            if (message?.subject.isNullOrEmpty()) {
                                 "No Subject"
                             } else {
-                                it.data?.body?.searchConvResponse?.message?.firstOrNull()?.subject
+                                message?.subject
                             }
+                        val hasAttachment = message?.flags?.contains("a",ignoreCase = true)?:false
+                        binding?.ivAttachment?.isVisible = hasAttachment
+                        val isFlagged = message?.flags?.contains("f",ignoreCase = true)?:false
+                        binding?.ivFlag?.isVisible = isFlagged
+
                         mailDetailAdapter.differ.submitList(it.data?.body?.searchConvResponse?.message)
+
                     }
                     is ResponseState.Empty -> {
 

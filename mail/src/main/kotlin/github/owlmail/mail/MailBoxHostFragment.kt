@@ -3,16 +3,20 @@ package github.owlmail.mail
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
+import androidx.core.net.toUri
 import androidx.core.view.MenuProvider
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import androidx.work.*
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import github.owlmail.contacts.api.ContactsNavigationDeeplink
 import github.owlmail.mail.databinding.FragmentMailBoxBinding
-import github.owlmail.mail.workermanager.AttachmentDownloadWorker
-import github.owlmail.mail.workermanager.UnreadMailNotificationWorker
+import github.owlmail.mail.manager.UnreadMailNotificationWorker
+import github.owlmail.settings.api.SettingsNavigationDeeplink
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
@@ -34,10 +38,14 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         tabAdapter = MailBoxTabAdapter(this)
         requireActivity().addMenuProvider(this)
+
         setUpViewPager()
         setUpTabLayout()
+
+        //notification manager for unread mail
         WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
             "OwlMailNotification",
             ExistingPeriodicWorkPolicy.KEEP,
@@ -59,6 +67,8 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
     private fun setUpTabLayout() = binding?.run {
         val tabLayout = tabLayout
         val viewPager = viewPager
+
+        //sets tab names
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabAdapter?.tabList?.getOrNull(position) ?: ""
         }.attach()
@@ -69,7 +79,11 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         super.onDestroyView()
     }
 
+    //search icon in app bar menu
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        if(menu.size()>0){
+            return
+        }
         menuInflater.inflate(R.menu.search_menu_bar, menu)
         menu.forEach {
             when (val view = it.actionView) {
@@ -91,6 +105,23 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
 
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        when(menuItem.itemId){
+            R.id.settings -> {
+                val request = NavDeepLinkRequest.Builder
+                    .fromUri(SettingsNavigationDeeplink.SETTINGS_FRAGMENT.toUri())
+                    .build()
+                findNavController()
+                    .navigate(request)
+            }
+
+            R.id.contacts -> {
+                val request = NavDeepLinkRequest.Builder
+                    .fromUri(ContactsNavigationDeeplink.CONTACTS_FRAGMENT.toUri())
+                    .build()
+                findNavController()
+                    .navigate(request)
+            }
+        }
         return true
     }
 }

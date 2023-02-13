@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.library'
+
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+
+    id 'androidx.navigation.safeargs.kotlin'
+
+    id 'com.google.dagger.hilt.android'
+    id "io.gitlab.arturbosch.detekt"
+}
+
+android {
+    compileSdk AppConfig.CompileSdk
+
+    defaultConfig {
+        minSdk AppConfig.MinSdk
+        targetSdk AppConfig.TargetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility AppConfig.INSTANCE.JDKVersion
+        targetCompatibility AppConfig.INSTANCE.JDKVersion
+        kotlinOptions.languageVersion = AppConfig.KotlinLanguageVersion
+    }
+    kotlinOptions {
+        jvmTarget = AppConfig.JvmTargetVersion
+    }
+    namespace 'github.owlmail.settings'
+    viewBinding {
+        enabled true
+    }
+}
+
+dependencies {
+
+    //Core
+    implementation Dependencies.CoreKTX
+    implementation Dependencies.AppCompat
+
+
+    //View
+    implementation Dependencies.Material
+    implementation Dependencies.ConstraintLayout
+
+
+    //Test
+    testImplementation Dependencies.Junit
+    androidTestImplementation Dependencies.JunitAndroid
+    androidTestImplementation Dependencies.EspressoCore
+
+    //Dagger - Hilt
+    implementation Dependencies.DaggerHilt
+    kapt Dependencies.DaggerHiltCompiler
+
+    //navigation
+    implementation Dependencies.Navigation
+    implementation Dependencies.NavigationUI
+    implementation Dependencies.FeaturesNavigation
+
+    implementation(project(Modules.Core))
+    implementation(project(Modules.AuthApi))
+
+    //data store
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+}

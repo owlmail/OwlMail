@@ -8,4 +8,13 @@
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/contacts"
+        android:title="Contacts"
+        app:showAsAction="never"
+        />
 </menu>

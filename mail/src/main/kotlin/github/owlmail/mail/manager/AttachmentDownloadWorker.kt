@@ -1,4 +1,4 @@
-package github.owlmail.mail.workermanager
+package github.owlmail.mail.manager
 
 import android.content.Context
 import androidx.core.app.NotificationCompat
