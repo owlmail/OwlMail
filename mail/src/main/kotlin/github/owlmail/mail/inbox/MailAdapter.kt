@@ -1,8 +1,10 @@
 package github.owlmail.mail.inbox
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -52,6 +54,17 @@ class MailAdapter() :
             "No Message Body"
         } else {
             item?.body
+        }
+        val hasAttachment = item?.flags?.contains("a",ignoreCase = true)?:false
+        binding.ivAttachment.isVisible = hasAttachment
+        val isFlagged = item?.flags?.contains("f",ignoreCase = true)?:false
+        binding.ivFlag.isVisible = isFlagged
+        val isUnread = item?.flags?.contains("u",ignoreCase = true)?:false
+        if (isUnread){
+            binding.senderName.setTextColor(Color.RED)
+        } else{
+            val textColor = binding.mailSubject.currentTextColor
+            binding.senderName.setTextColor(textColor)
         }
         binding.root.setOnClickListener {
             onClick?.invoke(item?.id)

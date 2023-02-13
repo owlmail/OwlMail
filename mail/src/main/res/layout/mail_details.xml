@@ -4,18 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="10dp">
+    android:padding="10dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mail_detail_subject"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="2"
+        android:ellipsize="end"
         android:text="Mail Subject"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/guideline_subject"
+        app:layout_constraintEnd_toStartOf="@id/iv_attachment"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:srcCompat="@drawable/ic_baseline_outlined_flag_24"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_attachment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/iv_flag"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:srcCompat="@drawable/ic_baseline_attachment_24"/>
 
 
     <androidx.constraintlayout.widget.Guideline

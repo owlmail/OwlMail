@@ -38,6 +38,8 @@ data class MailDetailResponse(
             data class Message(
                 @Json(name = "cid")
                 val cid: String? = null,
+                @Json(name = "f")
+                val flags: String? = null,
                 @Json(name = "cm")
                 val cm: Boolean? = null,
                 @Json(name = "d")

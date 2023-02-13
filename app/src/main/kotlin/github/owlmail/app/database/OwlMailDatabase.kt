@@ -13,7 +13,7 @@ import github.owlmail.mail.inbox.model.InboxSearchResponse
 @TypeConverters(OwlMailConverter::class)
 @Database(
     entities = [InboxSearchResponse.Body.SearchResponse.Conversation::class, MailDetailResponse.Body.SearchConvResponse.Message::class, ContactResponse.Body.SearchGalResponse.Cn::class],
-    version = 3
+    version = 4
 )
 abstract class OwlMailDatabase : RoomDatabase() {
     abstract fun getMailDAO(): MailDAO
