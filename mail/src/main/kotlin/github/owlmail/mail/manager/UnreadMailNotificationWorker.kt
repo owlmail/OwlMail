@@ -39,7 +39,7 @@ class UnreadMailNotificationWorker @AssistedInject constructor(
         when(response){
             is ResponseState.Success-> {
                 val result = response.data?.body?.searchResponse?.conversation?.any {
-                    it?.f?.contains("u", true) == true
+                    it?.flags?.contains("u", true) == true
                 }
                 if (result == true) {
                     val notification = NotificationCompat.Builder(context, "owlmail_notification_id")
