@@ -44,6 +44,7 @@ class MailDetailFragment : Fragment() {
 
     private fun makeApiCall() {
         viewModel.getMailDetail(convDetails = ConvDetails(args.cid ?: ""))
+
     }
 
     private fun setUpRV() {
