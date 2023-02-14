@@ -1,5 +1,6 @@
 package github.owlmail.contacts
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import github.owlmail.contacts.model.ContactRequest
@@ -25,6 +26,8 @@ class ContactPagingSource(
 
             val offset = params.key ?: 0
             val loadSize = params.loadSize
+            val dbList = contactDAO.getAllContacts(loadSize,offset*loadSize, searchContact)
+            Log.e("Preeti","$dbList")
             val contactRequest = ContactRequest(
                 body = ContactRequest.Body(
                     searchGalRequest = ContactRequest.Body.SearchGalRequest(

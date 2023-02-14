@@ -8,8 +8,8 @@ import github.owlmail.mail.detail.model.MailDetailResponse
 
 @Dao
 interface DetailDAO {
-    @Query("SELECT * FROM message")
-    suspend fun getAllMessage(): List<MailDetailResponse.Body.SearchConvResponse.Message>
+    @Query("select * from message where cid=:id")
+    suspend fun getAllMessage(id: String): List<MailDetailResponse.Body.SearchConvResponse.Message>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllMessage(list: List<MailDetailResponse.Body.SearchConvResponse.Message>)

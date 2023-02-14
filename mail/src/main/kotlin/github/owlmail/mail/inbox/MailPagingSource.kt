@@ -1,5 +1,6 @@
 package github.owlmail.mail.inbox
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import github.owlmail.mail.MailRepository
@@ -29,6 +30,8 @@ class MailPagingSource(
 
             val offset = params.key ?: 0
             val loadSize = params.loadSize
+            val dbList = mailDAO.getAllMails(loadSize,offset*loadSize, "\"l\":\"2\"",query)
+            Log.e("Preeti"," $offset $dbList")
             val inboxSearchRequest = InboxSearchRequest(
                 body = InboxSearchRequest.Body(
                     searchRequest = InboxSearchRequest.Body.SearchRequest(
