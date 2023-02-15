@@ -1,5 +1,6 @@
 package github.owlmail.contacts
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -15,10 +16,10 @@ class ContactViewModel @Inject constructor(
     private val contactDAO: ContactDAO
 ) : ViewModel() {
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)
-    fun getPaginatedData(searchContact: String): Flow<PagingData<ContactResponse.Body.SearchGalResponse.Cn>> {
+    fun getPaginatedData(searchContact: String, context: Context): Flow<PagingData<ContactResponse.Body.SearchGalResponse.Cn>> {
         return Pager(pagingConfig, 0) {
 
-            ContactPagingSource(repository, searchContact, contactDAO)
+            ContactPagingSource(repository, searchContact, contactDAO, context)
         }.flow
     }
 }

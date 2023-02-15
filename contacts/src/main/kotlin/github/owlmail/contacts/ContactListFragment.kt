@@ -36,7 +36,7 @@ class ContactListFragment : Fragment() {
 
     fun updateDataInRV(searchContact: String) {
         lifecycleScope.launch() {
-            viewModel.getPaginatedData(searchContact).collect {
+            viewModel.getPaginatedData(searchContact,requireContext()).collect {
                 contactAdapter.submitData(it)
             }
         }
