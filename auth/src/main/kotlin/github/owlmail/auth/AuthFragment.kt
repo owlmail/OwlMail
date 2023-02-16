@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.auth.api.AuthState
 import github.owlmail.auth.databinding.FragmentAuthBinding
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class AuthFragment : Fragment() {
@@ -62,7 +63,7 @@ class AuthFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
 
             //check login state, success or failure
-            viewModel.loginState.collect {
+            viewModel.loginState.collectLatest {
                 when (it) {
                     AuthState.AUTHENTICATED -> {
 

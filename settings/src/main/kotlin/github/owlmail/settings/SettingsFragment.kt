@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.auth.api.AuthNavigationDeeplink
 import github.owlmail.settings.databinding.FragmentSettingsBinding
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class SettingsFragment: Fragment() {
@@ -51,7 +52,7 @@ class SettingsFragment: Fragment() {
 
     private fun subscribeToObserver() {
         lifecycleScope.launchWhenStarted{
-            viewModel.userId.collect {
+            viewModel.userId.collectLatest {
                 binding?.emailId?.text = it
             }
         }
