@@ -1,5 +1,6 @@
 package github.owlmail.mail.detail
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,6 +32,8 @@ class MailDetailViewModel @Inject constructor(
                 val list = result.data?.body?.searchConvResponse?.message?.filterNotNull().orEmpty()
                 detailDAO.insertAllMessage(list)
             }
+            val message = detailDAO.getAllMessage(convDetails.cid)
+            Log.e("Preeti","$message")
         }
     }
 }

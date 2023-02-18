@@ -82,6 +82,7 @@ dependencies {
     implementation Dependencies.Coil
 
     implementation(project(Modules.Networking))
+    implementation(project(Modules.Core))
     implementation(project(Modules.MailApi))
     implementation(project(Modules.SettingsApi))
     implementation(project(Modules.ContactsApi))
@@ -89,6 +90,9 @@ dependencies {
     implementation 'androidx.hilt:hilt-work:1.0.0'
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
     implementation "androidx.work:work-runtime-ktx:2.7.1"
+
+    //data store
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
 
     //room

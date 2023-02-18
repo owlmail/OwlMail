@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-<SmellBaseline>
-  <ManuallySuppressedIssues></ManuallySuppressedIssues>
-  <CurrentIssues>
-    <ID>NewLineAtEndOfFile:ExampleStartupBenchmark.kt$github.owlmail.benchmark.ExampleStartupBenchmark.kt</ID>
-  </CurrentIssues>
-</SmellBaseline>

@@ -1,9 +1,0 @@
-<?xml version="1.0" ?>
-<SmellBaseline>
-  <ManuallySuppressedIssues></ManuallySuppressedIssues>
-  <CurrentIssues>
-    <ID>NewLineAtEndOfFile:LintConstants.kt$github.owlmail.lint.rules.LintConstants.kt</ID>
-    <ID>WildcardImport:AndroidLogDetector.kt$import com.android.tools.lint.detector.api.*</ID>
-    <ID>WildcardImport:PrintlnDetector.kt$import com.android.tools.lint.detector.api.*</ID>
-  </CurrentIssues>
-</SmellBaseline>

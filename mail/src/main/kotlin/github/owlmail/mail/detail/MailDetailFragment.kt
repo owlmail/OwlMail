@@ -18,6 +18,7 @@ import github.owlmail.mail.databinding.MailDetailsBinding
 import github.owlmail.mail.detail.model.ConvDetails
 import github.owlmail.mail.manager.AttachmentDownloadWorker
 import github.owlmail.networking.ResponseState
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class MailDetailFragment : Fragment() {
@@ -44,6 +45,7 @@ class MailDetailFragment : Fragment() {
 
     private fun makeApiCall() {
         viewModel.getMailDetail(convDetails = ConvDetails(args.cid ?: ""))
+
     }
 
     private fun setUpRV() {
@@ -63,7 +65,7 @@ class MailDetailFragment : Fragment() {
     fun subscribeToObservers() {
         //observe state
         lifecycleScope.launchWhenStarted {
-            viewModel.mailDetail.collect { it ->
+            viewModel.mailDetail.collectLatest { it ->
 
                 when (it) {
                     //check and move into rv

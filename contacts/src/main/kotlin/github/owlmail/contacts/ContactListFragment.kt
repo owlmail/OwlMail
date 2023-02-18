@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.contacts.databinding.ContactListBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -29,14 +30,14 @@ class ContactListFragment : Fragment() {
     private fun setUpRecyclerView() {
         binding?.recyclerView?.adapter = contactAdapter
         binding?.editText1?.doAfterTextChanged {
-            updateDataInRV(it?.trim()?.toString() ?: "")
+            viewModel.updateSearchQuery(it?.trim()?.toString() ?: "")
         }
 
     }
 
-    fun updateDataInRV(searchContact: String) {
+    private fun subscribeToObservers() {
         lifecycleScope.launch() {
-            viewModel.getPaginatedData(searchContact).collect {
+            viewModel.getPaginatedData(requireContext()).collectLatest {
                 contactAdapter.submitData(it)
             }
         }
@@ -45,6 +46,7 @@ class ContactListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
+        subscribeToObservers()
     }
 
     override fun onDestroyView() {

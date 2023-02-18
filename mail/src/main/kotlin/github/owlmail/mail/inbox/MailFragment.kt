@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.MailBoxHostFragmentDirections
 import github.owlmail.mail.databinding.FragmentMailBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -33,6 +34,7 @@ class MailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpMailFolder()
         setupRecyclerView()
+        subscribeToObservers()
     }
 
     private fun setUpMailFolder() {
@@ -50,13 +52,13 @@ class MailFragment : Fragment() {
             )
         }
         binding?.recyclerView?.adapter = mailAdapter
-        updateDataInRV()
     }
 
     //when vm paginated refresh call this
-    fun updateDataInRV() {
-        viewModel.getPaginatedData(mailFolder).observe(viewLifecycleOwner) {
-            lifecycleScope.launch() {
+    private fun subscribeToObservers() {
+        lifecycleScope.launch() {
+            viewModel.getPaginatedData(mailFolder).collectLatest {
+
                 mailAdapter.submitData(it)
             }
         }
