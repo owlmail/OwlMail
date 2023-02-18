@@ -1,8 +1,9 @@
-name: OwlMail Github Actions
+name: OwlMail Build Profiler
 
 on:
   push:
-    branches: [ "*" ]
+    branches:
+      - "profiler*"
 jobs:
   build:
 
@@ -27,7 +28,7 @@ jobs:
           DATA: ${{ secrets.GOOGLE_SERVICES }}
         run: echo $DATA > $PWD/app/google-services.json
 
-      - name: Install SDKMAN, Gradle Profiler
+      - name: Install Gradle Profiler
         run: |
           curl -s "https://get.sdkman.io" | bash
           source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -37,24 +38,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: benchmark
-          path: profile-out/benchmark.csv
-
-      - name: Clean project
-        run: ./gradlew clean
-
-      #      - name: Stopping gradle
-      #        run: ./gradlew --stop
-
-      - name: Lint Check
-        run: ./gradlew lintDebug
-
-      - name: Generate Debug Build
-        run: ./gradlew assembleDebug
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Debug Bundle
-          path: app/build/outputs/apk/debug/app-debug.apk
-
-#      - name: Post build project clean up
-#       run: ./gradlew clean
+          path: profile-out/
