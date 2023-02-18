@@ -36,7 +36,7 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: head-benchmark
+          name: benchmark
           path: profile-out/benchmark.csv
 
       - name: Clean project
@@ -48,8 +48,13 @@ jobs:
       - name: Lint Check
         run: ./gradlew lintDebug
 
-      - name: Generate Debug Bundle
-        run: ./gradlew bundleDebug
+      - name: Generate Debug Build
+        run: ./gradlew assembleDebug
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Debug Bundle
+          path: app/build/outputs/apk/debug/app-debug.apk
 
 #      - name: Post build project clean up
 #       run: ./gradlew clean
