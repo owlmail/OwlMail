@@ -34,7 +34,7 @@ jobs:
           sdk install gradleprofiler
           gradle-profiler --benchmark --scenario-file scenarios.txt --warmups 1 --iteration 1
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: benchmark
           path: profile-out/benchmark.csv
@@ -51,7 +51,7 @@ jobs:
       - name: Generate Debug Build
         run: ./gradlew assembleDebug
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: Debug Bundle
           path: app/build/outputs/apk/debug/app-debug.apk
