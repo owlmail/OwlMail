@@ -16,6 +16,7 @@ dependencyResolutionManagement {
 buildCache {
     local {
         enabled = true
+        setRemoveUnusedEntriesAfterDays(30)
     }
 }
 
