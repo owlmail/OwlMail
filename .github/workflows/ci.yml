@@ -27,6 +27,18 @@ jobs:
           DATA: ${{ secrets.GOOGLE_SERVICES }}
         run: echo $DATA > $PWD/app/google-services.json
 
+      - name: Install SDKMAN, Gradle Profiler
+        run: |
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk install gradleprofiler
+          gradle-profiler --benchmark --scenario-file scenarios.txt --warmups 1 --iteration 1
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: head-benchmark
+          path: profile-out/benchmark.csv
+
       - name: Clean project
         run: ./gradlew clean
 
