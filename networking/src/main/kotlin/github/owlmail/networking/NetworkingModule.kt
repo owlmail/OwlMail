@@ -51,4 +51,8 @@ object NetworkingModule {
         .diskCachePolicy(CachePolicy.ENABLED)
         .memoryCachePolicy(CachePolicy.ENABLED)
         .build()
+
+    @Provides
+    @Singleton
+    fun provideNetworkStateFlowBuilder(@ApplicationContext context: Context) = NetworkStateFlowBuilder(context)
 }
