@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import github.owlmail.mail.MailRepository
 import github.owlmail.mail.inbox.database.MailDAO
 import github.owlmail.mail.inbox.model.InboxSearchResponse
+import github.owlmail.networking.NetworkStateFlowBuilder
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
@@ -16,17 +17,20 @@ import javax.inject.Inject
 @HiltViewModel
 class MailViewModel @Inject constructor(
     private val repository: MailRepository,
-    private val mailDAO: MailDAO
+    private val mailDAO: MailDAO,
+    private val networkStateFlowBuilder: NetworkStateFlowBuilder
 ) : ViewModel() {
     private val searchQuery = MutableStateFlow("")
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)
     fun getPaginatedData(mailFolder: String = "inbox"): Flow<PagingData<InboxSearchResponse.Body.SearchResponse.Conversation>> {
         //paging source or paging lib implementation
-        return searchQuery.flatMapLatest {
+        return searchQuery.flatMapLatest { query ->
 
-            Pager(pagingConfig, 0) {
-                MailPagingSource(repository, mailFolder, it, mailDAO)
-            }.flow
+            networkStateFlowBuilder.invoke().flatMapLatest { networkState ->
+                Pager(pagingConfig, 0) {
+                    MailPagingSource(repository, mailFolder, query, mailDAO, networkState)
+                }.flow
+            }
         }
     }
 

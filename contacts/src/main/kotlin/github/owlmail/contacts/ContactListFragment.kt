@@ -37,7 +37,7 @@ class ContactListFragment : Fragment() {
 
     private fun subscribeToObservers() {
         lifecycleScope.launch() {
-            viewModel.getPaginatedData(requireContext()).collectLatest {
+            viewModel.getPaginatedData().collectLatest {
                 contactAdapter.submitData(it)
             }
         }
