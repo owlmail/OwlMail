@@ -57,6 +57,18 @@ android {
     viewBinding {
         enabled true
     }
+    lintOptions {
+        checkDependencies true
+        explainIssues true
+        htmlReport true
+    }
+    detekt {
+        parallel true
+        autoCorrect true
+        reports {
+            html.enabled = true
+        }
+    }
 }
 
 dependencies {

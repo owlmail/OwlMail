@@ -1,10 +1,12 @@
-name: OwlMail Github Actions
+name: OwlMail Debug Apk
 
 on:
   push:
-    branches: [ "*" ]
+    branches:
+      - "*"
+      - "!profiler*"
 jobs:
-  build:
+  debug-apk:
 
     runs-on: ubuntu-latest
 
@@ -26,18 +28,16 @@ jobs:
         env:
           DATA: ${{ secrets.GOOGLE_SERVICES }}
         run: echo $DATA > $PWD/app/google-services.json
-
-      - name: Clean project
-        run: ./gradlew clean
-
       #      - name: Stopping gradle
       #        run: ./gradlew --stop
 
-      - name: Lint Check
-        run: ./gradlew lintDebug
+#      - name: Lint Check
+#        run: ./gradlew lintDebug
 
-      - name: Generate Debug Bundle
-        run: ./gradlew bundleDebug
+      - name: Generate Debug Build
+        run: ./gradlew assembleDebug --scan
 
-#      - name: Post build project clean up
-#       run: ./gradlew clean
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Debug Bundle
+          path: app/build/outputs/apk/debug/app-debug.apk

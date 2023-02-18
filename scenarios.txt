@@ -1,0 +1,4 @@
+clean_build {
+    tasks = [":app:assembleDebug"]
+    cleanup-tasks = ["clean"]
+}
