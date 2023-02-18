@@ -18,13 +18,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.7.21' apply false
     id 'com.android.test' version '7.4.1' apply false
     id "com.osacky.doctor" version "0.8.1"
-//    id "scabbard.gradle" version "0.5.0"
 }
-
-// scabbard {
-//    enabled = true
-//    outputFormat = "svg"
-// }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
