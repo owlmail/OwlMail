@@ -3,7 +3,6 @@ name: OwlMail Detekt
 on:
   push:
     branches:
-      - "*"
       - "detekt*"
 jobs:
   detekt:
