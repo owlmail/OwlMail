@@ -6,7 +6,7 @@ on:
       - "*"
       - "!profiler*"
 jobs:
-  build:
+  lint:
 
     runs-on: ubuntu-latest
 
@@ -31,3 +31,8 @@ jobs:
 
       - name: Lint Check
         run: ./gradlew lintDebug
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Lint-Report
+          path: app/build/reports/lint-results-debug.html

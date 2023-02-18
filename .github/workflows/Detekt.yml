@@ -6,7 +6,7 @@ on:
       - "*"
       - "!profiler*"
 jobs:
-  build:
+  detekt:
 
     runs-on: ubuntu-latest
 

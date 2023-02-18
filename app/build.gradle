@@ -57,6 +57,11 @@ android {
     viewBinding {
         enabled true
     }
+    lintOptions {
+        checkDependencies true
+        explainIssues true
+        htmlReport true
+    }
 }
 
 dependencies {

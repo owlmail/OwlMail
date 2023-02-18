@@ -5,7 +5,7 @@ on:
     branches:
       - "profiler*"
 jobs:
-  build:
+  profiler:
 
     runs-on: ubuntu-latest
 
