@@ -1,6 +1,4 @@
-clean_build_2gb_8workers {
+clean_build {
     tasks = [":app:assembleDebug"]
-    gradle-args = ["--max-workers=8"]
-    jvm-args = ["-Xmx2048m"]
     cleanup-tasks = ["clean"]
 }

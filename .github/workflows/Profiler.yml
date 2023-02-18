@@ -3,7 +3,7 @@ name: OwlMail Build Profiler
 on:
   push:
     branches:
-      - "!profiler*"
+      - "profiler*"
 jobs:
   profiler:
 
