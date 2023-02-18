@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - "*"
-#      - "!profiler*"
+      - "!profiler*"
 jobs:
   debug-apk:
 

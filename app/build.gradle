@@ -62,6 +62,13 @@ android {
         explainIssues true
         htmlReport true
     }
+    detekt {
+        parallel true
+        autoCorrect true
+        reports {
+            html.enabled = true
+        }
+    }
 }
 
 dependencies {

@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - "*"
-      - "!profiler*"
+#      - "!profiler*"
 jobs:
   detekt:
 
@@ -31,3 +31,8 @@ jobs:
 
       - name: Detekt Check
         run: ./gradlew detekt
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Detekt-Report
+          path: app/build/reports/detekt
