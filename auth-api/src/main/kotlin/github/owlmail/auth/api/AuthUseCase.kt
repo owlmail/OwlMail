@@ -3,7 +3,7 @@ package github.owlmail.auth.api
 import kotlinx.coroutines.flow.Flow
 
 interface AuthUseCase {
-    suspend fun invoke(userId: String, userPassword: String)
+    suspend operator fun invoke(userId: String, userPassword: String)
     fun get(): Flow<AuthState>
-    suspend fun invoke()
+    suspend operator fun invoke()
 }

@@ -7,6 +7,7 @@ import androidx.core.net.toUri
 import androidx.core.view.MenuProvider
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -40,7 +41,7 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         super.onViewCreated(view, savedInstanceState)
 
         tabAdapter = MailBoxTabAdapter(this)
-        requireActivity().addMenuProvider(this)
+        requireActivity().addMenuProvider(this,viewLifecycleOwner,Lifecycle.State.RESUMED)
 
         setUpViewPager()
         setUpTabLayout()
@@ -81,9 +82,7 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
 
     //search icon in app bar menu
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        if(menu.size()>0){
-            return
-        }
+
         menuInflater.inflate(R.menu.search_menu_bar, menu)
         menu.forEach {
             when (val view = it.actionView) {

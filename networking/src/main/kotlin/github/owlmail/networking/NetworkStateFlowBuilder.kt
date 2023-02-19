@@ -34,5 +34,5 @@ class NetworkStateFlowBuilder(context: Context) {
         }
     }
 
-    fun invoke() = networkCallbackFlow
+    operator fun invoke() = networkCallbackFlow
 }

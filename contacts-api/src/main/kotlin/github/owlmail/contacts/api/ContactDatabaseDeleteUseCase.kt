@@ -1,5 +1,5 @@
 package github.owlmail.contacts.api
 
 interface ContactDatabaseDeleteUseCase {
-    suspend fun invoke()
+    suspend operator fun invoke()
 }
