@@ -26,7 +26,7 @@ class MailViewModel @Inject constructor(
         //paging source or paging lib implementation
         return searchQuery.flatMapLatest { query ->
 
-            networkStateFlowBuilder.invoke().flatMapLatest { networkState ->
+            networkStateFlowBuilder().flatMapLatest { networkState ->
                 Pager(pagingConfig, 0) {
                     MailPagingSource(repository, mailFolder, query, mailDAO, networkState)
                 }.flow

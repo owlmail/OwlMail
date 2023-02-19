@@ -22,7 +22,7 @@ class ContactViewModel @Inject constructor(
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)
     fun getPaginatedData(): Flow<PagingData<ContactResponse.Body.SearchGalResponse.Cn>> {
         return searchQuery.flatMapLatest {query->
-            networkStateFlowBuilder.invoke().flatMapLatest {networkState->
+            networkStateFlowBuilder().flatMapLatest {networkState->
                 Pager(pagingConfig, 0) {
 
                     ContactPagingSource(repository, query, contactDAO, networkState)

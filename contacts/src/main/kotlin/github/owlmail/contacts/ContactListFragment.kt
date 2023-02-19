@@ -1,12 +1,13 @@
 package github.owlmail.contacts
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.core.widget.doAfterTextChanged
+import android.view.*
+import android.widget.SearchView
+import androidx.core.view.MenuProvider
+import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.contacts.databinding.ContactListBinding
@@ -14,7 +15,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ContactListFragment : Fragment() {
+class ContactListFragment : Fragment(), MenuProvider {
     private var binding: ContactListBinding? = null
     private val contactAdapter = ContactAdapter()
     private val viewModel: ContactViewModel by viewModels()
@@ -29,9 +30,6 @@ class ContactListFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         binding?.recyclerView?.adapter = contactAdapter
-        binding?.editText1?.doAfterTextChanged {
-            viewModel.updateSearchQuery(it?.trim()?.toString() ?: "")
-        }
 
     }
 
@@ -45,6 +43,9 @@ class ContactListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().addMenuProvider(this,viewLifecycleOwner,Lifecycle.State.RESUMED)
+
         setUpRecyclerView()
         subscribeToObservers()
     }
@@ -52,5 +53,31 @@ class ContactListFragment : Fragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+
+        menuInflater.inflate(R.menu.contacts_menu, menu)
+
+        menu.forEach {
+            when (val view = it.actionView) {
+                is SearchView -> {
+                    view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            return true
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            viewModel.updateSearchQuery(newText?.trim().orEmpty())
+                            return true
+                        }
+                    })
+                }
+            }
+        }
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return true
     }
 }

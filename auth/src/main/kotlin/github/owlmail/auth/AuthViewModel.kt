@@ -19,13 +19,13 @@ class AuthViewModel @Inject constructor(
     //flow or livedata to observe login state
     fun userLogin(userDetails: UserDetails) {
         viewModelScope.launch(Dispatchers.IO) {
-            authUseCase.invoke(userDetails.userId, userDetails.userPassword)
+            authUseCase(userDetails.userId, userDetails.userPassword)
         }
     }
 
     fun tryAuthFromLocal() {
         viewModelScope.launch(Dispatchers.IO) {
-            authUseCase.invoke()
+            authUseCase()
         }
     }
 

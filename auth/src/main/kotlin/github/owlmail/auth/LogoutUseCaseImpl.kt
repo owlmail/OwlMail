@@ -19,13 +19,13 @@ class LogoutUseCaseImpl(
         awaitAll(
             async {
                 dataStoreManager.clearDataStore()
-                authUseCase.invoke()
+                authUseCase()
             },
             async {
-                mailDatabaseDeleteUseCase.invoke()
+                mailDatabaseDeleteUseCase()
             },
             async {
-                contactDatabaseDeleteUseCase.invoke()
+                contactDatabaseDeleteUseCase()
             }
         )
         Unit
