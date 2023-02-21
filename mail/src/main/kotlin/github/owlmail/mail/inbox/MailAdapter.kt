@@ -12,12 +12,11 @@ import github.owlmail.mail.R
 import github.owlmail.mail.databinding.MailListItemBinding
 import github.owlmail.mail.inbox.model.InboxSearchResponse
 
-class MailAdapter() :
+class MailAdapter(private val onMailClick: OnMailClick) :
     PagingDataAdapter<InboxSearchResponse.Body.SearchResponse.Conversation, RecyclerView.ViewHolder>(
         diffCallback = MailListDiffer()
     ) {
     //item in rv consists of sender name first line of subject and first line of body
-    var onClick: ((String?) -> Unit)? = null //store a func in var returns void
 
     class MailListDiffer :
         DiffUtil.ItemCallback<InboxSearchResponse.Body.SearchResponse.Conversation>() {
@@ -67,7 +66,7 @@ class MailAdapter() :
             binding.senderName.setTextColor(textColor)
         }
         binding.root.setOnClickListener {
-            onClick?.invoke(item?.id)
+            onMailClick.invoke(item?.id)
         }
     }
 

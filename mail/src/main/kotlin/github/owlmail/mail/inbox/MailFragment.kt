@@ -17,9 +17,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MailFragment : Fragment() {
+class MailFragment : Fragment(), OnMailClick {
     @Inject
-    lateinit var mailAdapter : MailAdapter
+    lateinit var mailAdapter: MailAdapter
     private var mailFolder = "inbox"
     private var binding: FragmentMailBinding? = null
     private val viewModel: MailViewModel by viewModels()
@@ -46,13 +46,7 @@ class MailFragment : Fragment() {
     }
 
     fun setupRecyclerView() {
-        mailAdapter.onClick = {
-            findNavController().navigate(
-                MailBoxHostFragmentDirections.actionMailBoxHostFragmentToMailDetailFragment(
-                    it
-                )
-            )
-        }
+
         binding?.recyclerView?.adapter = mailAdapter
     }
 
@@ -82,5 +76,13 @@ class MailFragment : Fragment() {
 
     fun doAfterTextChanged(query: String) {
         viewModel.updateSearchQuery(query)
+    }
+
+    override fun invoke(conversationUID: String?) {
+        findNavController().navigate(
+            MailBoxHostFragmentDirections.actionMailBoxHostFragmentToMailDetailFragment(
+                conversationUID
+            )
+        )
     }
 }
