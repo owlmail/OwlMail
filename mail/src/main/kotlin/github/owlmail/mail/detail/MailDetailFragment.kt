@@ -22,12 +22,13 @@ import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MailDetailFragment : Fragment() {
+class MailDetailFragment : Fragment(), OnMailDetailClick {
     private var binding: MailDetailsBinding? = null
     private val viewModel: MailDetailViewModel by viewModels()
     private val args: MailDetailFragmentArgs by navArgs()
+
     @Inject
-    lateinit var mailDetailAdapter : MailDetailAdapter
+    lateinit var mailDetailAdapter: MailDetailAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,16 +52,6 @@ class MailDetailFragment : Fragment() {
     }
 
     private fun setUpRV() {
-        mailDetailAdapter.onClick = { fileName, part, id ->
-            val data = Data.Builder().putString("id", id).putString("part", part)
-                .putString("filename", fileName).build()
-            WorkManager.getInstance(requireContext()).enqueueUniqueWork(
-                "OwlMailDownload",
-                ExistingWorkPolicy.KEEP,
-                OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build()
-            )
-
-        }
         binding?.recyclerView1?.adapter = mailDetailAdapter
     }
 
@@ -80,9 +71,10 @@ class MailDetailFragment : Fragment() {
                             } else {
                                 message?.subject
                             }
-                        val hasAttachment = message?.flags?.contains("a",ignoreCase = true)?:false
+                        val hasAttachment =
+                            message?.flags?.contains("a", ignoreCase = true) ?: false
                         binding?.ivAttachment?.isVisible = hasAttachment
-                        val isFlagged = message?.flags?.contains("f",ignoreCase = true)?:false
+                        val isFlagged = message?.flags?.contains("f", ignoreCase = true) ?: false
                         binding?.ivFlag?.isVisible = isFlagged
 
                         mailDetailAdapter.differ.submitList(it.data?.body?.searchConvResponse?.message)
@@ -102,5 +94,15 @@ class MailDetailFragment : Fragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
+    }
+
+    override fun invoke(fileName: String?, part: String?, messageId: String?) {
+        val data = Data.Builder().putString("id", messageId).putString("part", part)
+            .putString("filename", fileName).build()
+        WorkManager.getInstance(requireContext()).enqueueUniqueWork(
+            "OwlMailDownload",
+            ExistingWorkPolicy.KEEP,
+            OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build()
+        )
     }
 }
