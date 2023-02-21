@@ -2,6 +2,9 @@ plugins {
     id 'com.android.library'
 
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+
+    id 'com.google.dagger.hilt.android'
 
     id "io.gitlab.arturbosch.detekt"
 
@@ -52,6 +55,11 @@ dependencies {
     testImplementation Dependencies.Junit
     androidTestImplementation Dependencies.JunitAndroid
     androidTestImplementation Dependencies.EspressoCore
+
+    //Dagger - Hilt
+    implementation Dependencies.DaggerHilt
+    kapt Dependencies.DaggerHiltCompiler
+
 
     //data store
     implementation("androidx.datastore:datastore-preferences:1.0.0")

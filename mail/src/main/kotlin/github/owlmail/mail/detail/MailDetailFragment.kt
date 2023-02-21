@@ -19,13 +19,15 @@ import github.owlmail.mail.detail.model.ConvDetails
 import github.owlmail.mail.manager.AttachmentDownloadWorker
 import github.owlmail.networking.ResponseState
 import kotlinx.coroutines.flow.collectLatest
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MailDetailFragment : Fragment() {
     private var binding: MailDetailsBinding? = null
     private val viewModel: MailDetailViewModel by viewModels()
     private val args: MailDetailFragmentArgs by navArgs()
-    private val mailDetailAdapter = MailDetailAdapter()
+    @Inject
+    lateinit var mailDetailAdapter : MailDetailAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
