@@ -19,10 +19,13 @@ import github.owlmail.mail.databinding.FragmentMailBoxBinding
 import github.owlmail.mail.manager.UnreadMailNotificationWorker
 import github.owlmail.settings.api.SettingsNavigationDeeplink
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MailBoxHostFragment : Fragment(), MenuProvider {
-    private var tabAdapter: MailBoxTabAdapter? = null
+
+    @Inject
+    lateinit var tabAdapter: MailBoxTabAdapter
 
     //adapter for viewpager
     //tablayout and viewpager plugin
@@ -40,7 +43,6 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tabAdapter = MailBoxTabAdapter(this)
         requireActivity().addMenuProvider(this,viewLifecycleOwner,Lifecycle.State.RESUMED)
 
         setUpViewPager()

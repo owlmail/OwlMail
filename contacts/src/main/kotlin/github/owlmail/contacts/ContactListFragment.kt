@@ -13,11 +13,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.contacts.databinding.ContactListBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ContactListFragment : Fragment(), MenuProvider {
     private var binding: ContactListBinding? = null
-    private val contactAdapter = ContactAdapter()
+
+    @Inject
+    lateinit var contactAdapter : ContactAdapter
     private val viewModel: ContactViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,

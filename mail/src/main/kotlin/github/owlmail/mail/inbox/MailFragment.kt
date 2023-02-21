@@ -14,10 +14,12 @@ import github.owlmail.mail.MailBoxHostFragmentDirections
 import github.owlmail.mail.databinding.FragmentMailBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MailFragment : Fragment() {
-    private val mailAdapter = MailAdapter()
+    @Inject
+    lateinit var mailAdapter : MailAdapter
     private var mailFolder = "inbox"
     private var binding: FragmentMailBinding? = null
     private val viewModel: MailViewModel by viewModels()
