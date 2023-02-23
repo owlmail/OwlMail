@@ -61,6 +61,7 @@ class MailFragment : Fragment(), OnMailClick {
     }
 
     override fun onDestroyView() {
+        binding?.recyclerView?.adapter = null
         binding = null
         super.onDestroyView()
     }
