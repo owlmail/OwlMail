@@ -54,6 +54,7 @@ class ContactListFragment : Fragment(), MenuProvider {
     }
 
     override fun onDestroyView() {
+        binding?.recyclerView?.adapter = null
         binding = null
         super.onDestroyView()
     }

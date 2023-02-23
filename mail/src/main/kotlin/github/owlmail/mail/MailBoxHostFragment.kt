@@ -78,6 +78,7 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
     }
 
     override fun onDestroyView() {
+        binding?.viewPager?.adapter = null
         binding = null
         super.onDestroyView()
     }
