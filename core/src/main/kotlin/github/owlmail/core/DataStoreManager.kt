@@ -21,7 +21,6 @@ class DataStoreManager(private val dataStore: DataStore<Preferences>) {
         dataStore.edit {
             it[USER_ID] = userId
             it[PASSWORD] = userPassword
-
         }
     }
 
@@ -33,7 +32,7 @@ class DataStoreManager(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    suspend fun saveToDataStore(timeStamp: Long) = withContext(Dispatchers.IO){
+    suspend fun saveToDataStore(timeStamp: Long) = withContext(Dispatchers.IO) {
         dataStore.edit {
             it[NOTIFICATION_TIME_STAMP] = timeStamp
         }

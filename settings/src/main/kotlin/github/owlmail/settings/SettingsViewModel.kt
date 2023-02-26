@@ -16,13 +16,13 @@ import javax.inject.Inject
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val dataStoreManager: DataStoreManager,
-    private val logoutUseCase: LogoutUseCase
+    private val logoutUseCase: LogoutUseCase,
 ) : ViewModel() {
     val userId = dataStoreManager.readFromDataStore().map {
         it[USER_ID]
     }.stateIn(viewModelScope, SharingStarted.Lazily, "")
 
-    fun logout(){
+    fun logout() {
         viewModelScope.launch(Dispatchers.IO) {
             logoutUseCase()
         }

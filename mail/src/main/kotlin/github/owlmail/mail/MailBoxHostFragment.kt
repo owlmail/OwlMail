@@ -27,14 +27,14 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
     @Inject
     lateinit var tabAdapter: MailBoxTabAdapter
 
-    //adapter for viewpager
-    //tablayout and viewpager plugin
-    //check navigation
+    // adapter for viewpager
+    // tablayout and viewpager plugin
+    // check navigation
     private var binding: FragmentMailBoxBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentMailBoxBinding.inflate(inflater)
         return binding?.root
@@ -43,23 +43,22 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireActivity().addMenuProvider(this,viewLifecycleOwner,Lifecycle.State.RESUMED)
+        requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         setUpViewPager()
         setUpTabLayout()
 
-        //notification manager for unread mail
+        // notification manager for unread mail
         WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
             "OwlMailNotification",
             ExistingPeriodicWorkPolicy.KEEP,
             PeriodicWorkRequestBuilder<UnreadMailNotificationWorker>(
                 15,
-                TimeUnit.MINUTES
+                TimeUnit.MINUTES,
             ).setConstraints(
-                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-            ).build()
+                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build(),
+            ).build(),
         )
-
     }
 
     private fun setUpViewPager() = binding?.viewPager?.run {
@@ -71,7 +70,7 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         val tabLayout = tabLayout
         val viewPager = viewPager
 
-        //sets tab names
+        // sets tab names
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabAdapter?.tabList?.getOrNull(position) ?: ""
         }.attach()
@@ -83,9 +82,8 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         super.onDestroyView()
     }
 
-    //search icon in app bar menu
+    // search icon in app bar menu
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-
         menuInflater.inflate(R.menu.search_menu_bar, menu)
         menu.forEach {
             when (val view = it.actionView) {
@@ -105,9 +103,8 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         }
     }
 
-
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        when(menuItem.itemId){
+        when (menuItem.itemId) {
             R.id.settings -> {
                 val request = NavDeepLinkRequest.Builder
                     .fromUri(SettingsNavigationDeeplink.SETTINGS_FRAGMENT.toUri())

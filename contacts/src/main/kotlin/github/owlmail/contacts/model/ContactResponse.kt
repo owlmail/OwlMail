@@ -1,6 +1,5 @@
 package github.owlmail.contacts.model
 
-
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
@@ -13,12 +12,12 @@ data class ContactResponse(
     @Json(name = "Header")
     val header: Header? = null,
     @Json(name = "_jsns")
-    val jsns: String? = null
+    val jsns: String? = null,
 ) {
     @JsonClass(generateAdapter = true)
     data class Body(
         @Json(name = "SearchGalResponse")
-        val searchGalResponse: SearchGalResponse? = null
+        val searchGalResponse: SearchGalResponse? = null,
     ) {
         @JsonClass(generateAdapter = true)
         data class SearchGalResponse(
@@ -33,7 +32,7 @@ data class ContactResponse(
             @Json(name = "paginationSupported")
             val paginationSupported: Boolean? = null,
             @Json(name = "sortBy")
-            val sortBy: String? = null
+            val sortBy: String? = null,
         ) {
             @JsonClass(generateAdapter = true)
             @Entity(tableName = "contact")
@@ -45,7 +44,8 @@ data class ContactResponse(
                 @Json(name = "fileAsStr")
                 val fileAsStr: String? = null,
                 @Json(name = "id")
-                @PrimaryKey val id: String = "",
+                @PrimaryKey
+                val id: String = "",
                 @Json(name = "l")
                 val l: String? = null,
                 @Json(name = "ref")
@@ -53,7 +53,7 @@ data class ContactResponse(
                 @Json(name = "rev")
                 val rev: Int? = null,
                 @Json(name = "sf")
-                val sf: String? = null
+                val sf: String? = null,
             ) {
                 @JsonClass(generateAdapter = true)
                 data class Attrs(
@@ -80,7 +80,7 @@ data class ContactResponse(
                     @Json(name = "zimbraId")
                     val zimbraId: String? = null,
                     @Json(name = "zimbraNotes")
-                    val zimbraNotes: String? = null
+                    val zimbraNotes: String? = null,
                 )
             }
         }
@@ -89,19 +89,19 @@ data class ContactResponse(
     @JsonClass(generateAdapter = true)
     data class Header(
         @Json(name = "context")
-        val context: Context? = null
+        val context: Context? = null,
     ) {
         @JsonClass(generateAdapter = true)
         data class Context(
             @Json(name = "change")
             val change: Change? = null,
             @Json(name = "_jsns")
-            val jsns: String? = null
+            val jsns: String? = null,
         ) {
             @JsonClass(generateAdapter = true)
             data class Change(
                 @Json(name = "token")
-                val token: Int? = null
+                val token: Int? = null,
             )
         }
     }

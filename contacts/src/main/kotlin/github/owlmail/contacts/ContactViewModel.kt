@@ -16,19 +16,17 @@ import javax.inject.Inject
 class ContactViewModel @Inject constructor(
     private val repository: ContactRepository,
     private val contactDAO: ContactDAO,
-    private val networkStateFlowBuilder: NetworkStateFlowBuilder
+    private val networkStateFlowBuilder: NetworkStateFlowBuilder,
 ) : ViewModel() {
     private val searchQuery = MutableStateFlow("")
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)
     fun getPaginatedData(): Flow<PagingData<ContactResponse.Body.SearchGalResponse.Cn>> {
-        return searchQuery.flatMapLatest {query->
-            networkStateFlowBuilder().flatMapLatest {networkState->
+        return searchQuery.flatMapLatest { query ->
+            networkStateFlowBuilder().flatMapLatest { networkState ->
                 Pager(pagingConfig, 0) {
-
                     ContactPagingSource(repository, query, contactDAO, networkState)
                 }.flow
             }
-
         }
     }
     fun updateSearchQuery(query: String) {

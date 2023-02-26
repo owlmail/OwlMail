@@ -28,8 +28,8 @@ class NetworkStateFlowBuilder(context: Context) {
         val networkRequest =
             NetworkRequest.Builder().addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
                 .build()
-        connectivityManager.registerNetworkCallback(networkRequest,networkStateCallback)
-        awaitClose{
+        connectivityManager.registerNetworkCallback(networkRequest, networkStateCallback)
+        awaitClose {
             connectivityManager.unregisterNetworkCallback(networkStateCallback)
         }
     }

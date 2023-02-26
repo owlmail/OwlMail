@@ -10,13 +10,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val authUseCase: AuthUseCase
+    private val authUseCase: AuthUseCase,
 ) : ViewModel() {
 
     val loginState = authUseCase.get()
 
-    //logic for login function
-    //flow or livedata to observe login state
+    // logic for login function
+    // flow or livedata to observe login state
     fun userLogin(userDetails: UserDetails) {
         viewModelScope.launch(Dispatchers.IO) {
             authUseCase(userDetails.userId, userDetails.userPassword)

@@ -17,7 +17,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object MailModule {
 
-    //move moshi and retrofit to networking
+    // move moshi and retrofit to networking
     @Provides
     @Singleton
     fun providesService(retrofit: Retrofit) = retrofit.create(MailService::class.java)
@@ -31,11 +31,10 @@ object MailModule {
     fun provideNotificationManager(@ApplicationContext context: Context) =
         NotificationManager(context)
 
-
     @Provides
     @Singleton
     fun provideMailDatabaseDeleteUseCase(
         mailDAO: MailDAO,
-        detailDAO: DetailDAO
+        detailDAO: DetailDAO,
     ): MailDatabaseDeleteUseCase = MailDatabaseDeleteUseCaseImpl(mailDAO, detailDAO)
 }

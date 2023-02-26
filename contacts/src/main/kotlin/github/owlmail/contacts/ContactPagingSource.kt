@@ -15,7 +15,7 @@ class ContactPagingSource(
     private val repository: ContactRepository,
     private val searchContact: String,
     private val contactDAO: ContactDAO,
-    private val networkState: NetworkState
+    private val networkState: NetworkState,
 ) :
     PagingSource<Int, ContactResponse.Body.SearchGalResponse.Cn>() {
 
@@ -25,7 +25,6 @@ class ContactPagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ContactResponse.Body.SearchGalResponse.Cn> =
         withContext(Dispatchers.IO) {
-
             val offset = params.key ?: 0
             val loadSize = params.loadSize
             if (networkState == NetworkState.Unavailable) {
@@ -37,7 +36,9 @@ class ContactPagingSource(
                     prevKey = null,
                     nextKey = if (dbList.size < loadSize) {
                         null
-                    } else offset + 1
+                    } else {
+                        offset + 1
+                    },
                 )
             }
             val contactRequest = ContactRequest(
@@ -46,9 +47,9 @@ class ContactPagingSource(
                         jsns = "urn:zimbraAccount",
                         limit = loadSize,
                         offset = offset,
-                        name = "$searchContact"
-                    )
-                )
+                        name = "$searchContact",
+                    ),
+                ),
             )
             when (val response = repository.getContactList(contactRequest).mapToResponseState()) {
                 is ResponseState.Success -> {
@@ -60,13 +61,14 @@ class ContactPagingSource(
                         prevKey = null,
                         nextKey = if (response.data?.body?.searchGalResponse?.more == true) {
                             offset + 1
-                        } else null
+                        } else {
+                            null
+                        },
                     )
                 }
                 else -> {
                     LoadResult.Error(Throwable(response.message))
                 }
             }
-
         }
 }

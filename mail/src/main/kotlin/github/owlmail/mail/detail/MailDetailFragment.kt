@@ -33,7 +33,7 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = MailDetailsBinding.inflate(inflater)
         return binding?.root
@@ -48,7 +48,6 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
 
     private fun makeApiCall() {
         viewModel.getMailDetail(convDetails = ConvDetails(args.cid ?: ""))
-
     }
 
     private fun setUpRV() {
@@ -56,14 +55,13 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
     }
 
     fun subscribeToObservers() {
-        //observe state
+        // observe state
         lifecycleScope.launchWhenStarted {
             viewModel.mailDetail.collectLatest { it ->
 
                 when (it) {
-                    //check and move into rv
+                    // check and move into rv
                     is ResponseState.Success -> {
-
                         val message = it.data?.body?.searchConvResponse?.message?.firstOrNull()
                         binding?.mailDetailSubject?.text =
                             if (message?.subject.isNullOrEmpty()) {
@@ -78,13 +76,10 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
                         binding?.ivFlag?.isVisible = isFlagged
 
                         mailDetailAdapter.differ.submitList(it.data?.body?.searchConvResponse?.message)
-
                     }
                     is ResponseState.Empty -> {
-
                     }
                     is ResponseState.Error -> {
-
                     }
                 }
             }
@@ -102,7 +97,7 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
         WorkManager.getInstance(requireContext()).enqueueUniqueWork(
             "OwlMailDownload",
             ExistingWorkPolicy.KEEP,
-            OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build()
+            OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build(),
         )
     }
 }

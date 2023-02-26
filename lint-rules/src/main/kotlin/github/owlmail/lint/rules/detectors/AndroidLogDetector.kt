@@ -23,16 +23,16 @@ class AndroidLogDetector : Detector(), SourceCodeScanner {
             location = context.getCallLocation(
                 call = node,
                 includeReceiver = true,
-                includeArguments = true
+                includeArguments = true,
             ),
-            message = "android.util.Log usage is forbidden."
+            message = "android.util.Log usage is forbidden.",
         )
     }
 
     companion object {
         private val IMPLEMENTATION = Implementation(
             AndroidLogDetector::class.java,
-            Scope.JAVA_FILE_SCOPE
+            Scope.JAVA_FILE_SCOPE,
         )
 
         val ISSUE: Issue = Issue
@@ -46,7 +46,7 @@ class AndroidLogDetector : Detector(), SourceCodeScanner {
                 priority = 9,
                 severity = Severity.ERROR,
                 androidSpecific = true,
-                implementation = IMPLEMENTATION
+                implementation = IMPLEMENTATION,
             )
     }
 }

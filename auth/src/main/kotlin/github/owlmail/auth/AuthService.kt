@@ -6,9 +6,8 @@ import retrofit2.http.POST
 
 interface AuthService {
 
-    //retrofit get/post calls
+    // retrofit get/post calls
     @POST("service/soap/AuthRequest")
 
     suspend fun makeAuthRequest(@Body authRequest: RequestAuth): Response<ResponseAuth>
-
 }

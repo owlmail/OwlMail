@@ -22,22 +22,22 @@ object DependencyVersion {
     // Lint
     const val Lint = "30.2.2"
 
-    //moshi
+    // moshi
     const val Moshi = "1.14.0"
     const val MoshiRetrofitConverter = "2.9.0"
 
-    //paging
+    // paging
     const val Paging = "3.1.1"
 
-    //Navigation
+    // Navigation
     const val Navigation = "2.5.3"
 
-    //viewpager
+    // viewpager
     const val ViewPager = "1.0.0"
 
-    //coil
+    // coil
     const val Coil = "2.2.2"
 
-    //room
+    // room
     const val Room = "2.5.0"
 }
