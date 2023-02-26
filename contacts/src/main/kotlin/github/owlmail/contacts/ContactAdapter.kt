@@ -11,20 +11,20 @@ import github.owlmail.contacts.model.ContactResponse
 
 class ContactAdapter :
     PagingDataAdapter<ContactResponse.Body.SearchGalResponse.Cn, RecyclerView.ViewHolder>(
-        diffCallback = ContactListDiffer()
+        diffCallback = ContactListDiffer(),
     ) {
     class ContactListDiffer :
         DiffUtil.ItemCallback<ContactResponse.Body.SearchGalResponse.Cn>() {
         override fun areItemsTheSame(
             oldItem: ContactResponse.Body.SearchGalResponse.Cn,
-            newItem: ContactResponse.Body.SearchGalResponse.Cn
+            newItem: ContactResponse.Body.SearchGalResponse.Cn,
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
             oldItem: ContactResponse.Body.SearchGalResponse.Cn,
-            newItem: ContactResponse.Body.SearchGalResponse.Cn
+            newItem: ContactResponse.Body.SearchGalResponse.Cn,
         ): Boolean {
             return oldItem == newItem
         }
@@ -32,7 +32,7 @@ class ContactAdapter :
 
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,
-        position: Int
+        position: Int,
     ) {
         val binding = ContactListItemBinding.bind(holder.itemView)
         val item = getItem(position)

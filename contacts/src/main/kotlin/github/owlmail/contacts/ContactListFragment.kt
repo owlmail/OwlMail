@@ -20,12 +20,12 @@ class ContactListFragment : Fragment(), MenuProvider {
     private var binding: ContactListBinding? = null
 
     @Inject
-    lateinit var contactAdapter : ContactAdapter
+    lateinit var contactAdapter: ContactAdapter
     private val viewModel: ContactViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = ContactListBinding.inflate(inflater)
         return binding?.root
@@ -33,7 +33,6 @@ class ContactListFragment : Fragment(), MenuProvider {
 
     private fun setUpRecyclerView() {
         binding?.recyclerView?.adapter = contactAdapter
-
     }
 
     private fun subscribeToObservers() {
@@ -47,7 +46,7 @@ class ContactListFragment : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireActivity().addMenuProvider(this,viewLifecycleOwner,Lifecycle.State.RESUMED)
+        requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         setUpRecyclerView()
         subscribeToObservers()
@@ -60,7 +59,6 @@ class ContactListFragment : Fragment(), MenuProvider {
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-
         menuInflater.inflate(R.menu.contacts_menu, menu)
 
         menu.forEach {

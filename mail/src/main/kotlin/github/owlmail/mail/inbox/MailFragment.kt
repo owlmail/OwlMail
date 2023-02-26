@@ -26,7 +26,7 @@ class MailFragment : Fragment(), OnMailClick {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentMailBinding.inflate(inflater)
         return binding?.root
@@ -46,15 +46,13 @@ class MailFragment : Fragment(), OnMailClick {
     }
 
     fun setupRecyclerView() {
-
         binding?.recyclerView?.adapter = mailAdapter
     }
 
-    //when vm paginated refresh call this
+    // when vm paginated refresh call this
     private fun subscribeToObservers() {
         lifecycleScope.launch() {
             viewModel.getPaginatedData(mailFolder).collectLatest {
-
                 mailAdapter.submitData(it)
             }
         }
@@ -82,8 +80,8 @@ class MailFragment : Fragment(), OnMailClick {
     override fun invoke(conversationUID: String?) {
         findNavController().navigate(
             MailBoxHostFragmentDirections.actionMailBoxHostFragmentToMailDetailFragment(
-                conversationUID
-            )
+                conversationUID,
+            ),
         )
     }
 }

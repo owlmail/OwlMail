@@ -18,12 +18,12 @@ import javax.inject.Inject
 class MailViewModel @Inject constructor(
     private val repository: MailRepository,
     private val mailDAO: MailDAO,
-    private val networkStateFlowBuilder: NetworkStateFlowBuilder
+    private val networkStateFlowBuilder: NetworkStateFlowBuilder,
 ) : ViewModel() {
     private val searchQuery = MutableStateFlow("")
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)
     fun getPaginatedData(mailFolder: String = "inbox"): Flow<PagingData<InboxSearchResponse.Body.SearchResponse.Conversation>> {
-        //paging source or paging lib implementation
+        // paging source or paging lib implementation
         return searchQuery.flatMapLatest { query ->
 
             networkStateFlowBuilder().flatMapLatest { networkState ->

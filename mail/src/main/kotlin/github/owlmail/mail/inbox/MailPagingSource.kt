@@ -18,18 +18,17 @@ class MailPagingSource(
     private val mailFolder: String,
     private val query: String,
     private val mailDAO: MailDAO,
-    private val networkState: NetworkState
+    private val networkState: NetworkState,
 ) :
     PagingSource<Int, InboxSearchResponse.Body.SearchResponse.Conversation>() {
 
-    //call getMailList from repo
+    // call getMailList from repo
     override fun getRefreshKey(state: PagingState<Int, InboxSearchResponse.Body.SearchResponse.Conversation>): Int? {
         return null
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, InboxSearchResponse.Body.SearchResponse.Conversation> =
         withContext(Dispatchers.IO) {
-
             val offset = params.key ?: 0
             val loadSize = params.loadSize
             if (networkState == NetworkState.Unavailable) {
@@ -40,7 +39,9 @@ class MailPagingSource(
                     prevKey = null,
                     nextKey = if (dbList.size < loadSize) {
                         null
-                    } else offset + 1
+                    } else {
+                        offset + 1
+                    },
                 )
             }
 
@@ -50,9 +51,9 @@ class MailPagingSource(
                         jsns = "urn:zimbraMail",
                         limit = loadSize,
                         offset = offset,
-                        query = "$query in:$mailFolder".trim()
-                    )
-                )
+                        query = "$query in:$mailFolder".trim(),
+                    ),
+                ),
             )
             when (val response = repository.getMailList(inboxSearchRequest).mapToResponseState()) {
                 is ResponseState.Success -> {
@@ -64,13 +65,14 @@ class MailPagingSource(
                         prevKey = null,
                         nextKey = if (response.data?.body?.searchResponse?.more == true) {
                             offset + 1
-                        } else null
+                        } else {
+                            null
+                        },
                     )
                 }
                 else -> {
                     LoadResult.Error(Throwable(response.message))
                 }
             }
-
         }
 }

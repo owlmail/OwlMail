@@ -13,7 +13,7 @@ class LogoutUseCaseImpl(
     private val dataStoreManager: github.owlmail.core.DataStoreManager,
     private val authUseCase: AuthUseCase,
     private val mailDatabaseDeleteUseCase: MailDatabaseDeleteUseCase,
-    private val contactDatabaseDeleteUseCase: ContactDatabaseDeleteUseCase
+    private val contactDatabaseDeleteUseCase: ContactDatabaseDeleteUseCase,
 ) : LogoutUseCase {
     override suspend fun invoke() = withContext(Dispatchers.IO) {
         awaitAll(
@@ -26,7 +26,7 @@ class LogoutUseCaseImpl(
             },
             async {
                 contactDatabaseDeleteUseCase()
-            }
+            },
         )
         Unit
     }

@@ -14,22 +14,22 @@ import github.owlmail.mail.inbox.model.InboxSearchResponse
 
 class MailAdapter(private val onMailClick: OnMailClick) :
     PagingDataAdapter<InboxSearchResponse.Body.SearchResponse.Conversation, RecyclerView.ViewHolder>(
-        diffCallback = MailListDiffer()
+        diffCallback = MailListDiffer(),
     ) {
-    //item in rv consists of sender name first line of subject and first line of body
+    // item in rv consists of sender name first line of subject and first line of body
 
     class MailListDiffer :
         DiffUtil.ItemCallback<InboxSearchResponse.Body.SearchResponse.Conversation>() {
         override fun areItemsTheSame(
             oldItem: InboxSearchResponse.Body.SearchResponse.Conversation,
-            newItem: InboxSearchResponse.Body.SearchResponse.Conversation
+            newItem: InboxSearchResponse.Body.SearchResponse.Conversation,
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
             oldItem: InboxSearchResponse.Body.SearchResponse.Conversation,
-            newItem: InboxSearchResponse.Body.SearchResponse.Conversation
+            newItem: InboxSearchResponse.Body.SearchResponse.Conversation,
         ): Boolean {
             return oldItem == newItem
         }
@@ -37,7 +37,7 @@ class MailAdapter(private val onMailClick: OnMailClick) :
 
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,
-        position: Int
+        position: Int,
     ) {
         val binding = MailListItemBinding.bind(holder.itemView)
         val item = getItem(position)
@@ -54,14 +54,14 @@ class MailAdapter(private val onMailClick: OnMailClick) :
         } else {
             item?.body
         }
-        val hasAttachment = item?.flags?.contains("a",ignoreCase = true)?:false
+        val hasAttachment = item?.flags?.contains("a", ignoreCase = true) ?: false
         binding.ivAttachment.isVisible = hasAttachment
-        val isFlagged = item?.flags?.contains("f",ignoreCase = true)?:false
+        val isFlagged = item?.flags?.contains("f", ignoreCase = true) ?: false
         binding.ivFlag.isVisible = isFlagged
-        val isUnread = item?.flags?.contains("u",ignoreCase = true)?:false
-        if (isUnread){
+        val isUnread = item?.flags?.contains("u", ignoreCase = true) ?: false
+        if (isUnread) {
             binding.senderName.setTextColor(Color.RED)
-        } else{
+        } else {
             val textColor = binding.mailSubject.currentTextColor
             binding.senderName.setTextColor(textColor)
         }
@@ -77,5 +77,4 @@ class MailAdapter(private val onMailClick: OnMailClick) :
     }
 
     inner class MailListViewHolder(view: View) : RecyclerView.ViewHolder(view)
-
 }

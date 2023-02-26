@@ -24,8 +24,8 @@ interface MailService {
 
     @GET("service/home/~/")
     suspend fun getMailAttachment(
-        @Query("id") messageId : String?,
+        @Query("id") messageId: String?,
         @Query("part") part: String?,
-        @Query("auth") authType: String = "co"
+        @Query("auth") authType: String = "co",
     ): ResponseBody
 }

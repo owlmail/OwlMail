@@ -14,7 +14,6 @@ object Dependencies {
     const val DaggerHiltCompiler =
         "com.google.dagger:hilt-android-compiler:${DependencyVersion.DaggerHilt}"
 
-
     // Firebase
     const val FirebaseBom =
         "com.google.firebase:firebase-bom:${DependencyVersion.FirebaseBom}"
@@ -30,16 +29,16 @@ object Dependencies {
 
     const val Lint = "com.android.tools.lint:lint-api:${DependencyVersion.Lint}"
 
-    //moshi
+    // moshi
     const val Moshi = "com.squareup.moshi:moshi-kotlin:${DependencyVersion.Moshi}"
     const val MoshiKapt = "com.squareup.moshi:moshi-kotlin-codegen:${DependencyVersion.Moshi}"
     const val MoshiRetrofitConverter =
         "com.squareup.retrofit2:converter-moshi:${DependencyVersion.MoshiRetrofitConverter}"
 
-    //paging
+    // paging
     const val Paging = "androidx.paging:paging-runtime:${DependencyVersion.Paging}"
 
-    //navigation
+    // navigation
     const val Navigation =
         "androidx.navigation:navigation-fragment-ktx:${DependencyVersion.Navigation}"
     const val NavigationUI = "androidx.navigation:navigation-ui-ktx:${DependencyVersion.Navigation}"
@@ -49,7 +48,7 @@ object Dependencies {
     const val ViewPager = "androidx.viewpager2:viewpager2:${DependencyVersion.ViewPager}"
     const val Coil = "io.coil-kt:coil-base:${DependencyVersion.Coil}"
 
-    //room
+    // room
     const val RoomKTX = "androidx.room:room-ktx:${DependencyVersion.Room}"
     const val RoomCompiler = "androidx.room:room-compiler:${DependencyVersion.Room}"
 }

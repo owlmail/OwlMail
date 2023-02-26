@@ -14,7 +14,7 @@ interface MailDAO {
         limit: Int,
         offset: Int,
         folder: String,
-        query: String
+        query: String,
     ): List<InboxSearchResponse.Body.SearchResponse.Conversation>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

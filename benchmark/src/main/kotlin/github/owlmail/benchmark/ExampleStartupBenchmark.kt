@@ -30,7 +30,7 @@ class ExampleStartupBenchmark {
         packageName = "github.owlmail.app",
         metrics = listOf(StartupTimingMetric()),
         iterations = 5,
-        startupMode = StartupMode.COLD
+        startupMode = StartupMode.COLD,
     ) {
         pressHome()
         startActivityAndWait()
