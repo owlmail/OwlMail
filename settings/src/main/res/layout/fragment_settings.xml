@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="1234@nitrkl.ac.in"
+            android:text="@string/_1234_nitrkl_ac_in"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Preeti sk"
+            android:text="@string/preeti_sk"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintTop_toBottomOf="@+id/email_id" />
 
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Notifications"
+            android:text="@string/notifications"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Theme"
+            android:text="@string/theme"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintTop_toBottomOf="@+id/notification_settings"
 
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Terms and Conditions"
+            android:text="@string/terms_and_conditions"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintTop_toBottomOf="@+id/theme"
 
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Privacy Policy"
+            android:text="@string/privacy_policy"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintTop_toBottomOf="@+id/terms_conditions"
 
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Logout"
+            android:text="@string/logout"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintTop_toBottomOf="@+id/privacy_policy"
 

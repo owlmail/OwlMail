@@ -16,8 +16,8 @@
         android:id="@+id/mail_from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="From:"
+        android:layout_marginStart="10dp"
+        android:text="@string/from"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:id="@+id/mail_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To:"
+        android:text="@string/to"
         app:layout_constraintEnd_toEndOf="@+id/mail_from"
         app:layout_constraintTop_toBottomOf="@+id/mail_from" />
 
@@ -33,8 +33,8 @@
         android:id="@+id/sender_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:text="sender@mail.com"
+        android:layout_marginStart="5dp"
+        android:text="@string/sender_mail_com"
         app:layout_constraintStart_toEndOf="@id/mail_from"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +42,7 @@
         android:id="@+id/receiver_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="reciever@mail.com"
+        android:text="@string/receiver_mail_com"
         app:layout_constraintStart_toStartOf="@+id/sender_id"
         app:layout_constraintTop_toBottomOf="@+id/sender_id" />
 
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Mail Body"
+        android:text="@string/mail_body"
         app:layout_constraintTop_toBottomOf="@id/guideline_from_to" />
 
     <HorizontalScrollView
@@ -64,7 +64,7 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/attachment_container"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 

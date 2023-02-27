@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:maxLines="2"
         android:ellipsize="end"
-        android:text="Mail Subject"
+        android:text="@string/mail_subject"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/guideline_subject"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Reply"
+        android:text="@string/reply"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
 
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Reply to all"
+        android:text="@string/reply_to_all"
         app:layout_constraintStart_toEndOf="@id/reply_button"
         app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
 
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Forward"
+        android:text="@string/forward"
         app:layout_constraintStart_toEndOf="@id/reply_to_all_button"
         app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
 
@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="More Options"
+        android:text="@string/more_options"
         app:layout_constraintStart_toEndOf="@id/forward_button"
         app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
 
