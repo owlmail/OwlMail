@@ -5,16 +5,16 @@
     <item
         android:id="@+id/app_bar_search"
         android:icon="@drawable/ic_baseline_search_24"
-        android:title="Search"
+        android:title="@string/search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
     <item
         android:id="@+id/contacts"
-        android:title="Contacts"
+        android:title="@string/contacts"
         app:showAsAction="never"
         />
     <item
         android:id="@+id/settings"
-        android:title="Settings"
+        android:title="@string/settings"
         app:showAsAction="never"/>
 </menu>

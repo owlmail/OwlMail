@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fullname">Fullname</string>
+    <string name="email">Email:</string>
+    <string name="fullname_email_com">fullname@email.com</string>
+    <string name="search">Search</string>
+</resources>

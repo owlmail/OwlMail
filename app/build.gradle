@@ -61,6 +61,7 @@ android {
         checkDependencies true
         explainIssues true
         htmlReport true
+        baseline file("lint-baseline.xml")
     }
     detekt {
         parallel true
@@ -113,7 +114,7 @@ dependencies {
 
     implementation 'androidx.hilt:hilt-work:1.0.0'
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
-    implementation "androidx.work:work-runtime-ktx:2.7.1"
+    implementation "androidx.work:work-runtime-ktx:2.8.0"
     implementation("androidx.core:core-splashscreen:1.0.0")
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 
