@@ -1,18 +1,17 @@
 package github.owlmail.contacts.model
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ContactRequest(
     @Json(name = "Body")
-    val body: Body? = null
+    val body: Body? = null,
 ) {
     @JsonClass(generateAdapter = true)
     data class Body(
         @Json(name = "SearchGalRequest")
-        val searchGalRequest: SearchGalRequest? = null
+        val searchGalRequest: SearchGalRequest? = null,
     ) {
         @JsonClass(generateAdapter = true)
         data class SearchGalRequest(
@@ -23,7 +22,7 @@ data class ContactRequest(
             @Json(name = "name")
             val name: String? = null,
             @Json(name = "offset")
-            val offset: Int? = null
+            val offset: Int? = null,
         )
     }
 }

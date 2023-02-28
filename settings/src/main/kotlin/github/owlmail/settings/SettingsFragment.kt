@@ -17,14 +17,14 @@ import github.owlmail.settings.databinding.FragmentSettingsBinding
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class SettingsFragment: Fragment() {
+class SettingsFragment : Fragment() {
 
     private var binding: FragmentSettingsBinding? = null
     private val viewModel: SettingsViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentSettingsBinding.inflate(inflater)
         return binding?.root
@@ -38,7 +38,7 @@ class SettingsFragment: Fragment() {
     }
 
     private fun setUpClickListener() {
-        binding?.logout?.setOnClickListener{
+        binding?.logout?.setOnClickListener {
             viewModel.logout()
             val request = NavDeepLinkRequest.Builder
                 .fromUri(AuthNavigationDeeplink.AUTH_FRAGMENT.toUri())
@@ -51,7 +51,7 @@ class SettingsFragment: Fragment() {
     }
 
     private fun subscribeToObserver() {
-        lifecycleScope.launchWhenStarted{
+        lifecycleScope.launchWhenStarted {
             viewModel.userId.collectLatest {
                 binding?.emailId?.text = it
             }

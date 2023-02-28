@@ -25,5 +25,5 @@ object ContactModule {
 
     @Provides
     @Singleton
-    fun providesContactDatabaseDeleteUseCase(contactDAO: ContactDAO):ContactDatabaseDeleteUseCase = ContactDatabaseDeleteUseCaseImpl(contactDAO)
+    fun providesContactDatabaseDeleteUseCase(contactDAO: ContactDAO): ContactDatabaseDeleteUseCase = ContactDatabaseDeleteUseCaseImpl(contactDAO)
 }

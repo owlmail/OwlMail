@@ -14,17 +14,19 @@ import github.owlmail.mail.MailBoxHostFragmentDirections
 import github.owlmail.mail.databinding.FragmentMailBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class MailFragment : Fragment() {
-    private val mailAdapter = MailAdapter()
+class MailFragment : Fragment(), OnMailClick {
+    @Inject
+    lateinit var mailAdapter: MailAdapter
     private var mailFolder = "inbox"
     private var binding: FragmentMailBinding? = null
     private val viewModel: MailViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentMailBinding.inflate(inflater)
         return binding?.root
@@ -44,27 +46,20 @@ class MailFragment : Fragment() {
     }
 
     fun setupRecyclerView() {
-        mailAdapter.onClick = {
-            findNavController().navigate(
-                MailBoxHostFragmentDirections.actionMailBoxHostFragmentToMailDetailFragment(
-                    it
-                )
-            )
-        }
         binding?.recyclerView?.adapter = mailAdapter
     }
 
-    //when vm paginated refresh call this
+    // when vm paginated refresh call this
     private fun subscribeToObservers() {
         lifecycleScope.launch() {
             viewModel.getPaginatedData(mailFolder).collectLatest {
-
                 mailAdapter.submitData(it)
             }
         }
     }
 
     override fun onDestroyView() {
+        binding?.recyclerView?.adapter = null
         binding = null
         super.onDestroyView()
     }
@@ -80,5 +75,13 @@ class MailFragment : Fragment() {
 
     fun doAfterTextChanged(query: String) {
         viewModel.updateSearchQuery(query)
+    }
+
+    override fun invoke(conversationUID: String?) {
+        findNavController().navigate(
+            MailBoxHostFragmentDirections.actionMailBoxHostFragmentToMailDetailFragment(
+                conversationUID,
+            ),
+        )
     }
 }

@@ -46,9 +46,13 @@ object NetworkingModule {
     @Singleton
     fun provideCoilImageLoader(
         @ApplicationContext context: Context,
-        okHttpClient: OkHttpClient
+        okHttpClient: OkHttpClient,
     ) = ImageLoader.Builder(context).okHttpClient(okHttpClient)
         .diskCachePolicy(CachePolicy.ENABLED)
         .memoryCachePolicy(CachePolicy.ENABLED)
         .build()
+
+    @Provides
+    @Singleton
+    fun provideNetworkStateFlowBuilder(@ApplicationContext context: Context) = NetworkStateFlowBuilder(context)
 }

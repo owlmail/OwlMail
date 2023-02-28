@@ -11,7 +11,6 @@ import coil.request.ImageRequest
 class HtmlCoilImageLoader(private val textView: TextView, private val imageLoader: ImageLoader) :
     Html.ImageGetter {
 
-
     override fun getDrawable(source: String?): Drawable {
         val drawablePlaceholder = DrawablePlaceHolder()
         val request = ImageRequest.Builder(textView.context)

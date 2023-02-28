@@ -19,18 +19,21 @@ import github.owlmail.mail.detail.model.ConvDetails
 import github.owlmail.mail.manager.AttachmentDownloadWorker
 import github.owlmail.networking.ResponseState
 import kotlinx.coroutines.flow.collectLatest
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class MailDetailFragment : Fragment() {
+class MailDetailFragment : Fragment(), OnMailDetailClick {
     private var binding: MailDetailsBinding? = null
     private val viewModel: MailDetailViewModel by viewModels()
     private val args: MailDetailFragmentArgs by navArgs()
-    private val mailDetailAdapter = MailDetailAdapter()
+
+    @Inject
+    lateinit var mailDetailAdapter: MailDetailAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = MailDetailsBinding.inflate(inflater)
         return binding?.root
@@ -45,32 +48,20 @@ class MailDetailFragment : Fragment() {
 
     private fun makeApiCall() {
         viewModel.getMailDetail(convDetails = ConvDetails(args.cid ?: ""))
-
     }
 
     private fun setUpRV() {
-        mailDetailAdapter.onClick = { fileName, part, id ->
-            val data = Data.Builder().putString("id", id).putString("part", part)
-                .putString("filename", fileName).build()
-            WorkManager.getInstance(requireContext()).enqueueUniqueWork(
-                "OwlMailDownload",
-                ExistingWorkPolicy.KEEP,
-                OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build()
-            )
-
-        }
         binding?.recyclerView1?.adapter = mailDetailAdapter
     }
 
     fun subscribeToObservers() {
-        //observe state
+        // observe state
         lifecycleScope.launchWhenStarted {
             viewModel.mailDetail.collectLatest { it ->
 
                 when (it) {
-                    //check and move into rv
+                    // check and move into rv
                     is ResponseState.Success -> {
-
                         val message = it.data?.body?.searchConvResponse?.message?.firstOrNull()
                         binding?.mailDetailSubject?.text =
                             if (message?.subject.isNullOrEmpty()) {
@@ -78,19 +69,17 @@ class MailDetailFragment : Fragment() {
                             } else {
                                 message?.subject
                             }
-                        val hasAttachment = message?.flags?.contains("a",ignoreCase = true)?:false
+                        val hasAttachment =
+                            message?.flags?.contains("a", ignoreCase = true) ?: false
                         binding?.ivAttachment?.isVisible = hasAttachment
-                        val isFlagged = message?.flags?.contains("f",ignoreCase = true)?:false
+                        val isFlagged = message?.flags?.contains("f", ignoreCase = true) ?: false
                         binding?.ivFlag?.isVisible = isFlagged
 
                         mailDetailAdapter.differ.submitList(it.data?.body?.searchConvResponse?.message)
-
                     }
                     is ResponseState.Empty -> {
-
                     }
                     is ResponseState.Error -> {
-
                     }
                 }
             }
@@ -100,5 +89,15 @@ class MailDetailFragment : Fragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
+    }
+
+    override fun invoke(fileName: String?, part: String?, messageId: String?) {
+        val data = Data.Builder().putString("id", messageId).putString("part", part)
+            .putString("filename", fileName).build()
+        WorkManager.getInstance(requireContext()).enqueueUniqueWork(
+            "OwlMailDownload",
+            ExistingWorkPolicy.KEEP,
+            OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build(),
+        )
     }
 }

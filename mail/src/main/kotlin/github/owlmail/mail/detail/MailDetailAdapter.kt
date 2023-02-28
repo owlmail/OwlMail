@@ -11,20 +11,19 @@ import github.owlmail.mail.R
 import github.owlmail.mail.databinding.ConvMailBodyBinding
 import github.owlmail.mail.detail.model.MailDetailResponse
 
-class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var onClick: ((String?,String?,String?) -> Unit)? = null
+class MailDetailAdapter(private val onMailDetailClick: OnMailDetailClick) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val diffUtilCallback =
         object : DiffUtil.ItemCallback<MailDetailResponse.Body.SearchConvResponse.Message>() {
             override fun areItemsTheSame(
                 oldItem: MailDetailResponse.Body.SearchConvResponse.Message,
-                newItem: MailDetailResponse.Body.SearchConvResponse.Message
+                newItem: MailDetailResponse.Body.SearchConvResponse.Message,
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
                 oldItem: MailDetailResponse.Body.SearchConvResponse.Message,
-                newItem: MailDetailResponse.Body.SearchConvResponse.Message
+                newItem: MailDetailResponse.Body.SearchConvResponse.Message,
             ): Boolean {
                 return oldItem == newItem
             }
@@ -64,7 +63,7 @@ class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
         binding.mailBody.setHtml(messageBody)
         item?.multiPart?.map {
-            it?.renderAttachmentButton(binding,item.id)
+            it?.renderAttachmentButton(binding, item.id)
         }
     }
 
@@ -78,30 +77,30 @@ class MailDetailAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             contentType?.contains("multipart", true) == true -> multiPart?.joinToString {
                 it?.getHtmlData() ?: ""
             } ?: ""
-            contentDescription?.equals("attachment", true) == true -> "" //to download the file
-            //https://mail.nitrkl.ac.in/service/home/~/?auth=co&loc=en_GB&id=19923&part=2
+            contentDescription?.equals("attachment", true) == true -> "" // to download the file
+            // https://mail.nitrkl.ac.in/service/home/~/?auth=co&loc=en_GB&id=19923&part=2
             else -> ""
         }
     }
 
     private fun MailDetailResponse.Body.SearchConvResponse.Message.MultiPart.renderAttachmentButton(
         binding: ConvMailBodyBinding,
-        messageId: String?
+        messageId: String?,
     ) {
         when {
-            contentType?.contains("multipart", true) == true -> multiPart?.map{
-                it?.renderAttachmentButton(binding,messageId)
+            contentType?.contains("multipart", true) == true -> multiPart?.map {
+                it?.renderAttachmentButton(binding, messageId)
             }
             contentDescription?.equals("attachment", true) == true -> {
                 val button = Button(binding.root.context).apply {
                     text = fileName
-                    setOnClickListener{
-                        onClick?.invoke(fileName,part,messageId)
+                    setOnClickListener {
+                        onMailDetailClick.invoke(fileName, part, messageId)
                     }
                 }
                 binding.attachmentContainer.addView(button)
-            }//to download the file
-            //https://mail.nitrkl.ac.in/service/home/~/?auth=co&loc=en_GB&id=19923&part=2
+            } // to download the file
+            // https://mail.nitrkl.ac.in/service/home/~/?auth=co&loc=en_GB&id=19923&part=2
             else -> {}
         }
     }

@@ -10,22 +10,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val authUseCase: AuthUseCase
+    private val authUseCase: AuthUseCase,
 ) : ViewModel() {
 
     val loginState = authUseCase.get()
 
-    //logic for login function
-    //flow or livedata to observe login state
+    // logic for login function
+    // flow or livedata to observe login state
     fun userLogin(userDetails: UserDetails) {
         viewModelScope.launch(Dispatchers.IO) {
-            authUseCase.invoke(userDetails.userId, userDetails.userPassword)
+            authUseCase(userDetails.userId, userDetails.userPassword)
         }
     }
 
     fun tryAuthFromLocal() {
         viewModelScope.launch(Dispatchers.IO) {
-            authUseCase.invoke()
+            authUseCase()
         }
     }
 

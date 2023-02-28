@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MailDetailViewModel @Inject constructor(
     private val repository: MailRepository,
-    private val detailDAO: DetailDAO
+    private val detailDAO: DetailDAO,
 ) : ViewModel() {
     private val _mailDetail =
         MutableStateFlow<ResponseState<MailDetailResponse?>>(ResponseState.Empty)
@@ -33,7 +33,7 @@ class MailDetailViewModel @Inject constructor(
                 detailDAO.insertAllMessage(list)
             }
             val message = detailDAO.getAllMessage(convDetails.cid)
-            Log.e("Preeti","$message")
+            Log.e("Preeti", "$message")
         }
     }
 }

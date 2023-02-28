@@ -25,7 +25,7 @@ class UnreadMailNotificationWorker @AssistedInject constructor(
     @Assisted params: WorkerParameters,
     private val mailRepository: MailRepository,
     private val notificationManager: NotificationManager,
-    private val dataStoreManager: DataStoreManager
+    private val dataStoreManager: DataStoreManager,
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         Log.e("Preeti", "Notification running")
@@ -35,9 +35,9 @@ class UnreadMailNotificationWorker @AssistedInject constructor(
                     jsns = "urn:zimbraMail",
                     limit = 10,
                     offset = 0,
-                    query = "in:inbox"
-                )
-            )
+                    query = "in:inbox",
+                ),
+            ),
         )
         val timeStamp = System.currentTimeMillis()
         val previousTimeStamp =
@@ -46,7 +46,6 @@ class UnreadMailNotificationWorker @AssistedInject constructor(
         val response = mailRepository.getMailList(inboxSearchRequest).mapToResponseState()
         when (response) {
             is ResponseState.Success -> {
-
                 dataStoreManager.saveToDataStore(timeStamp)
 
                 val result = response.data?.body?.searchResponse?.conversation?.any {
