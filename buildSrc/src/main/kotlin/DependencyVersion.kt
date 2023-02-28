@@ -10,6 +10,8 @@ object DependencyVersion {
 
     // Hilt
     const val DaggerHilt = "2.44"
+    const val HiltWork = "1.0.0"
+    const val WorkRuntime = "2.8.0"
 
     // Firebase
     const val FirebaseBom = "30.3.1"
@@ -40,4 +42,23 @@ object DependencyVersion {
 
     // room
     const val Room = "2.5.0"
+
+    // datastore
+    const val Datastore = "1.0.0"
+
+    // coroutine
+    const val Coroutine = "1.6.4"
+
+    // stetho
+    const val Stetho = "1.6.0"
+
+    // benchmark
+    const val UIAutomator = "2.2.0"
+    const val Benchmark = "1.1.0-beta05"
+
+    // Splash screen
+    const val SplashScreen = "1.0.0"
+
+    // leak canary
+    const val LeakCanary = "2.10"
 }
