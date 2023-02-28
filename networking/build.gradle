@@ -70,7 +70,7 @@ dependencies {
     implementation Dependencies.Navigation
     implementation Dependencies.NavigationUI
 
-    debugImplementation 'com.facebook.stetho:stetho-okhttp3:1.6.0'
+    debugImplementation Dependencies.Stetho
     implementation Dependencies.Coil
 
 }

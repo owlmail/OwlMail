@@ -110,13 +110,17 @@ dependencies {
     kapt Dependencies.MoshiKapt
 
 
-    debugImplementation 'com.facebook.stetho:stetho:1.6.0'
+    debugImplementation Dependencies.Stetho
 
-    implementation 'androidx.hilt:hilt-work:1.0.0'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
-    implementation "androidx.work:work-runtime-ktx:2.8.0"
-    implementation("androidx.core:core-splashscreen:1.0.0")
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+    implementation Dependencies.HiltWork
+    kapt Dependencies.HiltCompiler
+    implementation Dependencies.WorkRuntime
+
+    //splash screen
+    implementation Dependencies.SplashScreen
+
+    //leak canary
+    debugImplementation Dependencies.LeakCanary
 
     //room
     implementation Dependencies.RoomKTX
