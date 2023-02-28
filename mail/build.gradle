@@ -92,7 +92,7 @@ dependencies {
     implementation Dependencies.WorkRuntime
 
     //data store
-    implementation Dependencies.Stetho
+    implementation Dependencies.Datastore
 
 
     //room
