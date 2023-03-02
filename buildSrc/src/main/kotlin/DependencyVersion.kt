@@ -24,41 +24,41 @@ object DependencyVersion {
     // Lint
     const val Lint = "30.2.2"
 
-    // moshi
+    // Moshi
     const val Moshi = "1.14.0"
     const val MoshiRetrofitConverter = "2.9.0"
 
-    // paging
+    // Paging
     const val Paging = "3.1.1"
 
     // Navigation
     const val Navigation = "2.5.3"
 
-    // viewpager
+    // Viewpager2
     const val ViewPager = "1.0.0"
 
-    // coil
+    // Coil
     const val Coil = "2.2.2"
 
-    // room
+    // Room
     const val Room = "2.5.0"
 
-    // datastore
+    // Datastore
     const val Datastore = "1.0.0"
 
-    // coroutine
+    // Coroutine
     const val Coroutine = "1.6.4"
 
-    // stetho
+    // Stetho
     const val Stetho = "1.6.0"
 
-    // benchmark
+    // Benchmark
     const val UIAutomator = "2.2.0"
     const val Benchmark = "1.1.0-beta05"
 
     // Splash screen
     const val SplashScreen = "1.0.0"
 
-    // leak canary
+    // Leak canary
     const val LeakCanary = "2.10"
 }

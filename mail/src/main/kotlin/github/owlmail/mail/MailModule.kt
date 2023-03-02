@@ -10,8 +10,8 @@ import github.owlmail.mail.api.MailDatabaseDeleteUseCase
 import github.owlmail.mail.detail.DetailDAO
 import github.owlmail.mail.inbox.database.MailDAO
 import github.owlmail.mail.manager.NotificationManager
-import retrofit2.Retrofit
 import javax.inject.Singleton
+import retrofit2.Retrofit
 
 @Module
 @InstallIn(SingletonComponent::class)

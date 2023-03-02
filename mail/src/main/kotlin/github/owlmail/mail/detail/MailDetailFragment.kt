@@ -18,8 +18,8 @@ import github.owlmail.mail.databinding.MailDetailsBinding
 import github.owlmail.mail.detail.model.ConvDetails
 import github.owlmail.mail.manager.AttachmentDownloadWorker
 import github.owlmail.networking.ResponseState
-import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class MailDetailFragment : Fragment(), OnMailDetailClick {

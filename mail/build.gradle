@@ -68,9 +68,8 @@ dependencies {
     kapt Dependencies.DaggerHiltCompiler
 
     //navigation
+    implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
-    implementation Dependencies.NavigationUI
-    implementation Dependencies.FeaturesNavigation
 
 
     //moshi
@@ -88,7 +87,7 @@ dependencies {
     implementation(project(Modules.ContactsApi))
 
     implementation Dependencies.HiltWork
-    kapt Dependencies.HiltCompiler
+    kapt Dependencies.HiltWorkCompiler
     implementation Dependencies.WorkRuntime
 
     //data store
@@ -96,7 +95,7 @@ dependencies {
 
 
     //room
-    implementation Dependencies.RoomKTX
+    implementation Dependencies.RoomKtx
     kapt Dependencies.RoomCompiler
 
 }

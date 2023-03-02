@@ -1,4 +1,3 @@
-
 package github.owlmail.mail.manager
 
 import android.app.Notification

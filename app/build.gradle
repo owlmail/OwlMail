@@ -101,9 +101,9 @@ dependencies {
     lintChecks project(':lint-rules')
 
     //navigation
+    implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
-    implementation Dependencies.NavigationUI
-    implementation Dependencies.FeaturesNavigation
+
 
     //moshi
     implementation Dependencies.Moshi
@@ -113,7 +113,7 @@ dependencies {
     debugImplementation Dependencies.Stetho
 
     implementation Dependencies.HiltWork
-    kapt Dependencies.HiltCompiler
+    kapt Dependencies.HiltWorkCompiler
     implementation Dependencies.WorkRuntime
 
     //splash screen
@@ -123,7 +123,7 @@ dependencies {
     debugImplementation Dependencies.LeakCanary
 
     //room
-    implementation Dependencies.RoomKTX
+    implementation Dependencies.RoomKtx
     kapt Dependencies.RoomCompiler
 
     implementation(project(Modules.Auth))

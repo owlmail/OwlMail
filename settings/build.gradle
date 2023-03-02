@@ -63,9 +63,9 @@ dependencies {
     kapt Dependencies.DaggerHiltCompiler
 
     //navigation
+    implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
-    implementation Dependencies.NavigationUI
-    implementation Dependencies.FeaturesNavigation
+
 
     implementation(project(Modules.Core))
     implementation(project(Modules.AuthApi))

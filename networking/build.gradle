@@ -67,8 +67,8 @@ dependencies {
     implementation Dependencies.MoshiRetrofitConverter
 
     //navigation
+    implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
-    implementation Dependencies.NavigationUI
 
     debugImplementation Dependencies.Stetho
     implementation Dependencies.Coil

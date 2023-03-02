@@ -9,10 +9,10 @@ import github.owlmail.mail.MailRepository
 import github.owlmail.mail.inbox.database.MailDAO
 import github.owlmail.mail.inbox.model.InboxSearchResponse
 import github.owlmail.networking.NetworkStateFlowBuilder
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
-import javax.inject.Inject
 
 @HiltViewModel
 class MailViewModel @Inject constructor(

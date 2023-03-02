@@ -7,8 +7,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="github.owlmail.settings.SettingsFragment"
-        android:label="SettingsFragment"
-        >
+        android:label="SettingsFragment">
         <deepLink app:uri="android-app://github.owlmail.mail/settingsFragment" />
     </fragment>
 </navigation>

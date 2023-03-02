@@ -73,15 +73,15 @@ dependencies {
     implementation Dependencies.MoshiRetrofitConverter
 
     //navigation
+    implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
-    implementation Dependencies.NavigationUI
-    implementation Dependencies.FeaturesNavigation
+
 
     //paging
     implementation Dependencies.Paging
 
     //room
-    implementation Dependencies.RoomKTX
+    implementation Dependencies.RoomKtx
     kapt Dependencies.RoomCompiler
 
     implementation(project(Modules.Networking))
