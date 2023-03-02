@@ -17,7 +17,8 @@ object MailFragmentModule {
 
     @Provides
     @FragmentScoped
-    fun provideMailDetailAdapter(fragment: Fragment) = MailDetailAdapter(fragment as OnMailDetailClick)
+    fun provideMailDetailAdapter(fragment: Fragment) =
+        MailDetailAdapter(fragment as OnMailDetailClick)
 
     @Provides
     @FragmentScoped
@@ -25,5 +26,6 @@ object MailFragmentModule {
 
     @Provides
     @FragmentScoped
-    fun provideMailBoxTabAdapter(fragment: Fragment) = MailBoxTabAdapter(fragment as MailBoxHostFragment)
+    fun provideMailBoxTabAdapter(fragment: Fragment) =
+        MailBoxTabAdapter(fragment as MailBoxHostFragment)
 }

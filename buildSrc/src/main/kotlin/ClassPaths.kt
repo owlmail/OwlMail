@@ -11,7 +11,8 @@ object ClassPaths {
     const val FirebaseCrashlytics =
         "com.google.firebase:firebase-crashlytics-gradle:${ClassPathVersion.FirebaseCrashlyticsClassPath}"
 
-    const val NavigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${ClassPathVersion.Navigation}"
+    const val NavigationSafeArgs =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${ClassPathVersion.Navigation}"
 
     const val Detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${ClassPathVersion.Detekt}"
 

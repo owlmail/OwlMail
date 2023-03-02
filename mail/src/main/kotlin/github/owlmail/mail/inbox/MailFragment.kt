@@ -12,9 +12,9 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.MailBoxHostFragmentDirections
 import github.owlmail.mail.databinding.FragmentMailBinding
+import javax.inject.Inject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MailFragment : Fragment(), OnMailClick {

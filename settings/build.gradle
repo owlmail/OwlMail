@@ -65,7 +65,7 @@ dependencies {
     //navigation
     implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
-    
+
 
     implementation(project(Modules.Core))
     implementation(project(Modules.AuthApi))

@@ -10,8 +10,8 @@
         android:id="@+id/mail_detail_subject"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxLines="2"
         android:ellipsize="end"
+        android:maxLines="2"
         android:text="@string/mail_subject"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -24,21 +24,21 @@
         android:id="@+id/iv_flag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:srcCompat="@drawable/ic_baseline_outlined_flag_24"/>
+        app:srcCompat="@drawable/ic_baseline_outlined_flag_24"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_attachment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@id/iv_flag"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:srcCompat="@drawable/ic_baseline_attachment_24"/>
+        app:srcCompat="@drawable/ic_baseline_attachment_24"
+        tools:visibility="visible" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -94,7 +94,6 @@
         android:text="@string/more_options"
         app:layout_constraintStart_toEndOf="@id/forward_button"
         app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

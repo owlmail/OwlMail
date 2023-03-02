@@ -103,7 +103,7 @@ dependencies {
     //navigation
     implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
-    
+
 
     //moshi
     implementation Dependencies.Moshi

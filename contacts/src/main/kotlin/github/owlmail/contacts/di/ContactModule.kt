@@ -9,8 +9,8 @@ import github.owlmail.contacts.ContactDatabaseDeleteUseCaseImpl
 import github.owlmail.contacts.ContactRepository
 import github.owlmail.contacts.ContactService
 import github.owlmail.contacts.api.ContactDatabaseDeleteUseCase
-import retrofit2.Retrofit
 import javax.inject.Singleton
+import retrofit2.Retrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -25,5 +25,6 @@ object ContactModule {
 
     @Provides
     @Singleton
-    fun providesContactDatabaseDeleteUseCase(contactDAO: ContactDAO): ContactDatabaseDeleteUseCase = ContactDatabaseDeleteUseCaseImpl(contactDAO)
+    fun providesContactDatabaseDeleteUseCase(contactDAO: ContactDAO): ContactDatabaseDeleteUseCase =
+        ContactDatabaseDeleteUseCaseImpl(contactDAO)
 }

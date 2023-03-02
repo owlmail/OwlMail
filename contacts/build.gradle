@@ -75,7 +75,7 @@ dependencies {
     //navigation
     implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
-    
+
 
     //paging
     implementation Dependencies.Paging

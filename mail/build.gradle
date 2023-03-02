@@ -70,7 +70,6 @@ dependencies {
     //navigation
     implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
-    
 
 
     //moshi

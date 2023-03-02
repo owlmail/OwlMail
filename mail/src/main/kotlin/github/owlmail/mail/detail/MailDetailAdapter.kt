@@ -11,7 +11,8 @@ import github.owlmail.mail.R
 import github.owlmail.mail.databinding.ConvMailBodyBinding
 import github.owlmail.mail.detail.model.MailDetailResponse
 
-class MailDetailAdapter(private val onMailDetailClick: OnMailDetailClick) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MailDetailAdapter(private val onMailDetailClick: OnMailDetailClick) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val diffUtilCallback =
         object : DiffUtil.ItemCallback<MailDetailResponse.Body.SearchConvResponse.Message>() {
             override fun areItemsTheSame(

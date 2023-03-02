@@ -17,12 +17,13 @@ class DataStoreManager(private val dataStore: DataStore<Preferences>) {
         val NOTIFICATION_TIME_STAMP = longPreferencesKey("Notification_last_sync")
     }
 
-    suspend fun saveToDataStore(userId: String, userPassword: String) = withContext(Dispatchers.IO) {
-        dataStore.edit {
-            it[USER_ID] = userId
-            it[PASSWORD] = userPassword
+    suspend fun saveToDataStore(userId: String, userPassword: String) =
+        withContext(Dispatchers.IO) {
+            dataStore.edit {
+                it[USER_ID] = userId
+                it[PASSWORD] = userPassword
+            }
         }
-    }
 
     fun readFromDataStore() = dataStore.data
 

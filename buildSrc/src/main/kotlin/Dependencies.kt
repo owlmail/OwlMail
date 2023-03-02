@@ -63,7 +63,8 @@ object Dependencies {
     const val Datastore = "androidx.datastore:datastore-preferences:${DependencyVersion.Datastore}"
 
     // coroutine
-    const val Coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersion.Coroutine}"
+    const val Coroutine =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersion.Coroutine}"
 
     // stetho
     const val Stetho = "com.facebook.stetho:stetho-okhttp3:${DependencyVersion.Stetho}"
@@ -76,5 +77,6 @@ object Dependencies {
     const val SplashScreen = "androidx.core:core-splashscreen:${DependencyVersion.SplashScreen}"
 
     // leak canary
-    const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:${DependencyVersion.LeakCanary}"
+    const val LeakCanary =
+        "com.squareup.leakcanary:leakcanary-android:${DependencyVersion.LeakCanary}"
 }

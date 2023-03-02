@@ -7,10 +7,10 @@ import androidx.paging.PagingData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import github.owlmail.contacts.model.ContactResponse
 import github.owlmail.networking.NetworkStateFlowBuilder
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
-import javax.inject.Inject
 
 @HiltViewModel
 class ContactViewModel @Inject constructor(
@@ -29,6 +29,7 @@ class ContactViewModel @Inject constructor(
             }
         }
     }
+
     fun updateSearchQuery(query: String) {
         searchQuery.value = query
     }
