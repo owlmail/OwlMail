@@ -28,11 +28,6 @@ jobs:
         env:
           DATA: ${{ secrets.GOOGLE_SERVICES }}
         run: echo $DATA > $PWD/app/google-services.json
-      #      - name: Stopping gradle
-      #        run: ./gradlew --stop
-
-#      - name: Lint Check
-#        run: ./gradlew lintDebug
 
       - name: Generate Debug Build
         run: ./gradlew assembleDebug --scan
