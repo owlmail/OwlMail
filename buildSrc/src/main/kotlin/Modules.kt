@@ -1,11 +1,13 @@
 object Modules {
 
-    const val Auth = ":auth"
     const val Core = ":core"
     const val Design = ":design"
-    const val Mail = ":mail"
-    const val LintRules = ":lint-rules"
     const val Networking = ":networking"
+
+    const val LintRules = ":lint-rules"
+
+    const val Auth = ":auth"
+    const val Mail = ":mail"
     const val Contacts = ":contacts"
     const val Settings = ":settings"
 
