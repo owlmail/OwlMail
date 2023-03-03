@@ -8,7 +8,8 @@ on:
     branches:
       - "*"
       - "!profiler*"
-    types: [assigned, opened, synchronize, reopened]
+    types:
+      - opened
 jobs:
   generate-apk:
 
