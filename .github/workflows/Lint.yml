@@ -30,7 +30,7 @@ jobs:
         run: echo $DATA > $PWD/app/google-services.json
 
       - name: Lint Check
-        run: ./gradlew lintDebug
+        run: ./gradlew lint --scan
 
       - uses: actions/upload-artifact@v3
         with:
