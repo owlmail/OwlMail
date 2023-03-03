@@ -1,4 +1,4 @@
-name: OwlMail Lint
+name: OwlMail Lint Check
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "*"
       - "!profiler*"
 jobs:
-  lint:
+  lint-check:
 
     runs-on: ubuntu-latest
 
