@@ -110,7 +110,7 @@ dependencies {
     kapt Dependencies.MoshiKapt
 
 
-    debugImplementation Dependencies.Stetho
+    implementation Dependencies.Stetho
 
     implementation Dependencies.HiltWork
     kapt Dependencies.HiltWorkCompiler
