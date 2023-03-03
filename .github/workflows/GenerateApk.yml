@@ -3,11 +3,12 @@ name: OwlMail Apk
 on:
   push:
     branches:
-      - "main"
-  pull_request:
-    branches:
       - "*"
       - "!profiler*"
+#  pull_request:
+#    branches:
+#      - "*"
+#      - "!profiler*"
 jobs:
   generate-apk:
 
@@ -23,6 +24,15 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           cache: gradle
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
