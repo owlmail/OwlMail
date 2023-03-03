@@ -3,12 +3,11 @@ name: OwlMail Lint Check
 on:
   push:
     branches:
+      - "main"
+  pull_request_target:
+    branches:
       - "*"
       - "!profiler*"
-#  pull_request:
-#    branches:
-#      - "*"
-#      - "!profiler*"
 jobs:
   lint-check:
 

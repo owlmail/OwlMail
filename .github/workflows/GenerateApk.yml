@@ -3,8 +3,7 @@ name: OwlMail Apk
 on:
   push:
     branches:
-      - "*"
-      - "!profiler*"
+      - "main"
   pull_request_target:
     branches:
       - "*"
