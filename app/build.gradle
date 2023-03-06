@@ -57,18 +57,18 @@ android {
     viewBinding {
         enabled true
     }
-    lintOptions {
-        checkDependencies true
-        explainIssues true
-        htmlReport true
-        baseline file("lint-baseline.xml")
-    }
     detekt {
         parallel true
         autoCorrect true
         reports {
             html.enabled = true
         }
+    }
+    lint {
+        baseline file('lint-baseline.xml')
+        checkDependencies true
+        explainIssues true
+        htmlReport true
     }
 }
 
