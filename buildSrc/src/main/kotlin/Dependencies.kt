@@ -37,7 +37,7 @@ object Dependencies {
 
     // Moshi
     const val Moshi = "com.squareup.moshi:moshi-kotlin:${DependencyVersion.Moshi}"
-    const val MoshiKapt = "com.squareup.moshi:moshi-kotlin-codegen:${DependencyVersion.Moshi}"
+    const val MoshiKsp = "com.squareup.moshi:moshi-kotlin-codegen:${DependencyVersion.Moshi}"
     const val MoshiRetrofitConverter =
         "com.squareup.retrofit2:converter-moshi:${DependencyVersion.MoshiRetrofitConverter}"
 

@@ -10,6 +10,8 @@ plugins {
     id "io.gitlab.arturbosch.detekt"
 
     id 'org.jlleitschuh.gradle.ktlint'
+
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -74,7 +76,7 @@ dependencies {
 
     //moshi
     implementation Dependencies.Moshi
-    kapt Dependencies.MoshiKapt
+    ksp Dependencies.MoshiKsp
     implementation Dependencies.MoshiRetrofitConverter
 
     implementation Dependencies.ViewPager
@@ -96,6 +98,6 @@ dependencies {
 
     //room
     implementation Dependencies.RoomKtx
-    kapt Dependencies.RoomCompiler
+    ksp Dependencies.RoomCompiler
 
 }

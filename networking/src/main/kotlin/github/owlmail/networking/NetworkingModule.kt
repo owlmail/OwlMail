@@ -20,12 +20,12 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 object NetworkingModule {
     @Provides
     @Singleton
-    fun providesAuthIntercepter() = AuthIntercepter()
+    fun providesAuthIntercepter() = AuthInterceptor()
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(authIntercepter: AuthIntercepter) = OkHttpClient.Builder()
-        .addInterceptor(authIntercepter)
+    fun providesOkHttpClient(authInterceptor: AuthInterceptor) = OkHttpClient.Builder()
+        .addInterceptor(authInterceptor)
         .addNetworkInterceptor(StethoInterceptor())
         .build()
 
