@@ -3,7 +3,7 @@ package github.owlmail.networking
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class AuthIntercepter : Interceptor {
+class AuthInterceptor : Interceptor {
     var cookie = ""
     var csrfToken = ""
     override fun intercept(chain: Interceptor.Chain): Response {
