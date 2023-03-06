@@ -14,8 +14,8 @@ import github.owlmail.contacts.api.ContactDatabaseDeleteUseCase
 import github.owlmail.core.DataStoreManager
 import github.owlmail.mail.api.MailDatabaseDeleteUseCase
 import github.owlmail.networking.AuthInterceptor
-import retrofit2.Retrofit
 import javax.inject.Singleton
+import retrofit2.Retrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
