@@ -15,5 +15,5 @@ object ClassPathVersion {
 
     const val Detekt = "1.22.0"
 
-    const val KtLint = "11.1.0"
+    const val KtLint = "11.2.0"
 }

@@ -1,12 +1,17 @@
-name: OwlMail Lint
+name: OwlMail Lint Check
 
 on:
   push:
     branches:
       - "*"
       - "!profiler*"
+#      - "main"
+#  pull_request:
+#    branches:
+#      - "*"
+#      - "!profiler*"
 jobs:
-  lint:
+  lint-check:
 
     runs-on: ubuntu-latest
 
@@ -30,7 +35,7 @@ jobs:
         run: echo $DATA > $PWD/app/google-services.json
 
       - name: Lint Check
-        run: ./gradlew lintDebug
+        run: ./gradlew lint --scan
 
       - uses: actions/upload-artifact@v3
         with:

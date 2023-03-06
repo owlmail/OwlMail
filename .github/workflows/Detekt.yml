@@ -29,7 +29,7 @@ jobs:
         run: echo $DATA > $PWD/app/google-services.json
 
       - name: Detekt Check
-        run: ./gradlew detekt
+        run: ./gradlew detekt --scan
 
       - uses: actions/upload-artifact@v3
         with:

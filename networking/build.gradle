@@ -72,7 +72,7 @@ dependencies {
     implementation Dependencies.FragmentKtx
     implementation Dependencies.Navigation
 
-    debugImplementation Dependencies.Stetho
+    implementation Dependencies.Stetho
     implementation Dependencies.Coil
 
 }

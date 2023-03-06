@@ -21,6 +21,8 @@ class OwlMailApp : Application(), Configuration.Provider {
     override fun onCreate() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
-        Stetho.initializeWithDefaults(this)
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this)
+        }
     }
 }
