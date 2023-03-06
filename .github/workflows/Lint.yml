@@ -3,7 +3,9 @@ name: OwlMail Lint Check
 on:
   push:
     branches:
-      - "main"
+      - "*"
+      - "!profiler*"
+#      - "main"
 #  pull_request:
 #    branches:
 #      - "*"
