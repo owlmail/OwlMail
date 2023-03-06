@@ -13,7 +13,7 @@ import github.owlmail.auth.api.LogoutUseCase
 import github.owlmail.contacts.api.ContactDatabaseDeleteUseCase
 import github.owlmail.core.DataStoreManager
 import github.owlmail.mail.api.MailDatabaseDeleteUseCase
-import github.owlmail.networking.AuthIntercepter
+import github.owlmail.networking.AuthInterceptor
 import javax.inject.Singleton
 import retrofit2.Retrofit
 
@@ -27,8 +27,8 @@ object AuthModule {
 
     @Provides
     @Singleton
-    fun provideRepository(service: AuthService, authIntercepter: AuthIntercepter) =
-        AuthRepository(authIntercepter, service)
+    fun provideRepository(service: AuthService, authInterceptor: AuthInterceptor) =
+        AuthRepository(authInterceptor, service)
 
     @Provides
     @Singleton
