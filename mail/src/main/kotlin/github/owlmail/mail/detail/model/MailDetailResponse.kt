@@ -12,12 +12,12 @@ data class MailDetailResponse(
     @Json(name = "Header")
     val header: Header? = null,
     @Json(name = "_jsns")
-    val jsns: String? = null,
+    val jsns: String? = null
 ) {
     @JsonClass(generateAdapter = true)
     data class Body(
         @Json(name = "SearchConvResponse")
-        val searchConvResponse: SearchConvResponse? = null,
+        val searchConvResponse: SearchConvResponse? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class SearchConvResponse(
@@ -30,7 +30,7 @@ data class MailDetailResponse(
             @Json(name = "offset")
             val offset: String? = null,
             @Json(name = "sortBy")
-            val sortBy: String? = null,
+            val sortBy: String? = null
         ) {
             @JsonClass(generateAdapter = true)
             @Entity(tableName = "message")
@@ -65,7 +65,7 @@ data class MailDetailResponse(
                 @Json(name = "sf")
                 val sf: String? = null,
                 @Json(name = "su")
-                val subject: String? = null,
+                val subject: String? = null
             ) {
                 @JsonClass(generateAdapter = true)
                 data class EmailAddress(
@@ -76,7 +76,7 @@ data class MailDetailResponse(
                     @Json(name = "p")
                     val fullName: String? = null,
                     @Json(name = "t")
-                    val isSenderOrReceiver: String? = null,
+                    val isSenderOrReceiver: String? = null
                 )
 
                 @JsonClass(generateAdapter = true)
@@ -96,7 +96,7 @@ data class MailDetailResponse(
                     @Json(name = "part")
                     val part: String? = null,
                     @Json(name = "s")
-                    val s: Int? = null,
+                    val s: Int? = null
                 )
             }
         }
@@ -105,7 +105,7 @@ data class MailDetailResponse(
     @JsonClass(generateAdapter = true)
     data class Header(
         @Json(name = "context")
-        val context: Context? = null,
+        val context: Context? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class Context(
@@ -114,12 +114,12 @@ data class MailDetailResponse(
             @Json(name = "_jsns")
             val jsns: String? = null,
             @Json(name = "session")
-            val session: Session? = null,
+            val session: Session? = null
         ) {
             @JsonClass(generateAdapter = true)
             data class Change(
                 @Json(name = "token")
-                val token: Int? = null,
+                val token: Int? = null
             )
 
             @JsonClass(generateAdapter = true)
@@ -127,7 +127,7 @@ data class MailDetailResponse(
                 @Json(name = "_content")
                 val content: String? = null,
                 @Json(name = "id")
-                val id: String? = null,
+                val id: String? = null
             )
         }
     }

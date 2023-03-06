@@ -22,16 +22,16 @@ class PrintlnDetector : Detector(), SourceCodeScanner {
             location = context.getCallLocation(
                 call = node,
                 includeReceiver = true,
-                includeArguments = true,
+                includeArguments = true
             ),
-            message = "print() or println() usage is forbidden.",
+            message = "print() or println() usage is forbidden."
         )
     }
 
     companion object {
         private val IMPLEMENTATION = Implementation(
             PrintlnDetector::class.java,
-            Scope.JAVA_FILE_SCOPE,
+            Scope.JAVA_FILE_SCOPE
         )
 
         val ISSUE: Issue = Issue
@@ -45,7 +45,7 @@ class PrintlnDetector : Detector(), SourceCodeScanner {
                 priority = 9,
                 severity = Severity.ERROR,
                 androidSpecific = true,
-                implementation = IMPLEMENTATION,
+                implementation = IMPLEMENTATION
             )
     }
 }

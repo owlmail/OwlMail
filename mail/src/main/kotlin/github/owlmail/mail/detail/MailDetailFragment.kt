@@ -33,7 +33,7 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = MailDetailsBinding.inflate(inflater)
         return binding?.root
@@ -75,7 +75,9 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
                         val isFlagged = message?.flags?.contains("f", ignoreCase = true) ?: false
                         binding?.ivFlag?.isVisible = isFlagged
 
-                        mailDetailAdapter.differ.submitList(it.data?.body?.searchConvResponse?.message)
+                        mailDetailAdapter.differ.submitList(
+                            it.data?.body?.searchConvResponse?.message
+                        )
                     }
                     is ResponseState.Empty -> {
                     }
@@ -97,7 +99,7 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
         WorkManager.getInstance(requireContext()).enqueueUniqueWork(
             "OwlMailDownload",
             ExistingWorkPolicy.KEEP,
-            OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build(),
+            OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build()
         )
     }
 }

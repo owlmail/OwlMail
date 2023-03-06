@@ -43,7 +43,7 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMailBoxBinding.inflate(inflater)
         return binding?.root
@@ -63,10 +63,10 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
             ExistingPeriodicWorkPolicy.KEEP,
             PeriodicWorkRequestBuilder<UnreadMailNotificationWorker>(
                 15,
-                TimeUnit.MINUTES,
+                TimeUnit.MINUTES
             ).setConstraints(
-                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build(),
-            ).build(),
+                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+            ).build()
         )
     }
 

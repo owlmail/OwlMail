@@ -13,7 +13,7 @@ class AuthIntercepter : Interceptor {
         }
         val newRequest = request.newBuilder().addHeader(
             "Cookie",
-            "ZM_AUTH_TOKEN=$cookie",
+            "ZM_AUTH_TOKEN=$cookie"
         ).addHeader("X-Zimbra-Csrf-Token", csrfToken)
             .build()
         return chain.proceed(newRequest)

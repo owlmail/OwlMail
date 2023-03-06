@@ -6,7 +6,7 @@ import github.owlmail.mail.inbox.database.MailDAO
 
 class MailDatabaseDeleteUseCaseImpl(
     private val mailDAO: MailDAO,
-    private val detailDAO: DetailDAO,
+    private val detailDAO: DetailDAO
 ) : MailDatabaseDeleteUseCase {
     override suspend fun invoke() {
         mailDAO.deleteAllMails()

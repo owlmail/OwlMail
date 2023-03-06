@@ -39,7 +39,7 @@ object AuthModule {
     @Singleton
     fun provideAuthUseCase(
         authRepository: AuthRepository,
-        dataStoreManager: DataStoreManager,
+        dataStoreManager: DataStoreManager
     ): AuthUseCase = AuthUseCaseImpl(authRepository, dataStoreManager)
 
     @Provides
@@ -48,12 +48,12 @@ object AuthModule {
         dataStoreManager: DataStoreManager,
         authUseCase: AuthUseCase,
         mailDatabaseDeleteUseCase: MailDatabaseDeleteUseCase,
-        contactDatabaseDeleteUseCase: ContactDatabaseDeleteUseCase,
+        contactDatabaseDeleteUseCase: ContactDatabaseDeleteUseCase
 
-        ): LogoutUseCase = LogoutUseCaseImpl(
+    ): LogoutUseCase = LogoutUseCaseImpl(
         dataStoreManager,
         authUseCase,
         mailDatabaseDeleteUseCase,
-        contactDatabaseDeleteUseCase,
+        contactDatabaseDeleteUseCase
     )
 }

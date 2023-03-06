@@ -10,7 +10,7 @@ import github.owlmail.lint.rules.detectors.PrintlnDetector
 class OwlMailLintIssueRegistry : IssueRegistry() {
     override val issues = listOf(
         AndroidLogDetector.ISSUE,
-        PrintlnDetector.ISSUE,
+        PrintlnDetector.ISSUE
     )
 
     override val api = CURRENT_API

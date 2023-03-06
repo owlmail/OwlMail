@@ -15,7 +15,7 @@ class ContactPagingSource(
     private val repository: ContactRepository,
     private val searchContact: String,
     private val contactDAO: ContactDAO,
-    private val networkState: NetworkState,
+    private val networkState: NetworkState
 ) :
     PagingSource<Int, ContactResponse.Body.SearchGalResponse.Cn>() {
 
@@ -38,7 +38,7 @@ class ContactPagingSource(
                         null
                     } else {
                         offset + 1
-                    },
+                    }
                 )
             }
             val contactRequest = ContactRequest(
@@ -47,9 +47,9 @@ class ContactPagingSource(
                         jsns = "urn:zimbraAccount",
                         limit = loadSize,
                         offset = offset,
-                        name = "$searchContact",
-                    ),
-                ),
+                        name = "$searchContact"
+                    )
+                )
             )
             when (val response = repository.getContactList(contactRequest).mapToResponseState()) {
                 is ResponseState.Success -> {
@@ -63,7 +63,7 @@ class ContactPagingSource(
                             offset + 1
                         } else {
                             null
-                        },
+                        }
                     )
                 }
                 else -> {
