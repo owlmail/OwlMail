@@ -33,17 +33,22 @@ buildCache {
 }
 
 rootProject.name = "Owl Mail"
+
 include ':app'
+
 include ':core'
-include ':auth'
-include ':mail'
 include ':design'
 include ':networking'
-include ':lint-rules'
+
 include ':benchmark'
+include ':lint-rules'
+
+include ':auth'
 include ':contacts'
-include ':auth-api'
-include ':mail-api'
-include ':contacts-api'
+include ':mail'
 include ':settings'
+
+include ':auth-api'
+include ':contacts-api'
+include ':mail-api'
 include ':settings-api'
