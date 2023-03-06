@@ -29,7 +29,7 @@ class NotificationManager(private val context: Context) {
             val channel = NotificationChannel(
                 "owlmail_notification_id",
                 "owlmail_notification_channel",
-                android.app.NotificationManager.IMPORTANCE_DEFAULT,
+                android.app.NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
                 lightColor = Color.BLUE
                 enableLights(true)

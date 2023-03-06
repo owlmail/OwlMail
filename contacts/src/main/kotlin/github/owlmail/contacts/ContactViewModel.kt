@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 class ContactViewModel @Inject constructor(
     private val repository: ContactRepository,
     private val contactDAO: ContactDAO,
-    private val networkStateFlowBuilder: NetworkStateFlowBuilder,
+    private val networkStateFlowBuilder: NetworkStateFlowBuilder
 ) : ViewModel() {
     private val searchQuery = MutableStateFlow("")
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)

@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 class MailViewModel @Inject constructor(
     private val repository: MailRepository,
     private val mailDAO: MailDAO,
-    private val networkStateFlowBuilder: NetworkStateFlowBuilder,
+    private val networkStateFlowBuilder: NetworkStateFlowBuilder
 ) : ViewModel() {
     private val searchQuery = MutableStateFlow("")
     private val pagingConfig = PagingConfig(pageSize = 10, 10, false, 10)

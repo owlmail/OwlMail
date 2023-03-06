@@ -17,14 +17,14 @@ class MailDetailAdapter(private val onMailDetailClick: OnMailDetailClick) :
         object : DiffUtil.ItemCallback<MailDetailResponse.Body.SearchConvResponse.Message>() {
             override fun areItemsTheSame(
                 oldItem: MailDetailResponse.Body.SearchConvResponse.Message,
-                newItem: MailDetailResponse.Body.SearchConvResponse.Message,
+                newItem: MailDetailResponse.Body.SearchConvResponse.Message
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
                 oldItem: MailDetailResponse.Body.SearchConvResponse.Message,
-                newItem: MailDetailResponse.Body.SearchConvResponse.Message,
+                newItem: MailDetailResponse.Body.SearchConvResponse.Message
             ): Boolean {
                 return oldItem == newItem
             }
@@ -86,7 +86,7 @@ class MailDetailAdapter(private val onMailDetailClick: OnMailDetailClick) :
 
     private fun MailDetailResponse.Body.SearchConvResponse.Message.MultiPart.renderAttachmentButton(
         binding: ConvMailBodyBinding,
-        messageId: String?,
+        messageId: String?
     ) {
         when {
             contentType?.contains("multipart", true) == true -> multiPart?.map {

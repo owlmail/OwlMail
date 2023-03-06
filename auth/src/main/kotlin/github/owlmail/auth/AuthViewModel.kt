@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val authUseCase: AuthUseCase,
+    private val authUseCase: AuthUseCase
 ) : ViewModel() {
 
     val loginState = authUseCase.get()

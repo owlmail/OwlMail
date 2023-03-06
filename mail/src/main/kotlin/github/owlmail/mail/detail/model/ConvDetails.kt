@@ -13,9 +13,9 @@ data class ConvDetails(val cid: String) {
                     fetch = "all",
                     html = 1,
                     needExp = 1,
-                    max = 250000,
-                ),
-            ),
+                    max = 250000
+                )
+            )
         )
     }
 }

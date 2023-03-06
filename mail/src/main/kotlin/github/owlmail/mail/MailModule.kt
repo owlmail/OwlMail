@@ -35,6 +35,6 @@ object MailModule {
     @Singleton
     fun provideMailDatabaseDeleteUseCase(
         mailDAO: MailDAO,
-        detailDAO: DetailDAO,
+        detailDAO: DetailDAO
     ): MailDatabaseDeleteUseCase = MailDatabaseDeleteUseCaseImpl(mailDAO, detailDAO)
 }

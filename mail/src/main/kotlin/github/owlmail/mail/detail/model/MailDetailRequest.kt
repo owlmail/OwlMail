@@ -6,12 +6,12 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class MailDetailRequest(
     @Json(name = "Body")
-    val body: Body? = null,
+    val body: Body? = null
 ) {
     @JsonClass(generateAdapter = true)
     data class Body(
         @Json(name = "SearchConvRequest")
-        val searchConvRequest: SearchConvRequest? = null,
+        val searchConvRequest: SearchConvRequest? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class SearchConvRequest(
@@ -34,7 +34,7 @@ data class MailDetailRequest(
             @Json(name = "query")
             val query: String? = null,
             @Json(name = "recip")
-            val recip: String? = null,
+            val recip: String? = null
         )
     }
 }
