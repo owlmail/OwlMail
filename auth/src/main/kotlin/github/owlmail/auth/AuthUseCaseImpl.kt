@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.first
 
 class AuthUseCaseImpl(
     private val repository: AuthRepository,
-    private val dataStoreManager: github.owlmail.core.DataStoreManager,
+    private val dataStoreManager: github.owlmail.core.DataStoreManager
 ) : AuthUseCase {
 
     private val loginState = MutableStateFlow<AuthState>(AuthState.UNKNOWN)

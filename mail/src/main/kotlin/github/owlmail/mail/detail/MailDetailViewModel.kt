@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class MailDetailViewModel @Inject constructor(
     private val repository: MailRepository,
-    private val detailDAO: DetailDAO,
+    private val detailDAO: DetailDAO
 ) : ViewModel() {
     private val _mailDetail =
         MutableStateFlow<ResponseState<MailDetailResponse?>>(ResponseState.Empty)

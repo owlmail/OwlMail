@@ -30,7 +30,7 @@ class ContactListFragment : Fragment(), MenuProvider {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = ContactListBinding.inflate(inflater)
         return binding?.root

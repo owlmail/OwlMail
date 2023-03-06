@@ -21,7 +21,7 @@ object AppModule {
         Room.databaseBuilder(
             context,
             OwlMailDatabase::class.java,
-            "owlmail_db",
+            "owlmail_db"
         )
             .fallbackToDestructiveMigration()
             .addTypeConverter(OwlMailConverter(moshi))

@@ -6,15 +6,15 @@ data class UserDetails(val userId: String, val userPassword: String) {
             RequestAuth.Body(
                 RequestAuth.Body.AuthRequest(
                     account = RequestAuth.Body.AuthRequest.Account(
-                        userId,
+                        userId
                     ),
                     password = RequestAuth.Body.AuthRequest.Password(
-                        userPassword,
+                        userPassword
                     ),
                     jsns = "urn:zimbraAccount",
-                    csrfTokenSecured = 1,
-                ),
-            ),
+                    csrfTokenSecured = 1
+                )
+            )
         )
     }
 }

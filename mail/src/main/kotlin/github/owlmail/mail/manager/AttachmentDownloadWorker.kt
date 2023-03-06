@@ -18,7 +18,7 @@ class AttachmentDownloadWorker @AssistedInject constructor(
     @Assisted private val context: Context,
     @Assisted params: WorkerParameters,
     private val mailRepository: MailRepository,
-    private val notificationManager: NotificationManager,
+    private val notificationManager: NotificationManager
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         // api call and response

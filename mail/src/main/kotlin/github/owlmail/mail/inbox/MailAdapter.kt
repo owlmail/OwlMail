@@ -14,7 +14,7 @@ import github.owlmail.mail.inbox.model.InboxSearchResponse
 
 class MailAdapter(private val onMailClick: OnMailClick) :
     PagingDataAdapter<InboxSearchResponse.Body.SearchResponse.Conversation, RecyclerView.ViewHolder>(
-        diffCallback = MailListDiffer(),
+        diffCallback = MailListDiffer()
     ) {
     // item in rv consists of sender name first line of subject and first line of body
 
@@ -22,14 +22,14 @@ class MailAdapter(private val onMailClick: OnMailClick) :
         DiffUtil.ItemCallback<InboxSearchResponse.Body.SearchResponse.Conversation>() {
         override fun areItemsTheSame(
             oldItem: InboxSearchResponse.Body.SearchResponse.Conversation,
-            newItem: InboxSearchResponse.Body.SearchResponse.Conversation,
+            newItem: InboxSearchResponse.Body.SearchResponse.Conversation
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
             oldItem: InboxSearchResponse.Body.SearchResponse.Conversation,
-            newItem: InboxSearchResponse.Body.SearchResponse.Conversation,
+            newItem: InboxSearchResponse.Body.SearchResponse.Conversation
         ): Boolean {
             return oldItem == newItem
         }
@@ -37,7 +37,7 @@ class MailAdapter(private val onMailClick: OnMailClick) :
 
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,
-        position: Int,
+        position: Int
     ) {
         val binding = MailListItemBinding.bind(holder.itemView)
         val item = getItem(position)

@@ -13,12 +13,12 @@ data class InboxSearchResponse(
     @Json(name = "Header")
     val header: Header? = null,
     @Json(name = "_jsns")
-    val jsns: String? = null,
+    val jsns: String? = null
 ) {
     @JsonClass(generateAdapter = true)
     data class Body(
         @Json(name = "SearchResponse")
-        val searchResponse: SearchResponse? = null,
+        val searchResponse: SearchResponse? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class SearchResponse(
@@ -31,7 +31,7 @@ data class InboxSearchResponse(
             @Json(name = "offset")
             val offset: Int? = null,
             @Json(name = "sortBy")
-            val sortBy: String? = null,
+            val sortBy: String? = null
         ) {
 
             @JsonClass(generateAdapter = true)
@@ -57,7 +57,7 @@ data class InboxSearchResponse(
                 @Json(name = "su")
                 val subject: String? = null,
                 @Json(name = "u")
-                val u: Int? = null,
+                val u: Int? = null
             ) {
                 @JsonClass(generateAdapter = true)
                 data class EmailAddress(
@@ -68,7 +68,7 @@ data class InboxSearchResponse(
                     @Json(name = "p")
                     val fullName: String? = null,
                     @Json(name = "t")
-                    val isSenderOrReceiver: String? = null, // if f=from/sender, t=to/receiver
+                    val isSenderOrReceiver: String? = null // if f=from/sender, t=to/receiver
                 )
 
                 @JsonClass(generateAdapter = true)
@@ -80,7 +80,7 @@ data class InboxSearchResponse(
                     @Json(name = "l")
                     val l: String? = null,
                     @Json(name = "s")
-                    val s: String? = null,
+                    val s: String? = null
                 )
             }
         }
@@ -89,19 +89,19 @@ data class InboxSearchResponse(
     @JsonClass(generateAdapter = true)
     data class Header(
         @Json(name = "context")
-        val context: Context? = null,
+        val context: Context? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class Context(
             @Json(name = "change")
             val change: Change? = null,
             @Json(name = "_jsns")
-            val jsns: String? = null,
+            val jsns: String? = null
         ) {
             @JsonClass(generateAdapter = true)
             data class Change(
                 @Json(name = "token")
-                val token: Int? = null,
+                val token: Int? = null
             )
         }
     }

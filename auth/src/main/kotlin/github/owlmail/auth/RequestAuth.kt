@@ -7,12 +7,12 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class RequestAuth(
     @Json(name = "Body")
-    val body: Body? = null,
+    val body: Body? = null
 ) {
     @JsonClass(generateAdapter = true)
     data class Body(
         @Json(name = "AuthRequest")
-        val authRequest: AuthRequest? = null,
+        val authRequest: AuthRequest? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class AuthRequest(
@@ -23,18 +23,18 @@ data class RequestAuth(
             @Json(name = "password")
             val password: Password? = null,
             @Json(name = "csrfTokenSecured")
-            val csrfTokenSecured: Int? = null,
+            val csrfTokenSecured: Int? = null
         ) {
             @JsonClass(generateAdapter = true)
             data class Account(
                 @Json(name = "_content")
-                val content: String? = null,
+                val content: String? = null
             )
 
             @JsonClass(generateAdapter = true)
             data class Password(
                 @Json(name = "_content")
-                val content: String? = null,
+                val content: String? = null
             )
         }
     }

@@ -9,7 +9,9 @@ import github.owlmail.contacts.model.ContactResponse
 @Dao
 interface
 ContactDAO {
-    @Query("select * from contact where fileAsStr like '%' || :query || '%' order by fileAsStr asc limit :limit offset :offset")
+    @Query(
+        "select * from contact where fileAsStr like '%' || :query || '%' order by fileAsStr asc limit :limit offset :offset"
+    )
     suspend fun getAllContacts(
         limit: Int,
         offset: Int,
