@@ -28,7 +28,7 @@ class AuthViewModel @Inject constructor(
     }
 
     fun tryAuthFromLocal() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             authUseCase()
         }
     }
