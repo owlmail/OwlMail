@@ -36,6 +36,7 @@ class AuthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // trigger fun on click login button
         binding?.loginButton?.setOnClickListener {
             triggerLoginOnButtonClick()
