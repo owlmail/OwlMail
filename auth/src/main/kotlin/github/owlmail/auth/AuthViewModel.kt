@@ -34,7 +34,7 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun setAppTheme() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             val preferences = dataStoreManager.readFromDataStore().first()
             val themeType = preferences[DataStoreManager.SET_THEME]
             if (themeType != null) {
