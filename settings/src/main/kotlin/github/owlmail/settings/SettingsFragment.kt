@@ -33,8 +33,17 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        changeThemeOnClick()
         subscribeToObserver()
         setUpClickListener()
+    }
+
+    // user selects theme from settings
+    private fun changeThemeOnClick() {
+        binding?.theme?.setOnClickListener {
+            // check value from app compat delegate and set theme
+            viewModel.setOppositeTheme()
+        }
     }
 
     private fun setUpClickListener() {
