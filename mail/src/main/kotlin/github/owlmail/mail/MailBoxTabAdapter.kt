@@ -11,7 +11,7 @@ class MailBoxTabAdapter(hostFragment: MailBoxHostFragment) : FragmentStateAdapte
     }
 
     // make a list
-    val tabList = listOf("Inbox", "Sent", "Drafts", "Trash", "Junk")
+    var tabList = listOf("Inbox", "Sent", "Drafts", "Trash", "Junk")
     private val tabFragmentList = mutableListOf<MailFragment>()
 
     override fun createFragment(position: Int): Fragment {

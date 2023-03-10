@@ -10,13 +10,13 @@ import github.owlmail.mail.inbox.model.InboxSearchResponse
 interface MailDAO {
 
     @Query(
-        "select * from conversation where (message like '%' || :folder || '%') and (body like '%' || :query || '%' or emailAddress like '%' || :query || '%' or subject like '%' || :query || '%') order by d desc limit :limit offset :offset"
+        "select * from conversation where (message like '%' || :folder || '%') and (body like '%' || :query || '%' or emailAddress like '%' || :query || '%' or subject like '%' || :query || '%') order by d desc limit :limit offset :offset",
     )
     suspend fun getAllMails(
         limit: Int,
         offset: Int,
         folder: String,
-        query: String
+        query: String,
     ): List<InboxSearchResponse.Body.SearchResponse.Conversation>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
