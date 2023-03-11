@@ -8,13 +8,12 @@ import com.google.android.material.textview.MaterialTextView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-// @NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes
 @AndroidEntryPoint
 class HtmlTextView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0,
-    defStyleRes: Int = 0
+    defStyleRes: Int = 0,
 ) : MaterialTextView(context, attributeSet, defStyleAttr, defStyleRes) {
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -25,7 +24,7 @@ class HtmlTextView @JvmOverloads constructor(
                 html,
                 HtmlCompat.FROM_HTML_MODE_LEGACY,
                 HtmlCoilImageLoader(this, imageLoader),
-                null
+                null,
             )
     }
 }
