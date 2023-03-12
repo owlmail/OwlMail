@@ -57,10 +57,10 @@ class UnreadMailNotificationWorker @AssistedInject constructor(
                             .setContentTitle("You have a mail")
                             .setContentText("This is a test notification")
                             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                            .setSmallIcon(R.drawable.ic_baseline_search_24)
+                            .setSmallIcon(R.drawable.baseline_notifications_24)
                             .build()
 
-                    notificationManager.showNotification(notification)
+                    notificationManager.showNotification(4001, notification)
                 }
                 Result.success()
             }
