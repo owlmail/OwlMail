@@ -18,13 +18,13 @@ class MailPagingSource(
     private val mailFolder: String,
     private val query: String,
     private val mailDAO: MailDAO,
-    private val networkState: NetworkState
+    private val networkState: NetworkState,
 ) :
     PagingSource<Int, InboxSearchResponse.Body.SearchResponse.Conversation>() {
 
     // call getMailList from repo
     override fun getRefreshKey(
-        state: PagingState<Int, InboxSearchResponse.Body.SearchResponse.Conversation>
+        state: PagingState<Int, InboxSearchResponse.Body.SearchResponse.Conversation>,
     ): Int? {
         return null
     }
@@ -43,7 +43,7 @@ class MailPagingSource(
                         null
                     } else {
                         offset + 1
-                    }
+                    },
                 )
             }
 
@@ -53,9 +53,9 @@ class MailPagingSource(
                         jsns = "urn:zimbraMail",
                         limit = loadSize,
                         offset = offset,
-                        query = "$query in:$mailFolder".trim()
-                    )
-                )
+                        query = "$query in:$mailFolder".trim(),
+                    ),
+                ),
             )
             when (val response = repository.getMailList(inboxSearchRequest).mapToResponseState()) {
                 is ResponseState.Success -> {
@@ -69,7 +69,7 @@ class MailPagingSource(
                             offset + 1
                         } else {
                             null
-                        }
+                        },
                     )
                 }
                 else -> {
