@@ -1,12 +1,7 @@
 package github.owlmail.mail
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.core.net.toUri
 import androidx.core.view.MenuProvider
@@ -16,11 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import androidx.work.Constraints
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.NetworkType
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
+import androidx.work.*
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.contacts.api.ContactsNavigationDeeplink
@@ -43,7 +34,7 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentMailBoxBinding.inflate(inflater)
         return binding?.root
@@ -63,10 +54,10 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
             ExistingPeriodicWorkPolicy.KEEP,
             PeriodicWorkRequestBuilder<UnreadMailNotificationWorker>(
                 15,
-                TimeUnit.MINUTES
+                TimeUnit.MINUTES,
             ).setConstraints(
-                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-            ).build()
+                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build(),
+            ).build(),
         )
     }
 
@@ -80,8 +71,9 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         val viewPager = viewPager
 
         // sets tab names
+
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabAdapter?.tabList?.getOrNull(position) ?: ""
+            tab.text = tabAdapter.tabList.getOrNull(position) ?: ""
         }.attach()
     }
 
@@ -103,7 +95,7 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
                         }
 
                         override fun onQueryTextChange(newText: String?): Boolean {
-                            tabAdapter?.doAfterTextChanged(newText?.trim() ?: "")
+                            tabAdapter.doAfterTextChanged(newText?.trim() ?: "")
                             return true
                         }
                     })
