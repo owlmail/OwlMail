@@ -40,6 +40,7 @@ class MailFragment : Fragment(), OnMailClick {
     }
 
     private fun setUpMailFolder() {
+        // set mail to other tabs
         arguments?.getString(TAB_KEY)?.let {
             mailFolder = it
         }

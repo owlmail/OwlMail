@@ -98,7 +98,7 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
             .putString("filename", fileName).build()
         WorkManager.getInstance(requireContext()).enqueueUniqueWork(
             "OwlMailDownload",
-            ExistingWorkPolicy.KEEP,
+            ExistingWorkPolicy.APPEND,
             OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build(),
         )
     }

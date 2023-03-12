@@ -51,7 +51,7 @@ class MailBoxHostFragment : Fragment(), MenuProvider {
         // notification manager for unread mail
         WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
             "OwlMailNotification",
-            ExistingPeriodicWorkPolicy.KEEP,
+            ExistingPeriodicWorkPolicy.UPDATE,
             PeriodicWorkRequestBuilder<UnreadMailNotificationWorker>(
                 15,
                 TimeUnit.MINUTES,
