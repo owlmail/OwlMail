@@ -12,9 +12,9 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import github.owlmail.mail.MailBoxHostFragmentDirections
 import github.owlmail.mail.databinding.FragmentMailBinding
-import javax.inject.Inject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MailFragment : Fragment(), OnMailClick {
@@ -26,7 +26,7 @@ class MailFragment : Fragment(), OnMailClick {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentMailBinding.inflate(inflater)
         return binding?.root
@@ -40,6 +40,7 @@ class MailFragment : Fragment(), OnMailClick {
     }
 
     private fun setUpMailFolder() {
+        // set mail to other tabs
         arguments?.getString(TAB_KEY)?.let {
             mailFolder = it
         }
@@ -80,8 +81,8 @@ class MailFragment : Fragment(), OnMailClick {
     override fun invoke(conversationUID: String?) {
         findNavController().navigate(
             MailBoxHostFragmentDirections.actionMailBoxHostFragmentToMailDetailFragment(
-                conversationUID
-            )
+                conversationUID,
+            ),
         )
     }
 }

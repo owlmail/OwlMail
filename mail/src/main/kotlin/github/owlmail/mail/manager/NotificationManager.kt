@@ -16,8 +16,8 @@ class NotificationManager(private val context: Context) {
 
     private val notificationManager = NotificationManagerCompat.from(context)
 
-    fun showNotification(notification: Notification) {
-        notificationManager.notify(4000, notification)
+    fun showNotification(notificationId: Int, notification: Notification) {
+        notificationManager.notify(notificationId, notification)
     }
 
     private fun createPendingIntent() {

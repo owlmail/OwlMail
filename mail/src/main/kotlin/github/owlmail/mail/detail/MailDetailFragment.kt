@@ -18,8 +18,8 @@ import github.owlmail.mail.databinding.MailDetailsBinding
 import github.owlmail.mail.detail.model.ConvDetails
 import github.owlmail.mail.manager.AttachmentDownloadWorker
 import github.owlmail.networking.ResponseState
-import javax.inject.Inject
 import kotlinx.coroutines.flow.collectLatest
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MailDetailFragment : Fragment(), OnMailDetailClick {
@@ -33,7 +33,7 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = MailDetailsBinding.inflate(inflater)
         return binding?.root
@@ -76,7 +76,7 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
                         binding?.ivFlag?.isVisible = isFlagged
 
                         mailDetailAdapter.differ.submitList(
-                            it.data?.body?.searchConvResponse?.message
+                            it.data?.body?.searchConvResponse?.message,
                         )
                     }
                     is ResponseState.Empty -> {
@@ -98,8 +98,8 @@ class MailDetailFragment : Fragment(), OnMailDetailClick {
             .putString("filename", fileName).build()
         WorkManager.getInstance(requireContext()).enqueueUniqueWork(
             "OwlMailDownload",
-            ExistingWorkPolicy.KEEP,
-            OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build()
+            ExistingWorkPolicy.APPEND,
+            OneTimeWorkRequestBuilder<AttachmentDownloadWorker>().setInputData(data).build(),
         )
     }
 }

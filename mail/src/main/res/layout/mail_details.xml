@@ -59,41 +59,5 @@
         tools:listitem="@layout/conv_mail_body" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/reply_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="@string/reply"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/reply_to_all_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="@string/reply_to_all"
-        app:layout_constraintStart_toEndOf="@id/reply_button"
-        app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/forward_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="@string/forward"
-        app:layout_constraintStart_toEndOf="@id/reply_to_all_button"
-        app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/more_options_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="@string/more_options"
-        app:layout_constraintStart_toEndOf="@id/forward_button"
-        app:layout_constraintTop_toBottomOf="@id/recycler_view1" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
