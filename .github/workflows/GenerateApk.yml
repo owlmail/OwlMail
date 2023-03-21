@@ -34,10 +34,10 @@ jobs:
           DATA: ${{ secrets.GOOGLE_SERVICES }}
         run: echo $DATA > $PWD/app/google-services.json
 
-      - name: Generate Debug Apk
-        run: ./gradlew assembleDebug --scan
+      - name: Generate Release Apk
+        run: ./gradlew assembleRelease --scan
 
       - uses: actions/upload-artifact@v3
         with:
-          name: Debug Apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: Release Apk
+          path: app/build/outputs/apk/release/app-release.apk
