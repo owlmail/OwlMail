@@ -61,4 +61,7 @@ object DependencyVersion {
 
     // Leak canary
     const val LeakCanary = "2.10"
+
+    // Baseline Profile installer
+    const val BaselineProfileInstaller = "1.2.2"
 }

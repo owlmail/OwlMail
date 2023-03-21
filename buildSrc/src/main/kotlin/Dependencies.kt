@@ -79,4 +79,8 @@ object Dependencies {
     // leak canary
     const val LeakCanary =
         "com.squareup.leakcanary:leakcanary-android:${DependencyVersion.LeakCanary}"
+
+    // Baseline Profile installer
+    const val BaselineProfileInstaller =
+        "androidx.profileinstaller:profileinstaller:${DependencyVersion.BaselineProfileInstaller}"
 }
