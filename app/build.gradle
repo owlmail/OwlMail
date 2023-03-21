@@ -33,7 +33,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -48,8 +50,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility AppConfig.INSTANCE.JDKVersion
-        targetCompatibility AppConfig.INSTANCE.JDKVersion
+        sourceCompatibility AppConfig.JDKVersion
+        targetCompatibility AppConfig.JDKVersion
         kotlinOptions.languageVersion = AppConfig.KotlinLanguageVersion
     }
     kotlinOptions {
@@ -100,7 +102,7 @@ dependencies {
     kapt Dependencies.DaggerHiltCompiler
 
     //Lint
-    lintChecks project(':lint-rules')
+    lintChecks project(Modules.LintRules)
 
     //navigation
     implementation Dependencies.FragmentKtx
@@ -127,6 +129,9 @@ dependencies {
     //room
     implementation Dependencies.RoomKtx
     kapt Dependencies.RoomCompiler
+
+    implementation "androidx.metrics:metrics-performance:1.0.0-alpha03"
+    implementation("androidx.profileinstaller:profileinstaller:1.2.2")
 
     implementation(project(Modules.Auth))
     implementation(project(Modules.Mail))

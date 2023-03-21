@@ -6,15 +6,15 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import github.owlmail.auth.api.AuthUseCase
 import github.owlmail.core.DataStoreManager
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val authUseCase: AuthUseCase,
-    private val dataStoreManager: DataStoreManager,
+    private val dataStoreManager: DataStoreManager
 ) : ViewModel() {
 
     val loginState = authUseCase.get()

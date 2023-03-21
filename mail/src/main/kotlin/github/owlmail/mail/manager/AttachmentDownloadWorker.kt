@@ -9,9 +9,9 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import github.owlmail.mail.MailRepository
 import github.owlmail.mail.R
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.File
 
 @HiltWorker
 class AttachmentDownloadWorker @AssistedInject constructor(
