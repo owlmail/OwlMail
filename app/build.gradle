@@ -131,6 +131,7 @@ dependencies {
     kapt Dependencies.RoomCompiler
 
     implementation Dependencies.BaselineProfileInstaller
+    implementation Dependencies.StartUp
 
     implementation(project(Modules.Auth))
     implementation(project(Modules.Mail))

@@ -25,10 +25,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="${applicationId}.FirebaseInitProvider"
+            android:exported="false"
+            tools:node="remove" />
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="github.owlmail.app.androidx-startup"
-            tools:node="remove" />
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="github.owlmail.app.initializer.FirebaseInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="github.owlmail.app.initializer.StethoInitializer"
+                android:value="androidx.startup" />
+        </provider>
     </application>
 
 </manifest>

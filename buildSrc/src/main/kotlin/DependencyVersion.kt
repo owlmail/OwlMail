@@ -64,4 +64,6 @@ object DependencyVersion {
 
     // Baseline Profile installer
     const val BaselineProfileInstaller = "1.2.2"
+
+    const val StartUp = "1.1.1"
 }
