@@ -83,4 +83,6 @@ object Dependencies {
     // Baseline Profile installer
     const val BaselineProfileInstaller =
         "androidx.profileinstaller:profileinstaller:${DependencyVersion.BaselineProfileInstaller}"
+
+    const val StartUp = "androidx.startup:startup-runtime:${DependencyVersion.StartUp}"
 }
