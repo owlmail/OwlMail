@@ -49,42 +49,42 @@ android {
 dependencies {
 
     //Core
-    implementation Dependencies.CoreKTX
-    implementation Dependencies.AppCompat
+    implementation DependencyNames.CoreKTX
+    implementation DependencyNames.AppCompat
 
 
     //View
-    implementation Dependencies.Material
-    implementation Dependencies.ConstraintLayout
+    implementation DependencyNames.Material
+    implementation DependencyNames.ConstraintLayout
 
 
     //Test
-    testImplementation Dependencies.Junit
-    androidTestImplementation Dependencies.JunitAndroid
-    androidTestImplementation Dependencies.EspressoCore
+    testImplementation DependencyNames.Junit
+    androidTestImplementation DependencyNames.JunitAndroid
+    androidTestImplementation DependencyNames.EspressoCore
 
 
     //Dagger - Hilt
-    implementation Dependencies.DaggerHilt
-    kapt Dependencies.DaggerHiltCompiler
+    implementation DependencyNames.DaggerHilt
+    kapt DependencyNames.DaggerHiltCompiler
 
 
     //moshi
-    implementation Dependencies.Moshi
-    ksp Dependencies.MoshiKsp
-    implementation Dependencies.MoshiRetrofitConverter
+    implementation DependencyNames.Moshi
+    ksp DependencyNames.MoshiKsp
+    implementation DependencyNames.MoshiRetrofitConverter
 
     //navigation
-    implementation Dependencies.FragmentKtx
-    implementation Dependencies.Navigation
+    implementation DependencyNames.FragmentKtx
+    implementation DependencyNames.Navigation
 
 
     //paging
-    implementation Dependencies.Paging
+    implementation DependencyNames.Paging
 
     //room
-    implementation Dependencies.RoomKtx
-    ksp Dependencies.RoomCompiler
+    implementation DependencyNames.RoomKtx
+    ksp DependencyNames.RoomCompiler
 
     implementation(project(Modules.Networking))
     implementation(project(Modules.ContactsApi))

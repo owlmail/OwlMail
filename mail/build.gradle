@@ -47,40 +47,40 @@ android {
 
 dependencies {
     //Paging
-    implementation Dependencies.Paging
+    implementation DependencyNames.Paging
 
     //Core
-    implementation Dependencies.CoreKTX
-    implementation Dependencies.AppCompat
+    implementation DependencyNames.CoreKTX
+    implementation DependencyNames.AppCompat
 
 
     //View
-    implementation Dependencies.Material
-    implementation Dependencies.ConstraintLayout
+    implementation DependencyNames.Material
+    implementation DependencyNames.ConstraintLayout
 
 
     //Test
-    testImplementation Dependencies.Junit
-    androidTestImplementation Dependencies.JunitAndroid
-    androidTestImplementation Dependencies.EspressoCore
+    testImplementation DependencyNames.Junit
+    androidTestImplementation DependencyNames.JunitAndroid
+    androidTestImplementation DependencyNames.EspressoCore
 
 
     //Dagger - Hilt
-    implementation Dependencies.DaggerHilt
-    kapt Dependencies.DaggerHiltCompiler
+    implementation DependencyNames.DaggerHilt
+    kapt DependencyNames.DaggerHiltCompiler
 
     //navigation
-    implementation Dependencies.FragmentKtx
-    implementation Dependencies.Navigation
+    implementation DependencyNames.FragmentKtx
+    implementation DependencyNames.Navigation
 
 
     //moshi
-    implementation Dependencies.Moshi
-    ksp Dependencies.MoshiKsp
-    implementation Dependencies.MoshiRetrofitConverter
+    implementation DependencyNames.Moshi
+    ksp DependencyNames.MoshiKsp
+    implementation DependencyNames.MoshiRetrofitConverter
 
-    implementation Dependencies.ViewPager
-    implementation Dependencies.Coil
+    implementation DependencyNames.ViewPager
+    implementation DependencyNames.Coil
 
     implementation(project(Modules.Networking))
     implementation(project(Modules.Core))
@@ -88,16 +88,16 @@ dependencies {
     implementation(project(Modules.SettingsApi))
     implementation(project(Modules.ContactsApi))
 
-    implementation Dependencies.HiltWork
-    kapt Dependencies.HiltWorkCompiler
-    implementation Dependencies.WorkRuntime
+    implementation DependencyNames.HiltWork
+    kapt DependencyNames.HiltWorkCompiler
+    implementation DependencyNames.WorkRuntime
 
     //data store
-    implementation Dependencies.Datastore
+    implementation DependencyNames.Datastore
 
 
     //room
-    implementation Dependencies.RoomKtx
-    ksp Dependencies.RoomCompiler
+    implementation DependencyNames.RoomKtx
+    ksp DependencyNames.RoomCompiler
 
 }
