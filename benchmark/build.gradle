@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace 'github.owlmail.benchmark'
-    compileSdk 33
+    compileSdk AppConfig.CompileSdk
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -17,12 +17,12 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = AppConfig.JvmTargetVersion
     }
 
     defaultConfig {
-        minSdk 23
-        targetSdk 33
+        minSdk AppConfig.MinSdk
+        targetSdk AppConfig.TargetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
