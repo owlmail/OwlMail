@@ -17,7 +17,6 @@ plugins {
 
     id "com.google.devtools.ksp"
 }
-apply from: "../gradle/dependency-version.gradle"
 
 android {
     compileSdk AppConfig.CompileSdk
