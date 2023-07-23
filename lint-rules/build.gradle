@@ -13,7 +13,7 @@ java {
 }
 
 dependencies {
-    compileOnly Dependencies.Lint
+    compileOnly DependencyNames.Lint
 }
 
 jar {

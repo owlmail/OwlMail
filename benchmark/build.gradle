@@ -43,10 +43,10 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.JunitAndroid
-    implementation Dependencies.EspressoCore
-    implementation Dependencies.UIAutomator
-    implementation Dependencies.Benchmark
+    implementation DependencyNames.JunitAndroid
+    implementation DependencyNames.EspressoCore
+    implementation DependencyNames.UIAutomator
+    implementation DependencyNames.Benchmark
 }
 
 androidComponents {

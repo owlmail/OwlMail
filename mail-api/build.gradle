@@ -39,15 +39,15 @@ android {
 dependencies {
 
     //Core
-    implementation Dependencies.CoreKTX
-    implementation Dependencies.AppCompat
+    implementation DependencyNames.CoreKTX
+    implementation DependencyNames.AppCompat
 
     //Test
-    testImplementation Dependencies.Junit
-    androidTestImplementation Dependencies.JunitAndroid
-    androidTestImplementation Dependencies.EspressoCore
+    testImplementation DependencyNames.Junit
+    androidTestImplementation DependencyNames.JunitAndroid
+    androidTestImplementation DependencyNames.EspressoCore
 
     //coroutine
-    implementation Dependencies.Coroutine
+    implementation DependencyNames.Coroutine
 
 }

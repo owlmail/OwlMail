@@ -1,4 +1,4 @@
-object Dependencies {
+object DependencyNames {
 
     // Core
     const val CoreKTX = "androidx.core:core-ktx:${DependencyVersion.CoreKTX}"

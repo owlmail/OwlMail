@@ -17,6 +17,7 @@ plugins {
 
     id "com.google.devtools.ksp"
 }
+apply from: "../gradle/dependency-version.gradle"
 
 android {
     compileSdk AppConfig.CompileSdk
@@ -79,59 +80,59 @@ android {
 dependencies {
 
     //Core
-    implementation Dependencies.CoreKTX
-    implementation Dependencies.AppCompat
+    implementation DependencyNames.CoreKTX
+    implementation DependencyNames.AppCompat
 
 
     //View
-    implementation Dependencies.Material
-    implementation Dependencies.ConstraintLayout
+    implementation DependencyNames.Material
+    implementation DependencyNames.ConstraintLayout
 
     //Test
-    testImplementation Dependencies.Junit
-    androidTestImplementation Dependencies.JunitAndroid
-    androidTestImplementation Dependencies.EspressoCore
+    testImplementation DependencyNames.Junit
+    androidTestImplementation DependencyNames.JunitAndroid
+    androidTestImplementation DependencyNames.EspressoCore
 
     // Firebase
-    implementation platform(Dependencies.FirebaseBom)
-    implementation Dependencies.FirebaseRemoteConfig
-    implementation Dependencies.FirebasePerformance
+    implementation platform(DependencyNames.FirebaseBom)
+    implementation DependencyNames.FirebaseRemoteConfig
+    implementation DependencyNames.FirebasePerformance
 
     //Dagger - Hilt
-    implementation Dependencies.DaggerHilt
-    kapt Dependencies.DaggerHiltCompiler
+    implementation DependencyNames.DaggerHilt
+    kapt DependencyNames.DaggerHiltCompiler
 
     //Lint
     lintChecks project(Modules.LintRules)
 
     //navigation
-    implementation Dependencies.FragmentKtx
-    implementation Dependencies.Navigation
+    implementation DependencyNames.FragmentKtx
+    implementation DependencyNames.Navigation
 
 
     //moshi
-    implementation Dependencies.Moshi
-    ksp Dependencies.MoshiKsp
+    implementation DependencyNames.Moshi
+    ksp DependencyNames.MoshiKsp
 
 
-    implementation Dependencies.Stetho
+    implementation DependencyNames.Stetho
 
-    implementation Dependencies.HiltWork
-    kapt Dependencies.HiltWorkCompiler
-    implementation Dependencies.WorkRuntime
+    implementation DependencyNames.HiltWork
+    kapt DependencyNames.HiltWorkCompiler
+    implementation DependencyNames.WorkRuntime
 
     //splash screen
-    implementation Dependencies.SplashScreen
+    implementation DependencyNames.SplashScreen
 
     //leak canary
-    debugImplementation Dependencies.LeakCanary
+    debugImplementation DependencyNames.LeakCanary
 
     //room
-    implementation Dependencies.RoomKtx
-    kapt Dependencies.RoomCompiler
+    implementation DependencyNames.RoomKtx
+    kapt DependencyNames.RoomCompiler
 
-    implementation Dependencies.BaselineProfileInstaller
-    implementation Dependencies.StartUp
+    implementation DependencyNames.BaselineProfileInstaller
+    implementation DependencyNames.StartUp
 
     implementation(project(Modules.Auth))
     implementation(project(Modules.Mail))
